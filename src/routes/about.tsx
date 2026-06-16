@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Target, Eye, Sparkles } from "lucide-react";
+import { Target, Eye } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/about")({
@@ -7,24 +7,22 @@ export const Route = createFileRoute("/about")({
     meta: [
       { title: "About — Ajira Digital Club, Kisii University" },
       { name: "description", content: "Learn about the Ajira Digital Club at Kisii University — our mission, vision, and student leadership." },
-      { property: "og:title", content: "About — Ajira Digital Club" },
-      { property: "og:description", content: "Mission, vision, and the team leading the digital movement at Kisii University." },
     ],
   }),
   component: About,
 });
 
 const team = [
-  { role: "Patron", name: "Dr. Teresa Abuya" },
-  { role: "Chairperson", name: "Onyango Michael" },
-  { role: "Vice Chairperson", name: "Emmanuel Ojiambo" },
-  { role: "Secretary General", name: "Denis Kiplagat" },
-  { role: "Partnerships & Outreach Lead", name: "Erik Mwangi" },
-  { role: "Publicity Secretary", name: "Alex Chomba" },
-  { role: "Events Organizer", name: "Kyalo Benson" },
-  { role: "Membership & Engagement Lead", name: "Earnest Kethi" },
-  { role: "Treasurer", name: "Ann Muchiri" },
-  { role: "Trainer of Trainees", name: "Evelyne Njambi" },
+  { role: "Patron",                      name: "Dr. Teresa Abuya" },
+  { role: "Chairperson",                 name: "Onyango Michael" },
+  { role: "Vice Chairperson",            name: "Emmanuel Ojiambo" },
+  { role: "Secretary General",           name: "Denis Kiplagat" },
+  { role: "Partnerships & Outreach",     name: "Erik Mwangi" },
+  { role: "Publicity Secretary",         name: "Alex Chomba" },
+  { role: "Events Organizer",            name: "Kyalo Benson" },
+  { role: "Membership & Engagement",     name: "Earnest Kethi" },
+  { role: "Treasurer",                   name: "Ann Muchiri" },
+  { role: "Trainer of Trainees",         name: "Evelyne Njambi" },
 ];
 
 function initials(name: string) {
@@ -34,18 +32,15 @@ function initials(name: string) {
 function About() {
   return (
     <>
-      {/* Header */}
-      <section className="relative overflow-hidden bg-brand-black text-white pt-36 pb-24">
-        <div className="absolute inset-0 bg-gradient-dark" />
-        <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-brand-red/25 blur-3xl" />
-        <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-brand-green/25 blur-3xl" />
-        <div className="container-x relative">
+      {/* ── PAGE HEADER ──────────────────────────────────── */}
+      <section className="bg-brand-black text-white pt-32 pb-20">
+        <div className="container-x">
           <Reveal>
-            <div className="text-xs font-semibold uppercase tracking-[0.25em] text-brand-red">About us</div>
-            <h1 className="mt-4 font-display text-4xl sm:text-6xl font-bold max-w-3xl leading-[1.05]">
+            <span className="overline text-brand-red block mb-5">About the club</span>
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold max-w-2xl leading-[1.06]">
               A student-led digital community at Kisii University.
             </h1>
-            <p className="mt-6 max-w-2xl text-white/75 leading-relaxed">
+            <p className="mt-6 max-w-xl text-white/60 leading-relaxed text-base">
               Ajira Digital Club is a community of curious, ambitious students equipping themselves
               with future-ready digital skills, connecting to online work opportunities, and
               fostering entrepreneurship and innovation across campus and beyond.
@@ -54,56 +49,89 @@ function About() {
         </div>
       </section>
 
-      {/* Mission / Vision */}
-      <section className="container-x py-24 grid gap-6 md:grid-cols-2">
-        {[
-          { I: Target, t: "Our Mission", d: "Empower students with practical digital skills and access to opportunities in the digital economy." },
-          { I: Eye, t: "Our Vision", d: "Build a thriving community of digitally empowered students who create impact through technology and innovation." },
-        ].map((b, i) => (
-          <Reveal key={b.t} delay={i * 100}>
-            <div className="relative h-full overflow-hidden rounded-2xl border bg-card p-8 lift lift-hover">
-              <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-gradient-brand opacity-10 blur-2xl" />
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-brand text-white shadow-elevated">
-                <b.I size={22} />
+      {/* ── BACKGROUND STRIP ──────────────────────────────── */}
+      <section className="border-b border-border">
+        <div className="container-x py-10">
+          <Reveal>
+            <div className="grid sm:grid-cols-3 gap-8 text-sm text-muted-foreground">
+              <div>
+                <div className="font-semibold text-foreground mb-1">Founded</div>
+                <div>2020, under Kenya's Ajira Digital Programme</div>
               </div>
-              <h3 className="mt-5 font-display text-2xl font-bold">{b.t}</h3>
-              <p className="mt-2 text-muted-foreground leading-relaxed">{b.d}</p>
+              <div>
+                <div className="font-semibold text-foreground mb-1">Affiliation</div>
+                <div>Ministry of ICT, Innovation & Youth Affairs</div>
+              </div>
+              <div>
+                <div className="font-semibold text-foreground mb-1">Campus</div>
+                <div>Kisii University, Main Campus, Kisii County</div>
+              </div>
             </div>
           </Reveal>
-        ))}
+        </div>
       </section>
 
-      {/* Team */}
-      <section className="container-x pb-24 sm:pb-32">
+      {/* ── MISSION & VISION ──────────────────────────────── */}
+      <section className="container-x py-24">
         <Reveal>
-          <div className="flex items-end justify-between gap-6 flex-wrap">
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-red">Leadership</div>
-              <h2 className="mt-3 font-display text-3xl sm:text-5xl font-bold">The team behind the movement.</h2>
-            </div>
-            <div className="text-sm text-muted-foreground inline-flex items-center gap-2">
-              <Sparkles size={14} className="text-brand-green" /> Elected by members, accountable to the club.
-            </div>
-          </div>
+          <span className="overline block mb-6">Purpose</span>
         </Reveal>
-
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {team.map((m, i) => (
-            <Reveal key={m.name} delay={i * 60}>
-              <div className="group relative overflow-hidden rounded-2xl border bg-card p-6 lift lift-hover">
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-brand opacity-70" />
-                <div className="flex items-center gap-4">
-                  <div className="grid h-14 w-14 place-items-center rounded-full bg-gradient-brand text-white font-bold shadow-elevated">
-                    {initials(m.name)}
-                  </div>
-                  <div>
-                    <div className="font-display text-lg font-bold leading-tight">{m.name}</div>
-                    <div className="text-xs uppercase tracking-wider text-muted-foreground mt-0.5">{m.role}</div>
-                  </div>
+        <div className="grid gap-px bg-border border border-border md:grid-cols-2">
+          {[
+            {
+              I: Target,
+              t: "Our Mission",
+              d: "Empower students with practical digital skills and access to opportunities in the digital economy — building careers, not just certificates.",
+            },
+            {
+              I: Eye,
+              t: "Our Vision",
+              d: "Build a thriving community of digitally empowered students who create impact through technology and innovation, both locally and globally.",
+            },
+          ].map((b) => (
+            <Reveal key={b.t}>
+              <div className="bg-white p-8 sm:p-10 h-full hover:bg-surface transition-colors">
+                <div className="grid h-10 w-10 place-items-center bg-brand-red text-white mb-6">
+                  <b.I size={18} />
                 </div>
+                <h3 className="font-display text-2xl font-bold mb-3">{b.t}</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm">{b.d}</p>
               </div>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* ── TEAM ─────────────────────────────────────────── */}
+      <section className="bg-surface border-t border-border pb-24">
+        <div className="container-x pt-20">
+          <Reveal>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+              <div>
+                <span className="overline block mb-3">Leadership</span>
+                <h2 className="font-display text-3xl sm:text-4xl font-bold">The team behind the movement.</h2>
+              </div>
+              <p className="text-sm text-muted-foreground max-w-xs">
+                Elected by members, accountable to the club.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {team.map((m, i) => (
+              <Reveal key={m.name} delay={i * 50}>
+                <div className="bg-white border border-border p-5 flex items-center gap-4 hover:border-brand-red/30 transition-colors group">
+                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-brand-black text-white text-sm font-bold font-display">
+                    {initials(m.name)}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-display font-bold text-sm leading-snug truncate">{m.name}</div>
+                    <div className="text-[11px] text-muted-foreground mt-0.5 uppercase tracking-wide">{m.role}</div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
     </>
