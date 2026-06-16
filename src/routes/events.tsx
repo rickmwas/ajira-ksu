@@ -15,48 +15,15 @@ export const Route = createFileRoute("/events")({
 });
 
 const upcoming = [
-  {
-    date: "Jul 12, 2026",
-    duration: "2 days",
-    title: "AI for Builders Bootcamp",
-    desc: "A two-day intensive on building real apps with modern AI tools and LLM APIs.",
-    loc: "Main Hall, Kisii University",
-  },
-  {
-    date: "Aug 03, 2026",
-    duration: "1 day",
-    title: "Freelance Launchpad",
-    desc: "Set up your Upwork & Fiverr profile, learn pitching, and land your first client.",
-    loc: "ICT Lab 2",
-  },
-  {
-    date: "Sep 21, 2026",
-    duration: "1 day",
-    title: "CyberSec CTF Challenge",
-    desc: "Compete in our annual Capture-the-Flag tournament with prizes and recruiter scouts.",
-    loc: "ICT Lab 1",
-  },
+  { date: "Jul 12, 2026", duration: "2 days",  title: "AI for Builders Bootcamp",   desc: "A two-day intensive on building real apps with modern AI tools and LLM APIs.",                  loc: "Main Hall, Kisii University" },
+  { date: "Aug 03, 2026", duration: "1 day",   title: "Freelance Launchpad",         desc: "Set up your Upwork & Fiverr profile, learn pitching, and land your first client.",             loc: "ICT Lab 2" },
+  { date: "Sep 21, 2026", duration: "1 day",   title: "CyberSec CTF Challenge",      desc: "Compete in our annual Capture-the-Flag tournament with prizes and recruiter scouts.",           loc: "ICT Lab 1" },
 ];
 
 const past = [
-  {
-    date: "Apr 18, 2026",
-    title: "Hack the Hill 2026",
-    desc: "Our flagship 36-hour hackathon — 28 teams, 6 winners, countless ideas built.",
-    loc: "Main Hall",
-  },
-  {
-    date: "Feb 09, 2026",
-    title: "Web Dev Weekend",
-    desc: "From HTML to deployed app in two days — over 80 students participated.",
-    loc: "ICT Lab 2",
-  },
-  {
-    date: "Nov 24, 2025",
-    title: "Career Day with Industry Mentors",
-    desc: "Engineers and founders shared paths into Kenya's tech economy.",
-    loc: "Senate Hall",
-  },
+  { date: "Apr 18, 2026", title: "Hack the Hill 2026",              desc: "Our flagship 36-hour hackathon — 28 teams, 6 winners, countless ideas built.", loc: "Main Hall" },
+  { date: "Feb 09, 2026", title: "Web Dev Weekend",                 desc: "From HTML to deployed app in two days — over 80 students participated.",         loc: "ICT Lab 2" },
+  { date: "Nov 24, 2025", title: "Career Day with Industry Mentors",desc: "Engineers and founders shared paths into Kenya's tech economy.",                 loc: "Senate Hall" },
 ];
 
 function Events() {
@@ -64,15 +31,15 @@ function Events() {
 
   return (
     <>
-      {/* ── PAGE HEADER ──────────────────────────────────── */}
-      <section className="bg-brand-black text-white pt-32 pb-20">
-        <div className="container-x">
+      {/* ── PAGE HEADER ────────────────────────────────────── */}
+      <section className="bg-brand-black text-white pt-[88px] pb-20">
+        <div className="container-x pt-12">
           <Reveal>
-            <span className="overline text-brand-red block mb-5">Events</span>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold max-w-2xl leading-[1.06]">
+            <span className="overline text-brand-red mb-5">Events</span>
+            <h1 className="font-serif text-[2.6rem] sm:text-5xl lg:text-6xl font-normal max-w-2xl leading-[1.06] text-white mt-4">
               Where skills meet community.
             </h1>
-            <p className="mt-6 max-w-lg text-white/60 leading-relaxed">
+            <p className="mt-7 max-w-lg text-white/55 leading-relaxed font-light">
               From hackathons to keynote sessions — explore where we've been
               and what's coming up next.
             </p>
@@ -80,14 +47,14 @@ function Events() {
         </div>
       </section>
 
-      {/* ── FEATURED EVENT ───────────────────────────────── */}
+      {/* ── FEATURED EVENT ─────────────────────────────────── */}
       <section className="container-x py-20">
         <Reveal>
-          <span className="overline block mb-6">Featured event</span>
+          <span className="overline mb-6">Featured event</span>
         </Reveal>
         <Reveal delay={80}>
-          <div className="grid md:grid-cols-5 border border-border overflow-hidden">
-            <div className="md:col-span-3 relative">
+          <div className="grid md:grid-cols-5 border border-border overflow-hidden mt-5">
+            <div className="md:col-span-3">
               <img
                 src={featImg}
                 alt="Hack the Hill 2026"
@@ -96,10 +63,10 @@ function Events() {
               />
             </div>
             <div className="md:col-span-2 p-8 sm:p-10 flex flex-col bg-surface">
-              <span className="inline-flex w-fit items-center rounded-sm bg-brand-red/10 text-brand-red px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.15em] mb-5">
+              <span className="inline-flex w-fit items-center rounded-sm bg-brand-red/10 text-brand-red px-2.5 py-1 text-[10px] font-display font-semibold uppercase tracking-[0.15em] mb-6">
                 Flagship Event
               </span>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold leading-snug">
+              <h2 className="font-serif text-2xl sm:text-[1.75rem] font-normal leading-snug">
                 Hack the Hill 2026 — Edition II
               </h2>
               <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
@@ -107,18 +74,18 @@ function Events() {
                 Build, ship, and pitch for a chance to win seed funding and internship offers.
               </p>
               <div className="mt-6 space-y-2.5 text-sm border-t border-border pt-5">
-                <div className="flex items-center gap-2.5 text-muted-foreground">
-                  <CalendarDays size={15} className="text-brand-green shrink-0" />
+                <div className="flex items-center gap-2.5 text-muted-foreground font-display">
+                  <CalendarDays size={14} className="text-brand-green shrink-0" />
                   October 17–18, 2026
                 </div>
-                <div className="flex items-center gap-2.5 text-muted-foreground">
-                  <MapPin size={15} className="text-brand-green shrink-0" />
+                <div className="flex items-center gap-2.5 text-muted-foreground font-display">
+                  <MapPin size={14} className="text-brand-green shrink-0" />
                   Kisii University Main Hall
                 </div>
               </div>
               <button
                 onClick={() => setOpen(true)}
-                className="mt-auto pt-8 inline-flex items-center gap-2 rounded-sm bg-brand-red hover:bg-brand-red-dark px-6 py-3 text-sm font-semibold text-white transition-colors w-fit"
+                className="mt-auto pt-8 inline-flex items-center gap-2 rounded-sm bg-brand-red hover:bg-brand-red-dark px-6 py-3 text-sm font-semibold text-white transition-colors w-fit font-display"
               >
                 Register Interest <ArrowRight size={15} />
               </button>
@@ -127,12 +94,12 @@ function Events() {
         </Reveal>
       </section>
 
-      {/* ── UPCOMING ─────────────────────────────────────── */}
+      {/* ── UPCOMING ───────────────────────────────────────── */}
       <section className="container-x pb-20">
         <Reveal>
-          <h2 className="font-display text-2xl sm:text-3xl font-bold mb-8">Upcoming events</h2>
+          <h2 className="font-serif text-2xl sm:text-3xl font-normal mb-8">Upcoming events</h2>
         </Reveal>
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid gap-2.5 md:grid-cols-3">
           {upcoming.map((e, i) => (
             <Reveal key={e.title} delay={i * 70}>
               <EventCard {...e} onRegister={() => setOpen(true)} />
@@ -141,13 +108,13 @@ function Events() {
         </div>
       </section>
 
-      {/* ── PAST ─────────────────────────────────────────── */}
+      {/* ── PAST ───────────────────────────────────────────── */}
       <section className="bg-surface border-t border-border">
         <div className="container-x py-20">
           <Reveal>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold mb-8">Past events</h2>
+            <h2 className="font-serif text-2xl sm:text-3xl font-normal mb-8">Past events</h2>
           </Reveal>
-          <div className="grid gap-3 md:grid-cols-3">
+          <div className="grid gap-2.5 md:grid-cols-3">
             {past.map((e, i) => (
               <Reveal key={e.title} delay={i * 70}>
                 <PastCard {...e} />
@@ -160,31 +127,30 @@ function Events() {
   );
 }
 
-function EventCard({
-  date, duration, title, desc, loc, onRegister,
-}: {
+function EventCard({ date, duration, title, desc, loc, onRegister }: {
   date: string; duration: string; title: string; desc: string; loc: string; onRegister: () => void;
 }) {
   return (
-    <div className="bg-white border border-border p-6 flex flex-col h-full hover:border-brand-red/30 transition-colors group">
+    <div className="bg-white border border-border p-6 flex flex-col h-full hover:border-brand-red/30 transition-colors group relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-brand-red" />
       <div className="flex items-start justify-between gap-2 mb-4">
-        <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.15em] text-brand-green bg-brand-green/10 px-2.5 py-1 rounded-sm">
+        <span className="inline-flex items-center gap-1.5 text-[10px] font-display font-semibold uppercase tracking-[0.15em] text-brand-green bg-brand-green/10 px-2.5 py-1 rounded-sm">
           Upcoming
         </span>
-        <span className="flex items-center gap-1 text-xs text-muted-foreground">
-          <Clock size={12} /> {duration}
+        <span className="flex items-center gap-1 text-xs text-muted-foreground font-display">
+          <Clock size={11} /> {duration}
         </span>
       </div>
-      <div className="text-xs text-muted-foreground mb-3 font-medium">{date}</div>
-      <h3 className="font-display text-lg font-bold mb-2 leading-snug">{title}</h3>
+      <div className="text-xs text-muted-foreground mb-3 font-display font-medium">{date}</div>
+      <h3 className="font-serif text-xl font-normal mb-2 leading-snug">{title}</h3>
       <p className="text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
       <div className="mt-5 pt-4 border-t border-border flex items-center justify-between gap-3">
-        <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-          <MapPin size={12} className="text-brand-red shrink-0" /> {loc}
+        <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-display">
+          <MapPin size={11} className="text-brand-red shrink-0" /> {loc}
         </div>
         <button
           onClick={onRegister}
-          className="shrink-0 inline-flex items-center gap-1 text-xs font-semibold text-brand-red hover:gap-2 transition-all"
+          className="shrink-0 inline-flex items-center gap-1 text-xs font-semibold text-brand-red hover:gap-2 transition-all font-display"
         >
           Register <ArrowRight size={12} />
         </button>
@@ -198,14 +164,14 @@ function PastCard({ date, title, desc, loc }: {
 }) {
   return (
     <div className="bg-white border border-border p-6 flex flex-col h-full">
-      <div className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/70 bg-muted px-2.5 py-1 rounded-sm w-fit mb-4">
+      <div className="text-[10px] font-display font-semibold uppercase tracking-[0.15em] text-muted-foreground/60 bg-muted px-2.5 py-1 rounded-sm w-fit mb-4">
         Past
       </div>
-      <div className="text-xs text-muted-foreground mb-3 font-medium">{date}</div>
-      <h3 className="font-display text-lg font-bold mb-2 leading-snug">{title}</h3>
+      <div className="text-xs text-muted-foreground mb-3 font-display font-medium">{date}</div>
+      <h3 className="font-serif text-xl font-normal mb-2 leading-snug">{title}</h3>
       <p className="text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
-      <div className="mt-5 pt-4 border-t border-border flex items-center gap-1.5 text-xs text-muted-foreground">
-        <MapPin size={12} className="shrink-0" /> {loc}
+      <div className="mt-5 pt-4 border-t border-border flex items-center gap-1.5 text-xs text-muted-foreground font-display">
+        <MapPin size={11} className="shrink-0" /> {loc}
       </div>
     </div>
   );
