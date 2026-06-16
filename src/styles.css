@@ -40,23 +40,21 @@
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
 
-  /* Fonts */
-  --font-serif: "DM Serif Display", Georgia, "Times New Roman", serif;
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.375rem;
+  --radius: 0.5rem;
 
-  /* Brand — solid only, no gradients */
+  /* Brand — no gradients, solid colors only */
   --brand-red: #D62828;
-  --brand-red-dark: #A81F1F;
+  --brand-red-dark: #B01F1F;
   --brand-green: #1B7F3A;
-  --brand-black: #0F0F0F;
+  --brand-black: #111111;
   --ink: #111111;
-  --surface: #F8F8F6;
-  --surface-2: #F0F0EC;
+  --surface: #FAFAF8;
+  --surface-2: #F2F2EF;
 
   --background: #FFFFFF;
   --foreground: #111111;
@@ -66,21 +64,20 @@
   --popover-foreground: #111111;
   --primary: var(--brand-red);
   --primary-foreground: #FFFFFF;
-  --secondary: #F0F0EC;
+  --secondary: #F2F2EF;
   --secondary-foreground: #111111;
-  --muted: #F0F0EC;
-  --muted-foreground: #696963;
+  --muted: #F2F2EF;
+  --muted-foreground: #6B6B65;
   --accent: var(--brand-green);
   --accent-foreground: #FFFFFF;
   --destructive: #D62828;
   --destructive-foreground: #FFFFFF;
-  --border: #E0E0DA;
-  --input: #E0E0DA;
+  --border: #E3E3DF;
+  --input: #E3E3DF;
   --ring: var(--brand-red);
 
-  --shadow-card: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
-  --shadow-panel: 0 2px 8px rgba(0,0,0,0.10), 0 16px 48px rgba(0,0,0,0.12);
-  --shadow-overlay: 0 8px 40px rgba(0,0,0,0.18);
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-overlay: 0 8px 40px rgba(0,0,0,0.14);
 }
 
 @layer base {
@@ -93,10 +90,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  /* Serif for major page-level headings, sans for UI */
-  h1 { font-family: var(--font-serif); letter-spacing: -0.01em; }
-  h2 { font-family: var(--font-serif); letter-spacing: -0.01em; }
-  h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
 }
 
 @utility container-x {
@@ -108,7 +105,7 @@
   @media (min-width: 1024px) { padding-inline: 3rem; }
 }
 
-/* ── Brand solid utilities ── */
+/* Solid brand color utilities */
 @utility bg-brand-red { background-color: var(--brand-red); }
 @utility bg-brand-red-dark { background-color: var(--brand-red-dark); }
 @utility bg-brand-green { background-color: var(--brand-green); }
@@ -118,146 +115,75 @@
 @utility text-brand-black { color: var(--brand-black); }
 @utility border-brand-red { border-color: var(--brand-red); }
 @utility border-brand-green { border-color: var(--brand-green); }
-@utility font-serif { font-family: var(--font-serif); }
-@utility font-display { font-family: var(--font-display); }
 
 @utility shadow-card { box-shadow: var(--shadow-card); }
-@utility shadow-panel { box-shadow: var(--shadow-panel); }
 @utility shadow-overlay { box-shadow: var(--shadow-overlay); }
 
-/* ── Top accent bar ── */
-@utility top-bar {
-  position: fixed;
-  top: 0;
-  inset-inline: 0;
-  height: 4px;
-  background-color: var(--brand-red);
-  z-index: 60;
-}
-
-/* ── Lift interactions ── */
+/* Lift interactions — subtle, purposeful */
 @utility lift {
   transition: transform 250ms cubic-bezier(.2,.8,.2,1), box-shadow 250ms;
 }
 @utility lift-hover {
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
   }
 }
 
-/* ── Overline label ── */
-@utility overline {
-  display: block;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--brand-red);
-  font-family: var(--font-display);
-}
-
-/* ── Section rule ── */
-@utility section-rule {
-  display: block;
-  width: 2rem;
-  height: 2px;
-  background-color: var(--brand-red);
-}
-
-/* ── Pill ── */
-@utility pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.22);
-  background: rgba(255,255,255,0.07);
-  padding: 0.375rem 0.875rem;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.85);
-  font-family: var(--font-display);
-  text-transform: uppercase;
-}
-
-/* ── Step number ── */
-@utility step-number {
-  font-family: var(--font-serif);
-  font-size: 4rem;
-  line-height: 1;
-  color: var(--brand-red);
-  opacity: 0.18;
-  font-style: italic;
-  user-select: none;
-}
-
-/* ── Animations ── */
+/* Animations */
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  to { opacity: 1; transform: translateY(0); }
 }
 @keyframes fade-in {
   from { opacity: 0; } to { opacity: 1; }
 }
 @keyframes scale-in {
   from { opacity: 0; transform: scale(.97); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes line-grow {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-@utility animate-fade-up    { animation: fade-up .7s cubic-bezier(.2,.8,.2,1) both; }
-@utility animate-fade-in    { animation: fade-in .5s ease-out both; }
-@utility animate-scale-in   { animation: scale-in .3s cubic-bezier(.2,.8,.2,1) both; }
-@utility animate-line-grow  { animation: line-grow .6s cubic-bezier(.2,.8,.2,1) both; }
+@utility animate-fade-up { animation: fade-up .7s cubic-bezier(.2,.8,.2,1) both; }
+@utility animate-fade-in { animation: fade-in .5s ease-out both; }
+@utility animate-scale-in { animation: scale-in .3s cubic-bezier(.2,.8,.2,1) both; }
 
-/* ── Scroll reveal ── */
+/* Scroll-reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(22px);
   transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1);
 }
 .reveal.in { opacity: 1; transform: translateY(0); }
 
-/* ── Nav underline hover ── */
-.nav-link {
-  position: relative;
+/* Overline label — small category label above headings */
+@utility overline {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brand-red);
 }
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  right: 0;
+
+/* Section rule — thin horizontal accent */
+@utility section-rule {
+  display: block;
+  width: 2.5rem;
   height: 2px;
   background-color: var(--brand-red);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 220ms cubic-bezier(.2,.8,.2,1);
-}
-.nav-link:hover::after,
-.nav-link[data-active]::after {
-  transform: scaleX(1);
+  border-radius: 999px;
 }
 
-/* ── Stat panel glass (dark only) ── */
-.stat-panel {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.12);
-  backdrop-filter: blur(12px);
-}
-
-/* ── Quote mark ── */
-.quote-mark {
-  font-family: var(--font-serif);
-  font-size: 6rem;
-  line-height: 0.6;
-  color: var(--brand-red);
-  font-style: italic;
-  user-select: none;
-  opacity: 0.9;
+/* Pill — clean tag/badge */
+@utility pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  padding: 0.375rem 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.9);
 }
