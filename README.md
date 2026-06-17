@@ -1,109 +1,113 @@
 # Kisii University Ajira Digital Club Portal & Learning System
 
-A high-fidelity, comprehensive student training, registration, and certification portal designed specifically for the **Ajira Digital Club Chapter at Kisii University (KSU), Kenya**.
+A high-fidelity, production-grade digital ecosystem built for the **Ajira Digital Club Chapter at Kisii University (KSU), Kenya**. 
 
-This platform equips students with real digital economy competencies (Virtual Assistance, Transcription, SEO Copywriting, and Web Page Design), tracks learning milestones, and generates printable landscape certificates of completion.
+The codebase is structured as a physical **npm workspaces monorepo** separating the public website, student portal, and admin dashboard into isolated applications sharing a common library package.
 
 ---
 
-## 🚀 Key Features
+## 🚀 Key Monorepo Architecture
 
-* **Secure Student Portal Console (`/portal`)**:
-  * Guest lockouts on `/portal` paths. Students must register to access learning tracks.
-  * Unique registration ID generation mapped under `KSU/AJR/2026/XXXX` with enrollment dates.
-  * Local state storage persistence for profiles, lesson checklists, and course progress.
-* **Interactive Sourced Courses (`/portal/learn/$courseId`)**:
-  * Real training tracks:
-    1. *Virtual Assistant & Data Entry*: Spreadsheet management, customer helpdesks, and Shopify order logistics.
-    2. *Transcription & Subtitling*: Formatting rules, playback playback configurations, and speaker alignment.
-    3. *Content & SEO Copywriting*: SEO articles, keyword hierarchy, listicles, and proposal bidding structures.
-    4. *Web Design & Digital Commerce*: Dawn Shopify themes, WordPress layouts, and Vercel static deployments.
-  * Split-pane workspace: left sidebar navigation checklist and right interactive markdown lesson reader.
-  * Active lesson navigation buttons and checkable lesson completion toggles.
-* **Print-Ready Landscape Certificate Generator (`/portal/certificate/$courseId`)**:
-  * Generates high-fidelity Certificates of Completion for 100% completed courses.
-  * Includes a unique serial verification hash (e.g. `KSU-AJR-VA-1842-12`).
-  * Dedicated signatures for Club Patron `Dr. Douglas Bosire` and the Chapter President.
-  * Localized browser print style bindings (`@media print`) that format a clean landscape document filling an A4 page when **Print Certificate** is clicked.
-* **Kenyan Representative Media**:
-  * Replaced all generic western/white representation with hand-picked, authentic photography of African tech students collaborating and studying.
-* **Premium Typography System**:
-  * Display Headings: **Sora** (bold, modern)
-  * Body Text: **Plus Jakarta Sans** (clean, high readability)
-  * Code & Meta Labels: **JetBrains Mono** (cyber/brutalist technical details)
+The platform is split into three independent Next.js 15 applications and a single shared workspace package:
+
+1. **Public Website (`apps/website`)**: Handles all public-facing information: Home, About, Programs, Events, Blog, Gallery, and Contact pages. Bounces portal and admin traffic in production to their subdomains.
+2. **Student Portal (`apps/portal`)**: Secure console where students register, generate their unique KSU registration ID (`KSU/AJR/2026/XXXX`), track milestones, learn from split-pane interactive syllabi, and print landscape A4 certificates of completion.
+3. **Club Admin Panel (`apps/admin`)**: Advisory board console to track member growth (using SVG line charts), analyze member distribution across programs (using SVG donut charts), and manage active events.
+4. **Shared Package (`packages/shared`)**: Houses all shared components (Navbar, Footer, Sidebar, Reveal, RegisterModal, UI components), constants, hooks, Supabase configurations, and assets/styles (Tailwind CSS v4).
 
 ---
 
 ## 🛠️ Technology Stack
 
-* **Meta-Framework**: [TanStack Start](https://tanstack.com/router/v1/docs/start/overview) (React with SSR/hydrate routing)
-* **Routing System**: TanStack Router (File-based routes automatically compiled)
-* **Styling**: Tailwind CSS v4 (with custom solid brutalist theme parameters)
+* **Core Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
+* **Monorepo Manager**: Npm Workspaces
+* **Styling**: Tailwind CSS v4 (with PostCSS and `@source` tracking configured workspace-wide)
+* **Database & Auth**: Supabase SSR (with mock cookie fallbacks for offline-friendly local testing)
 * **Icons**: [Lucide React](https://lucide.dev/)
-* **Development Build**: Vite v8
+* **State Management**: React Context (PortalProvider, RegisterProvider)
 
 ---
 
 ## 📁 Directory Structure
 
 ```text
-├── src/
-│   ├── assets/             # Brand logos (KSU, Ajira) and icons
-│   ├── components/
-│   │   └── site/           # Layout, Navbars, Footers, and Modals
-│   ├── hooks/
-│   │   └── usePortalState  # State provider for member profiles & lessons
-│   ├── routes/             # TanStack Start Route Files
-│   │   ├── __root.tsx      # App wrapper with query client & font loads
-│   │   ├── index.tsx       # Aligned main landing page & Portals hub
-│   │   ├── portal.tsx      # Secure portal wrapper layout (Guard Lock)
-│   │   ├── portal.index.tsx# Student learning dashboard console
-│   │   ├── portal.learn.$courseId.tsx       # Split-pane Lesson syllabus reader
-│   │   └── portal.certificate.$courseId.tsx  # Print-ready certificate generator
-│   ├── router.tsx          # TanStack Router configuration
-│   ├── start.ts            # SSR entry point bindings
-│   └── styles.css          # Theme configs, fonts, and animation variables
-├── vite.config.ts          # Vite and TanStack Router plugin definitions
-└── package.json            # Scripts and dependency versions
+├── apps/
+│   ├── website/            # Public Website application
+│   │   ├── src/app/        # Home, About, Blog, Contact, Events, Gallery, Programs
+│   │   ├── next.config.js
+│   │   └── tsconfig.json
+│   │
+│   ├── portal/             # Student Portal application
+│   │   ├── src/app/        # Learn courses, Dashboard, Profile, settings, Certificates
+│   │   ├── next.config.js
+│   │   └── tsconfig.json
+│   │
+│   └── admin/              # Club Admin Console application
+│       ├── src/app/        # Analytics, Users list, Events management
+│       ├── next.config.js
+│       └── tsconfig.json
+│
+├── packages/
+│   └── shared/             # Shared workspace package (@ajira/shared)
+│       ├── package.json
+│       ├── tsconfig.json
+│       └── src/
+│           ├── components/ # Shared site components and shadcn UI library
+│           ├── constants/  # Courses lists, blog posts
+│           ├── hooks/      # usePortalState, use-mobile
+│           ├── lib/        # Supabase configs, middleware helpers, and cn utils
+│           ├── styles/     # globals.css (Tailwind CSS v4)
+│           └── assets/     # Brand logos, icons, and gallery image assets
 ```
 
 ---
 
-## 💻 Local Installation & Run Guide
+## 💻 Local Installation & Development
 
-### Prerequisite
-Ensure you have **Node.js** (v18 or newer) or **Bun** installed.
+### Prerequisites
+* **Node.js** (v18 or newer)
+* **Npm** (v7 or newer for workspaces support)
 
 ### 1. Install Dependencies
-Run the install command inside the directory:
+Run the install command at the monorepo root directory to resolve workspaces dependencies:
 ```bash
 npm install
 ```
 
-### 2. Start the Development Server
-Launch the compiler and start the hot-reloading dev server:
-```bash
-npm run dev
-```
-Open [http://localhost:5000](http://localhost:5000) on your browser to view the application.
-
-### 3. Production Build
-Compile the client assets and SSR environment bundles:
-```bash
-npm run build
-```
-The output will be bundled inside the `dist/` directory.
-
-### 4. Preview Build
-Preview the generated production build locally:
-```bash
-npm run preview
-```
+### 2. Start the Development Servers
+Launch the hot-reloading development server for any of the workspaces using the root command shortcuts:
+* **Run Public Website**:
+  ```bash
+  npm run dev:website
+  ```
+  Open [http://localhost:3000](http://localhost:3000) to view the website.
+* **Run Student Portal**:
+  ```bash
+  npm run dev:portal
+  ```
+  Open [http://localhost:3001](http://localhost:3001) to view the portal.
+* **Run Club Admin Panel**:
+  ```bash
+  npm run dev:admin
+  ```
+  Open [http://localhost:3002](http://localhost:3002) to view the admin dashboard.
 
 ---
 
-## 📄 Deployment Configuration
+## 📄 Production Builds & Deployment
 
-The application is configured to deploy directly to Vercel. Configuration bindings are present in:
-* `vercel.json` (Vercel routes and start configurations)
-* `package.json` (`vercel-build` mapped to `npm run build`)
+### Production Compilation
+Compile the applications separately to generate optimized production assets:
+* **Build Website**: `npm run build:website`
+* **Build Portal**: `npm run build:portal`
+* **Build Admin**: `npm run build:admin`
+
+### Vercel Deployment
+To deploy as three independent projects on Vercel:
+1. Link your GitHub repository to Vercel.
+2. Create three separate projects on Vercel, pointing each to the repository.
+3. In the project settings for each, configure the **Root Directory** field to:
+   * Website: `apps/website`
+   * Portal: `apps/portal`
+   * Admin: `apps/admin`
+4. Vercel will automatically discover the workspace configurations at the repository root, compile only the targeted application, and assign it to its designated production domain/subdomain (e.g. `ajiraksu.org`, `portal.ajiraksu.org`, `admin.ajiraksu.org`).
