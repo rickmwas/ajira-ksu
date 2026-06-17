@@ -1,53 +1,47 @@
-# Memory — Ajira KSU Next.js Migration and Monorepo Workspace Separation
+# Memory — Next.js 15 Monorepo Refactoring & Visual Optimization
 
-Last updated: 2026-06-17T13:20:00+03:00
+Last updated: 2026-06-17T13:50:00+03:00
 
 ## What was built
 
-- **Monorepo Architecture (npm workspaces)**:
-  - Created a physical workspaces monorepo structure containing `apps/website`, `apps/portal`, `apps/admin`, and `packages/shared`.
-  - Configured workspace dependencies using standard `*` syntax, allowing the local `@ajira/shared` package to be correctly linked inside `node_modules` across workspaces.
-  - Set up script shortcuts in root `package.json` to facilitate building and running each app separately (`npm run build:website`, `npm run dev:portal`, etc.).
-
-- **Shared Package (`@ajira/shared`)**:
-  - Moved shared components, constants, hooks, database configurations, assets, and styles into the shared workspace package.
-  - Set up `tsconfig.json` path mappings mapping `@ajira/shared/*` to resolve directly to the typescript sources.
-  - Run a recursive alias replacement script updating 71 codebase files, moving imports from local `@/` paths to the workspace `@ajira/shared/*` path.
-  - Defined `"type": "module"` in all `package.json` files to resolve ESM next.config modules correctly without overhead warnings.
-
-- **Independent Routing & Middlewares**:
-  - Configured isolated Next.js middleware layers for each of the three applications:
-    - **Website**: Production redirects for `/portal` and `/admin` requests to their subdomains.
-    - **Portal**: Validates login and register redirection, refreshes Supabase session, and handles mock cookie fallbacks.
-    - **Admin**: Authenticates users and checks role permissions (`Executive` or `Admin`). If unauthorized, it redirects them to the portal app's login URL with redirect callback search params, resolving port mismatches dynamically in development.
-
-- **Build Compilation & Validation**:
-  - **`apps/website`**: Compiles successfully (14 static pages generated).
-  - **`apps/portal`**: Compiles successfully (12 dynamic and static pages generated).
-  - **`apps/admin`**: Compiles successfully (6 static pages generated).
-
-- **GitHub Pushed**:
-  - Committed and pushed all monorepo migration and config files to `https://github.com/rickmwas/ajira-ksu.git` branch `main`.
+- **Monorepo Workspaces Layout**:
+  - Refactored the unified codebase into a physical npm workspaces monorepo with `apps/website`, `apps/portal`, `apps/admin`, and `packages/shared`.
+  - Set up build/dev scripts shortcuts in the root `package.json`.
+- **Shared Library (`@ajira/shared`)**:
+  - Established a shared package to centralize components, hooks, constants, supabase helpers, global styles, and graphic assets.
+  - Configured `@ajira/shared/*` paths mappings in each app's `tsconfig.json` and set `transpilePackages: ["@ajira/shared"]` in `next.config.js`.
+  - Performed recursive path alias replacement updating 71 import statements from `@/` to `@ajira/shared/`.
+- **Isolated Routing & Middlewares**:
+  - Built three isolated middlewares for the apps (Website redirects public paths; Portal guards user access; Admin checks roles and handles local/production login port redirects).
+- **Responsive Navigation Fix**:
+  - Configured Tailwind CSS v4 `@source` directives in the global CSS file targeting all app source folders, resolving the squished inline nav menu layout bug.
+- **Hero Image Alignment**:
+  - Integrated the new `heroimg.png` asset onto the homepage hero section, rendering it as a free-standing, drop-shadowed, responsive image.
+- **Documentation**:
+  - Overwrote the root `README.md` to document the workspaces hierarchy, local script shortcuts, and Vercel multi-app setup.
 
 ## Decisions made
 
-- **Path Aliases for Workspace Transpilation**: Configured `transpilePackages: ["@ajira/shared"]` in `next.config.js` of all three apps, allowing Next.js to directly compile shared files without needing a separate bundling step for the shared package.
-- **Port Mapping for Dev Redirects**: Injected dynamic port detection (`process.env.NEXT_PUBLIC_PORTAL_URL`) in admin middleware to resolve cross-domain logins cleanly on local machines during development.
-- **Retaining Route Nesting in Apps**: Maintained portal routing under `/portal` and admin under `/admin` directories within `apps/portal/src/app` and `apps/admin/src/app`. This avoids the need to refactor hundreds of internal Next.js `Link` routes in components.
+- **Path Nesting Preservation**: Kept `/portal` and `/admin` routes nested under folder routes inside `apps/portal/src/app` and `apps/admin/src/app` respectively, preserving internal Next.js `Link` routes without code breaks.
+- **Workspaces Notation**: Used standard `*` syntax for `@ajira/shared` dependencies in the apps to resolve workspace linking correctly under standard npm installs.
+- **Styles Scanning**: Configured wildcard `@source` directives relative to the shared CSS file location to force Tailwind's compiler to scan directories outside the package tree.
 
 ## Problems solved
 
-- **`workspace:*` protocol error**: Replaced `workspace:*` with `*` inside the apps' `package.json` dependencies to ensure compatibility with standard `npm install` workspaces resolution.
-- **PostCSS lock conflicts**: Stopped node background processes lock before moving directories to ensure `git mv` operations execute cleanly without "Permission denied" errors.
+- **Missing styles compilation**: Fixed squished navigation text layouts by adding `@source` paths, instructing Tailwind v4 to parse styles used in the app directories.
+- **`workspace:*` installation failure**: Resolved npm protocol unsupported warnings by changing dependency syntax to `*`.
+- **Permission Denied folder locks**: Closed standard Node dev processes to release file locks during the folders migration.
 
 ## Current state
 
-- All three applications (`website`, `portal`, `admin`) build and compile in complete isolation.
-- Shared code resides in a single, dry location in `@ajira/shared`.
-- The repository was successfully committed and pushed to main.
+- All three apps (`website`, `portal`, `admin`) build successfully in isolation with zero compile errors.
+- The workspaces are linked and the changes are pushed to GitHub (`main` branch).
 
 ## Next session starts with
 
-- Run local dev servers using `npm run dev:website`, `npm run dev:portal`, or `npm run dev:admin`.
-- Verify the subdomains logic redirects appropriately under a multi-domain staging or production environment.
-- Implement production environment variables (`NEXT_PUBLIC_WEBSITE_DOMAIN`, `NEXT_PUBLIC_PORTAL_DOMAIN`, `NEXT_PUBLIC_ADMIN_DOMAIN`) on hosting platforms.
+- Run dev servers using `npm run dev:website`, `npm run dev:portal`, or `npm run dev:admin` to run local layout checks.
+- Configure production domain environment variables on hosting dashboards (Vercel).
+
+## Open questions
+
+- None. The migration, styling fixes, and asset integrations are complete.
