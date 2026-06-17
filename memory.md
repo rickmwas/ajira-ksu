@@ -17,8 +17,9 @@ Last updated: 2026-06-17T13:50:00+03:00
   - Configured Tailwind CSS v4 `@source` directives in the global CSS file targeting all app source folders, resolving the squished inline nav menu layout bug.
 - **Hero Image Alignment**:
   - Integrated the new `heroimg.png` asset onto the homepage hero section, rendering it as a free-standing, drop-shadowed, responsive image.
-- **Documentation**:
+- **Documentation & Database Schema**:
   - Overwrote the root `README.md` to document the workspaces hierarchy, local script shortcuts, and Vercel multi-app setup.
+  - Created `supabase_schema.sql` containing production table schemas (profiles, lessons_progress, events), row-level security (RLS) policies, and automated signup triggers.
 
 ## Decisions made
 
