@@ -41,13 +41,12 @@ export async function middleware(request: NextRequest) {
     // Suppress error
   }
 
-  // 2. Mock auth cookie fallback check
-  const mockAuthCookie = request.cookies.get("ajira_mock_auth");
-  let isAuthenticated = !!user || !!mockAuthCookie;
-
-  // 3. Routing Checks
+  const isAuthenticated = !!user;
+  const isOnboardingPage = pathname === "/portal/onboarding";
   const isAuthPage = pathname === "/portal/login" || pathname === "/portal/register";
+  const isOnboarded = user?.user_metadata?.onboarded === true;
 
+  // 2. Routing Checks
   if (!isAuthPage && !isAuthenticated) {
     const url = request.nextUrl.clone();
     url.pathname = "/portal/login";
@@ -55,10 +54,24 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  if (isAuthPage && isAuthenticated) {
-    const url = request.nextUrl.clone();
-    url.pathname = "/portal/dashboard";
-    return NextResponse.redirect(url);
+  if (isAuthenticated) {
+    if (isAuthPage) {
+      const url = request.nextUrl.clone();
+      url.pathname = isOnboarded ? "/portal/dashboard" : "/portal/onboarding";
+      return NextResponse.redirect(url);
+    }
+
+    if (!isOnboarded && !isOnboardingPage) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/portal/onboarding";
+      return NextResponse.redirect(url);
+    }
+
+    if (isOnboarded && isOnboardingPage) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/portal/dashboard";
+      return NextResponse.redirect(url);
+    }
   }
 
   return supabaseResponse;

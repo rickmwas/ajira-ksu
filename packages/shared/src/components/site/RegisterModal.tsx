@@ -1,21 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CheckCircle2, X } from "lucide-react";
+import { CheckCircle2, X, AlertCircle } from "lucide-react";
 import { useRegister } from "./RegisterContext";
 import { usePortal } from "../../hooks/usePortalState";
 import { useRouter } from "next/navigation";
-
-const interests = ["Virtual Assistant", "Transcription", "Content Writing", "Web Design"];
 
 export function RegisterModal() {
   const { open, setOpen } = useRegister();
   const { register } = usePortal();
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   useEffect(() => {
-    if (!open) setSubmitted(false);
+    if (!open) {
+      setSubmitted(false);
+      setError(null);
+      setLoading(false);
+    }
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
@@ -24,32 +28,56 @@ export function RegisterModal() {
 
   if (!open) return null;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
+    setLoading(true);
+
     const formData = new FormData(e.currentTarget);
     const name = formData.get("fullName") as string;
     const email = formData.get("email") as string;
-    const phone = formData.get("phone") as string;
-    const course = formData.get("course") as string;
-    const year = formData.get("year") as string;
-    const interest = formData.get("interest") as string;
-    const bio = formData.get("bio") as string;
+    const password = formData.get("password") as string;
+    const confirmPassword = formData.get("confirmPassword") as string;
 
-    register({ name, email, phone, course, year, interest, bio });
-    setSubmitted(true);
+    if (!name.trim() || !email.trim() || !password || !confirmPassword) {
+      setError("All fields are required.");
+      setLoading(false);
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      setLoading(false);
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await register(name, email, password);
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err.message || "An error occurred during registration.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleClose = () => {
     setOpen(false);
     if (submitted) {
-      router.push("/portal/dashboard");
+      router.push("/portal/onboarding");
     }
   };
 
   return (
     <div className="fixed inset-0 z-50 grid place-items-center p-3 sm:p-4 animate-fade-in">
       <div className="absolute inset-0 bg-black/70" onClick={handleClose} />
-      <div className="relative w-full max-w-xl animate-scale-in">
+      <div className="relative w-full max-w-md animate-scale-in">
         <div className="bg-white rounded-sm border border-border overflow-hidden shadow-overlay max-h-[90svh] flex flex-col">
           {/* Header */}
           <div className="relative bg-brand-black px-5 sm:px-6 py-4 sm:py-5 text-white shrink-0 font-sans">
@@ -64,7 +92,7 @@ export function RegisterModal() {
               Chapter Registry
             </div>
             <h3 className="font-display text-lg sm:text-xl font-bold text-white">Join Ajira Digital Club</h3>
-            <p className="text-white/55 text-xs mt-1">Unlock peer-led course modules and earn certifications.</p>
+            <p className="text-white/55 text-xs mt-1">Create your account to start peer-led learning tracks.</p>
           </div>
 
           {submitted ? (
@@ -72,90 +100,67 @@ export function RegisterModal() {
               <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-brand-green/10 text-brand-green animate-scale-in mb-4">
                 <CheckCircle2 size={24} />
               </div>
-              <h4 className="font-display text-lg font-bold text-ink">Registration Successful!</h4>
+              <h4 className="font-display text-lg font-bold text-ink">Account Created!</h4>
               <p className="mt-2 text-xs text-muted-foreground max-w-xs mx-auto leading-relaxed">
-                Welcome to Kisii University's Ajira Digital portal. Your student learning profile is active. You can now
-                access sourced training modules.
+                Your credentials are saved. Next, let's complete your student profile onboarding to set up your dashboard.
               </p>
               <button
                 onClick={handleClose}
                 className="mt-6 inline-flex rounded-sm bg-brand-blue hover:bg-brand-blue-dark px-6 py-3 text-xs font-bold text-white uppercase tracking-wider transition-colors"
               >
-                Go to Portal
+                Proceed to Onboarding
               </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="px-5 sm:px-6 py-5 sm:py-6 grid gap-4 overflow-y-auto font-sans">
-              {/* Row 1 */}
+              {error && (
+                <div className="p-3 rounded-sm bg-red-50 border border-red-100 flex items-start gap-2 text-red-600 text-xs animate-fade-in">
+                  <AlertCircle size={14} className="shrink-0 mt-0.5" />
+                  <span>{error}</span>
+                </div>
+              )}
+
+              <Field label="Full Name">
+                <input required name="fullName" className={inputCls} placeholder="e.g. Onyango Michael" />
+              </Field>
+
+              <Field label="Email Address">
+                <input
+                  required
+                  name="email"
+                  type="email"
+                  className={inputCls}
+                  placeholder="yourname@kisiiuniversity.ac.ke"
+                />
+              </Field>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Field label="Full Name">
-                  <input required name="fullName" className={inputCls} placeholder="e.g. Onyango Michael" />
-                </Field>
-                <Field label="Email Address">
+                <Field label="Password">
                   <input
                     required
-                    name="email"
-                    type="email"
+                    name="password"
+                    type="password"
                     className={inputCls}
-                    placeholder="yourname@kisiiuniversity.ac.ke"
+                    placeholder="••••••••"
+                  />
+                </Field>
+                <Field label="Confirm Password">
+                  <input
+                    required
+                    name="confirmPassword"
+                    type="password"
+                    className={inputCls}
+                    placeholder="••••••••"
                   />
                 </Field>
               </div>
 
-              {/* Row 2 */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Field label="Phone Number">
-                  <input required name="phone" className={inputCls} placeholder="e.g. 0741 145 911" />
-                </Field>
-                <Field label="Course / Department">
-                  <input required name="course" className={inputCls} placeholder="e.g. BSc Computer Science" />
-                </Field>
-              </div>
-
-              {/* Row 3 */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <Field label="Year of Study">
-                  <select required name="year" className={inputCls} defaultValue="">
-                    <option value="" disabled>
-                      Select Year
-                    </option>
-                    {["1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "Postgraduate"].map((y) => (
-                      <option key={y} value={y}>
-                        {y}
-                      </option>
-                    ))}
-                  </select>
-                </Field>
-                <Field label="Primary Track Focus">
-                  <select required name="interest" className={inputCls} defaultValue="">
-                    <option value="" disabled>
-                      Select Track
-                    </option>
-                    {interests.map((i) => (
-                      <option key={i} value={i}>
-                        {i}
-                      </option>
-                    ))}
-                  </select>
-                </Field>
-              </div>
-
-              {/* Message */}
-              <Field label="Short Bio / Core Goals">
-                <textarea
-                  required
-                  name="bio"
-                  rows={2}
-                  className={inputCls}
-                  placeholder="Share your digital work goals or previous experience..."
-                />
-              </Field>
-
               <button
                 type="submit"
-                className="mt-2 w-full inline-flex items-center justify-center rounded-sm bg-brand-blue hover:bg-brand-blue-dark px-6 py-3.5 text-xs font-bold text-white uppercase tracking-wider transition-colors"
+                disabled={loading}
+                className="mt-2 w-full inline-flex items-center justify-center rounded-sm bg-brand-blue hover:bg-brand-blue-dark disabled:bg-muted disabled:cursor-not-allowed px-6 py-3.5 text-xs font-bold text-white uppercase tracking-wider transition-colors"
               >
-                Submit Registration
+                {loading ? "Registering..." : "Create Account & Continue"}
               </button>
             </form>
           )}

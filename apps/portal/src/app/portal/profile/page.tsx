@@ -7,37 +7,38 @@ import { Reveal } from "@ajira/shared/components/site/Reveal";
 import { toast } from "sonner";
 
 export default function StudentProfile() {
-  const { user, register } = usePortal();
+  const { user, updateProfile } = usePortal();
   const [loading, setLoading] = useState(false);
 
   if (!user) return null;
 
-  const handleUpdate = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
     const name = formData.get("fullName") as string;
-    const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
     const course = formData.get("course") as string;
     const year = formData.get("year") as string;
     const interest = formData.get("interest") as string;
     const bio = formData.get("bio") as string;
 
-    setTimeout(() => {
-      register({
+    try {
+      await updateProfile({
         name,
-        email,
         phone,
         course,
         year,
         interest,
         bio,
       });
-      setLoading(false);
       toast.success("Profile saved successfully!");
-    }, 1000);
+    } catch (err: any) {
+      toast.error(err.message || "Failed to update profile. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

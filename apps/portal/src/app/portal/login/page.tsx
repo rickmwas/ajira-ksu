@@ -11,63 +11,30 @@ import { toast } from "sonner";
 import ajiraLogo from "@ajira/shared/assets/ajira-logo.svg";
 
 function LoginForm() {
-  const { register } = usePortal();
+  const { login } = usePortal();
   const router = useRouter();
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
 
   const redirectTarget = searchParams.get("redirect") || "/portal/dashboard";
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
     const formData = new FormData(e.currentTarget);
     const email = formData.get("email") as string;
-    const name = email.split("@")[0].replace(".", " ");
-    
-    setTimeout(() => {
-      register({
-        name: name.charAt(0).toUpperCase() + name.slice(1),
-        email: email,
-        phone: "0712 345 678",
-        course: "BSc Computer Science",
-        year: "3rd Year",
-        interest: "Transcription",
-        bio: "Campus tech enthusiast developing digital skills."
-      });
-      setLoading(false);
+    const password = formData.get("password") as string;
+
+    try {
+      await login(email, password);
       toast.success("Signed in successfully!");
       router.push(redirectTarget);
-    }, 1000);
-  };
-
-  const simulateRole = (role: "Member" | "Executive" | "Admin") => {
-    let email = "student@kisiiuniversity.ac.ke";
-    let name = "Onyango Michael";
-    let course = "BSc Computer Science";
-    let year = "3rd Year";
-    
-    if (role === "Executive") {
-      email = "executive@kisiiuniversity.ac.ke";
-      name = "Denis Kiplagat";
-    } else if (role === "Admin") {
-      email = "admin@kisiiuniversity.ac.ke";
-      name = "Dr. Teresa Abuya";
+    } catch (err: any) {
+      toast.error(err.message || "Invalid credentials. Please try again.");
+    } finally {
+      setLoading(false);
     }
-
-    register({
-      name,
-      email,
-      phone: "0741 145 911",
-      course,
-      year,
-      interest: "Web Design",
-      bio: `Simulated ${role} profile for chapter audit.`
-    });
-
-    toast.success(`Logged in as ${role}!`);
-    router.push(redirectTarget);
   };
 
   return (
@@ -171,36 +138,6 @@ function LoginForm() {
                 Create Account
               </Link>
             </p>
-          </div>
-
-          {/* Validation simulation box */}
-          <div className="mt-8 border-t border-dashed border-border pt-5">
-            <div className="text-[9px] font-mono font-bold uppercase tracking-wider text-muted-foreground/60 text-center mb-3">
-              Validation Simulation Console
-            </div>
-            <div className="grid grid-cols-3 gap-2">
-              <button
-                onClick={() => simulateRole("Member")}
-                className="flex flex-col items-center justify-center p-2 rounded-sm border border-border hover:bg-surface text-center transition-all"
-              >
-                <UserCheck size={14} className="text-muted-foreground mb-1" />
-                <span className="text-[9px] font-semibold text-ink leading-tight">Member</span>
-              </button>
-              <button
-                onClick={() => simulateRole("Executive")}
-                className="flex flex-col items-center justify-center p-2 rounded-sm border border-border hover:bg-surface text-center transition-all"
-              >
-                <ShieldCheck size={14} className="text-brand-blue mb-1" />
-                <span className="text-[9px] font-semibold text-ink leading-tight">Executive</span>
-              </button>
-              <button
-                onClick={() => simulateRole("Admin")}
-                className="flex flex-col items-center justify-center p-2 rounded-sm border border-border hover:bg-surface text-center transition-all"
-              >
-                <ShieldCheck size={14} className="text-brand-gold mb-1" />
-                <span className="text-[9px] font-semibold text-ink leading-tight">Admin</span>
-              </button>
-            </div>
           </div>
         </div>
       </div>

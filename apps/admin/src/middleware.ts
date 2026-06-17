@@ -24,20 +24,12 @@ export async function middleware(request: NextRequest) {
     // Suppress error
   }
 
-  // 2. Mock auth cookie fallback check
-  const mockAuthCookie = request.cookies.get("ajira_mock_auth");
-  let isAuthenticated = !!user || !!mockAuthCookie;
+  // 2. Supabase auth check
+  let isAuthenticated = !!user;
   let userRole = "Member"; // Default fallback
 
   if (user) {
     userRole = (user.user_metadata?.role as string) || "Member";
-  } else if (mockAuthCookie) {
-    try {
-      const parsed = JSON.parse(mockAuthCookie.value);
-      userRole = parsed.role || "Member";
-    } catch {
-      // invalid cookie
-    }
   }
 
   // 3. Routing Checks

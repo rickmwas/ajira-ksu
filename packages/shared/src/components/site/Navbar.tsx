@@ -12,7 +12,7 @@ import ksuLogo from "@ajira/shared/assets/ksu-logo.png";
 
 export function Navbar() {
   const { setOpen } = useRegister();
-  const { user, logout, register } = usePortal();
+  const { user, logout } = usePortal();
   const [scrolled, setScrolled] = useState(false);
   const [mobile, setMobile] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -37,20 +37,6 @@ export function Navbar() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  const handleMockLogin = () => {
-    register({
-      name: "Onyango Michael",
-      email: "onyango@kisiiuniversity.ac.ke",
-      phone: "0741 145 911",
-      course: "BSc Computer Science",
-      year: "3rd Year",
-      interest: "Web Design",
-      bio: "Passionate campus writer and WordPress designer learning digital tools.",
-    });
-    setDropdownOpen(false);
-    router.push("/portal/dashboard");
-  };
 
   const handleLogout = () => {
     logout();
@@ -164,15 +150,6 @@ export function Navbar() {
             </div>
           ) : (
             <div className="flex items-center gap-2">
-              {/* Desktop quick login testing tool */}
-              <button
-                onClick={handleMockLogin}
-                title="Quick Student Portal Login"
-                className="hidden lg:inline-flex h-8 w-8 items-center justify-center rounded-sm border border-border bg-white text-muted-foreground hover:bg-surface hover:text-brand-blue transition-colors"
-              >
-                <RefreshCw size={13} />
-              </button>
-
               <button
                 onClick={() => setOpen(true)}
                 className="hidden md:inline-flex items-center rounded-sm bg-brand-blue hover:bg-brand-blue-dark px-5 py-2 text-[13px] font-bold text-white transition-colors"
@@ -224,23 +201,13 @@ export function Navbar() {
                 Sign Out
               </button>
             ) : (
-              <div className="grid grid-cols-2 gap-2 mt-3">
-                <button
-                  onClick={() => {
-                    setMobile(false);
-                    handleMockLogin();
-                  }}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-sm border border-border px-3 py-2.5 text-xs font-semibold text-muted-foreground hover:bg-surface transition-colors"
-                >
-                  <RefreshCw size={12} />
-                  Mock Login
-                </button>
+              <div className="mt-3">
                 <button
                   onClick={() => {
                     setMobile(false);
                     setOpen(true);
                   }}
-                  className="inline-flex items-center justify-center rounded-sm bg-brand-blue hover:bg-brand-blue-dark px-3 py-2.5 text-xs font-bold text-white transition-colors"
+                  className="w-full inline-flex items-center justify-center rounded-sm bg-brand-blue hover:bg-brand-blue-dark px-3 py-2.5 text-xs font-bold text-white transition-colors"
                 >
                   Join the Club
                 </button>
