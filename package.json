@@ -3,10 +3,17 @@
   "private": true,
   "sideEffects": false,
   "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev:website": "npm run dev -w website",
+    "dev:portal": "npm run dev -w portal",
+    "dev:admin": "npm run dev -w admin",
+    "build:website": "npm run build -w website",
+    "build:portal": "npm run build -w portal",
+    "build:admin": "npm run build -w admin",
     "lint": "next lint",
     "format": "prettier --write ."
   },

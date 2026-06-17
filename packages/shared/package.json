@@ -1,0 +1,16 @@
+{
+  "name": "@ajira/shared",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "lucide-react": "^0.575.0",
+    "framer-motion": "^11.11.17",
+    "sonner": "^2.0.7",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.5.0",
+    "@supabase/supabase-js": "^2.48.1",
+    "@supabase/ssr": "^0.5.2"
+  }
+}
