@@ -15,6 +15,39 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // ── DOMAIN ROUTING FOR PRODUCTION ─────────────────────
+  const host = request.headers.get("host") || "";
+  const isProd = process.env.NODE_ENV === "production";
+  const websiteDomain = process.env.NEXT_PUBLIC_WEBSITE_DOMAIN || "ajiraksu.org";
+  const portalDomain = process.env.NEXT_PUBLIC_PORTAL_DOMAIN || "portal.ajiraksu.org";
+
+  if (isProd) {
+    const isPortalHost = host.includes(portalDomain);
+    const isWebsiteHost = host.includes(websiteDomain);
+
+    // Case A: Accessing via the Portal subdomain
+    if (isPortalHost) {
+      if (pathname === "/") {
+        const url = request.nextUrl.clone();
+        url.pathname = "/portal/dashboard";
+        return NextResponse.redirect(url);
+      }
+      
+      const publicPaths = ["/about", "/programs", "/events", "/gallery", "/contact", "/blog"];
+      const isPublicPath = publicPaths.some(p => pathname === p || pathname.startsWith(p + "/"));
+      if (isPublicPath) {
+        return NextResponse.redirect(`https://${websiteDomain}${pathname}${request.nextUrl.search}`);
+      }
+    }
+
+    // Case B: Accessing via the Main Website domain
+    if (isWebsiteHost) {
+      if (pathname.startsWith("/portal") || pathname.startsWith("/admin")) {
+        return NextResponse.redirect(`https://${portalDomain}${pathname}${request.nextUrl.search}`);
+      }
+    }
+  }
+
   // 1. Session refresh via Supabase Client
   let user = null;
   let supabaseResponse = NextResponse.next();
