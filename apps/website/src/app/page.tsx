@@ -26,7 +26,7 @@ import { useRegister } from "@ajira/shared/components/site/RegisterContext";
 // Local static assets
 import ajiraLogo from "@ajira/shared/assets/ajira-logo.svg";
 import ksuLogo from "@ajira/shared/assets/ksu-logo.png";
-import heroImg from "@ajira/shared/assets/hero.jpg";
+import heroImgNew from "@ajira/shared/assets/heroimg.png";
 import parallaxImg from "@ajira/shared/assets/parallax.jpg";
 
 const stats = [
@@ -193,18 +193,14 @@ export default function Home() {
             </div>
 
             {/* Right Column: Hero Image Card */}
-            <div className="lg:col-span-6 flex justify-center">
-              <Reveal delay={100} className="w-full max-w-lg">
-                <div className="relative aspect-[4/3] rounded-sm overflow-hidden shadow-overlay border-4 border-white bg-surface ring-1 ring-border">
-                  <Image
-                    src={heroImg}
-                    alt="Smiling students working on a laptop"
-                    fill
-                    priority
-                    sizes="(max-w-768px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                </div>
+            <div className="lg:col-span-6 flex justify-center items-center">
+              <Reveal delay={100} className="w-full max-w-xl">
+                <Image
+                  src={heroImgNew}
+                  alt="Ajira Digital Club Kisii University Hero Banner"
+                  priority
+                  className="w-full h-auto max-h-[520px] object-contain drop-shadow-md"
+                />
               </Reveal>
             </div>
           </div>
