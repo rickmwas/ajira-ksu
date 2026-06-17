@@ -1,50 +1,53 @@
-# Memory — Ajira KSU Next.js Migration and Visual Mockup Alignment
+# Memory — Ajira KSU Next.js Migration and Monorepo Workspace Separation
 
-Last updated: 2026-06-17T12:35:00+03:00
+Last updated: 2026-06-17T13:20:00+03:00
 
 ## What was built
 
-- **Project Infrastructure**:
-  - Configured [postcss.config.mjs](file:///c:/Users/rickm/Downloads/ajira-next-door-mainzip%20(1)/ajira-next-door-mainzip/postcss.config.mjs) and installed `@tailwindcss/postcss` and `postcss` to compile Tailwind CSS v4 in Next.js.
-  - Simplified CSS imports in [src/styles.css](file:///c:/Users/rickm/Downloads/ajira-next-door-mainzip%20(1)/ajira-next-door-mainzip/src/styles.css) to standard `@import "tailwindcss";`.
-  - Cleared legacy TanStack Start helper files (`example.functions.ts`, `config.server.ts`, `error-capture.ts`, and `error-page.ts`) to avoid TypeScript compiler blocks.
-  - Suspense-wrapped the `LoginForm` in [page.tsx](file:///c:/Users/rickm/Downloads/ajira-next-door-mainzip%20(1)/ajira-next-door-mainzip/src/app/portal/login/page.tsx) to prevent prerender bailout during Next.js static page generation.
-  - Added explicit TypeScript typing to Supabase `setAll` cookie handlers in [middleware.ts](file:///c:/Users/rickm/Downloads/ajira-next-door-mainzip%20(1)/ajira-next-door-mainzip/src/lib/supabase/middleware.ts) and [server.ts](file:///c:/Users/rickm/Downloads/ajira-next-door-mainzip%20(1)/ajira-next-door-mainzip/src/lib/supabase/server.ts).
-  
-- **Visual Design Mockup Alignment (`designinspo.png`)**:
-  - **Navbar Links**: Restored `Programs`, `Blog`, and `Contact` links in [Navbar.tsx](file:///c:/Users/rickm/Downloads/ajira-next-door-mainzip%20(1)/ajira-next-door-mainzip/src/components/site/Navbar.tsx).
-  - **Homepage (`/`)**: Rebuilt [page.tsx](file:///c:/Users/rickm/Downloads/ajira-next-door-mainzip%20(1)/ajira-next-door-mainzip/src/app/(website)/page.tsx) with a light-themed hero column, student graphics card, powered-by logo strip, What We Do blocks, dark programs panel, and circular date-badge events grid.
-  - **Student Portal Dashboard (`/portal/dashboard`)**: Redesigned [dashboard/page.tsx](file:///c:/Users/rickm/Downloads/ajira-next-door-mainzip%20(1)/ajira-next-door-mainzip/src/app/portal/dashboard/page.tsx) to render a dynamic metrics summary grid, circular date-badge upcoming event widget, live course progress meters, curated internship opportunities, and recent announcements list.
-  - **Admin Dashboard (`/admin/analytics`)**: Overwrote [analytics/page.tsx](file:///c:/Users/rickm/Downloads/ajira-next-door-mainzip%20(1)/ajira-next-door-mainzip/src/app/admin/analytics/page.tsx) to display exact metrics, a vector SVG growth line chart, program donut chart sectors with legends, and recent registrations feeds.
-  - **Split-Screen Login screen (`/portal/login`)**: Built a dual-column layout on desktop (dark marketing card left + white input form right). Added centering wrapper to [register/page.tsx](file:///c:/Users/rickm/Downloads/ajira-next-door-mainzip%20(1)/ajira-next-door-mainzip/src/app/portal/register/page.tsx).
+- **Monorepo Architecture (npm workspaces)**:
+  - Created a physical workspaces monorepo structure containing `apps/website`, `apps/portal`, `apps/admin`, and `packages/shared`.
+  - Configured workspace dependencies using standard `*` syntax, allowing the local `@ajira/shared` package to be correctly linked inside `node_modules` across workspaces.
+  - Set up script shortcuts in root `package.json` to facilitate building and running each app separately (`npm run build:website`, `npm run dev:portal`, etc.).
+
+- **Shared Package (`@ajira/shared`)**:
+  - Moved shared components, constants, hooks, database configurations, assets, and styles into the shared workspace package.
+  - Set up `tsconfig.json` path mappings mapping `@ajira/shared/*` to resolve directly to the typescript sources.
+  - Run a recursive alias replacement script updating 71 codebase files, moving imports from local `@/` paths to the workspace `@ajira/shared/*` path.
+  - Defined `"type": "module"` in all `package.json` files to resolve ESM next.config modules correctly without overhead warnings.
+
+- **Independent Routing & Middlewares**:
+  - Configured isolated Next.js middleware layers for each of the three applications:
+    - **Website**: Production redirects for `/portal` and `/admin` requests to their subdomains.
+    - **Portal**: Validates login and register redirection, refreshes Supabase session, and handles mock cookie fallbacks.
+    - **Admin**: Authenticates users and checks role permissions (`Executive` or `Admin`). If unauthorized, it redirects them to the portal app's login URL with redirect callback search params, resolving port mismatches dynamically in development.
+
+- **Build Compilation & Validation**:
+  - **`apps/website`**: Compiles successfully (14 static pages generated).
+  - **`apps/portal`**: Compiles successfully (12 dynamic and static pages generated).
+  - **`apps/admin`**: Compiles successfully (6 static pages generated).
+
+- **GitHub Pushed**:
+  - Committed and pushed all monorepo migration and config files to `https://github.com/rickmwas/ajira-ksu.git` branch `main`.
 
 ## Decisions made
 
-- **PostCSS compiling for Tailwind v4**: Chose to install `@tailwindcss/postcss` and `postcss` to allow Next.js's standard PostCSS pipeline to parse Tailwind directives.
-- **SVG Charts for Dashboards**: Rendered line graphs and donut charts as pure inline SVG elements, ensuring they are responsive, lightweight, and compile without client-side hydration bugs (avoiding heavy external libraries).
-- **Suspense Wrapping**: Extracted client-side search parameter fetches into a `LoginForm` component wrapped by `Suspense` inside `page.tsx` to satisfy Next.js page generation rules.
-- **A4 landscape printing constraints**: Injected the `@page { size: A4 landscape; margin: 0; }` style into the printable certificate view, forcing browsers to default to A4 landscape layout.
+- **Path Aliases for Workspace Transpilation**: Configured `transpilePackages: ["@ajira/shared"]` in `next.config.js` of all three apps, allowing Next.js to directly compile shared files without needing a separate bundling step for the shared package.
+- **Port Mapping for Dev Redirects**: Injected dynamic port detection (`process.env.NEXT_PUBLIC_PORTAL_URL`) in admin middleware to resolve cross-domain logins cleanly on local machines during development.
+- **Retaining Route Nesting in Apps**: Maintained portal routing under `/portal` and admin under `/admin` directories within `apps/portal/src/app` and `apps/admin/src/app`. This avoids the need to refactor hundreds of internal Next.js `Link` routes in components.
 
 ## Problems solved
 
-- **Styling not loading**: Fixed the missing Tailwind CSS compiler pipeline by adding `@tailwindcss/postcss` and creating `postcss.config.mjs`.
-- **Page Custom Exports compilation failure**: Moved `MOCK_POSTS` list out of the blog page routing component to `src/constants/blog.ts` to prevent page export violations.
-- **Supabase cookie implicit any error**: Explicitly typed parameters in Supabase `setAll` cookie handlers.
-- **Next.js cache mismatch**: Fixed `PageNotFoundError` during build by deleting `.next` directory cache before compiling.
+- **`workspace:*` protocol error**: Replaced `workspace:*` with `*` inside the apps' `package.json` dependencies to ensure compatibility with standard `npm install` workspaces resolution.
+- **PostCSS lock conflicts**: Stopped node background processes lock before moving directories to ensure `git mv` operations execute cleanly without "Permission denied" errors.
 
 ## Current state
 
-- All routes compile successfully.
-- Production build compiles with all 26 static/dynamic paths optimized.
-- Development server starts and styling compiles dynamically.
-- Authenticators and dashboard panels operate cleanly with local simulation cookies.
+- All three applications (`website`, `portal`, `admin`) build and compile in complete isolation.
+- Shared code resides in a single, dry location in `@ajira/shared`.
+- The repository was successfully committed and pushed to main.
 
 ## Next session starts with
 
-- Run a full manual review of the user experience on staging/dev server at `http://localhost:3000`.
-- Verify the interactive simulation console (Member, Executive, Admin sign-in options) redirects correctly under dev environments.
-- Verify printable certificates under completed courses.
-
-## Open questions
-
-- None. The core Next.js migration and visual mockup designs are complete and verified.
+- Run local dev servers using `npm run dev:website`, `npm run dev:portal`, or `npm run dev:admin`.
+- Verify the subdomains logic redirects appropriately under a multi-domain staging or production environment.
+- Implement production environment variables (`NEXT_PUBLIC_WEBSITE_DOMAIN`, `NEXT_PUBLIC_PORTAL_DOMAIN`, `NEXT_PUBLIC_ADMIN_DOMAIN`) on hosting platforms.
