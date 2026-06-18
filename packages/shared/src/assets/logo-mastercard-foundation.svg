@@ -1,0 +1,27 @@
+<svg viewBox="0 0 280 72" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mastercard Foundation">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&amp;display=swap');
+      .mcf-title { font-family: 'Noto Sans', 'Arial', sans-serif; font-weight: 700; font-size: 15px; fill: #1a1a1a; }
+      .mcf-sub { font-family: 'Noto Sans', 'Arial', sans-serif; font-weight: 400; font-size: 11px; fill: #333333; letter-spacing: 0.2px; }
+    </style>
+    <!-- Mastercard two-circle gradient -->
+    <radialGradient id="mcf-left-circle" cx="40%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#EB001B"/>
+      <stop offset="100%" stop-color="#C41230"/>
+    </radialGradient>
+    <radialGradient id="mcf-right-circle" cx="60%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF5F00"/>
+      <stop offset="100%" stop-color="#F79E1B"/>
+    </radialGradient>
+  </defs>
+  <!-- Left red circle -->
+  <circle cx="28" cy="36" r="22" fill="url(#mcf-left-circle)"/>
+  <!-- Right orange/yellow circle -->
+  <circle cx="50" cy="36" r="22" fill="url(#mcf-right-circle)" opacity="0.92"/>
+  <!-- Overlap blend area (middle) -->
+  <path d="M39 16.5 A22 22 0 0 1 39 55.5 A22 22 0 0 1 39 16.5Z" fill="#FF5F00" opacity="0.6"/>
+  <!-- Wordmark -->
+  <text class="mcf-title" x="82" y="30">Mastercard</text>
+  <text class="mcf-sub" x="82" y="48">Foundation</text>
+</svg>

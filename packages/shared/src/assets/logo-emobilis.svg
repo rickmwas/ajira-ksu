@@ -1,0 +1,16 @@
+<svg viewBox="0 0 200 72" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="eMobilis">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@800&amp;display=swap');
+      .emob-e { font-family: 'Nunito Sans', 'Arial Rounded MT Bold', sans-serif; font-weight: 800; font-size: 44px; fill: #E01E26; }
+      .emob-mobilis { font-family: 'Nunito Sans', 'Arial Rounded MT Bold', sans-serif; font-weight: 800; font-size: 36px; fill: #0056A6; }
+      .emob-tag { font-family: 'Nunito Sans', 'Arial', sans-serif; font-weight: 700; font-size: 7px; fill: #555; letter-spacing: 1px; }
+    </style>
+  </defs>
+  <!-- "e" in red -->
+  <text class="emob-e" x="4" y="50">e</text>
+  <!-- "Mobilis" in blue -->
+  <text class="emob-mobilis" x="34" y="50">Mobilis</text>
+  <!-- Tagline -->
+  <text class="emob-tag" x="5" y="64">MOBILE TECHNOLOGY TRAINING</text>
+</svg>

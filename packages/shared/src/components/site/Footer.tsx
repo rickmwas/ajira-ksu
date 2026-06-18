@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
 import Image from "next/image";
-import ajiraLogo from "@ajira/shared/assets/ajira-logo.svg";
-import ksuLogo from "@ajira/shared/assets/ksu-logo.png";
+import ajiraClubLogoReversed from "@ajira/shared/assets/ajira-club-logo-reversed.svg";
 
 export function Footer() {
   return (
@@ -10,22 +9,14 @@ export function Footer() {
       {/* Top bar — logos + socials */}
       <div className="border-b border-white/10">
         <div className="container-x py-7 sm:py-9 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="flex items-center">
             <Image
-              src={ajiraLogo}
-              alt="Ajira Digital Logo"
-              width={100}
-              height={30}
-              className="h-8 sm:h-9 w-auto brightness-0 invert"
+              src={ajiraClubLogoReversed}
+              alt="Ajira Club Kisii University"
+              width={220}
+              height={44}
+              className="h-10 w-auto"
             />
-            <span className="w-px h-7 bg-white/20" />
-            <div className="flex items-center gap-2">
-              <Image src={ksuLogo} alt="Kisii University Seal" width={28} height={28} className="h-7 sm:h-8 w-auto" />
-              <div className="leading-tight">
-                <div className="text-[11px] font-semibold text-white">Kisii University</div>
-                <div className="text-[9px] uppercase tracking-[0.15em] text-white/50">Chapter</div>
-              </div>
-            </div>
           </div>
 
           <div className="flex gap-2">

@@ -7,8 +7,7 @@ import { Menu, X, LayoutDashboard, LogOut, RefreshCw } from "lucide-react";
 import { useRegister } from "./RegisterContext";
 import { usePortal } from "../../hooks/usePortalState";
 import Image from "next/image";
-import ajiraLogo from "@ajira/shared/assets/ajira-logo.svg";
-import ksuLogo from "@ajira/shared/assets/ksu-logo.png";
+import ajiraClubLogo from "@ajira/shared/assets/ajira-club-logo-horizontal.svg";
 
 export function Navbar() {
   const { setOpen } = useRegister();
@@ -71,19 +70,9 @@ export function Navbar() {
       }`}
     >
       <div className="container-x flex h-[60px] items-center justify-between gap-6">
-        {/* Brand — Ajira logo + KSU badge */}
-        <Link href="/" className="flex items-center gap-3 shrink-0 group" aria-label="Ajira Digital Club — Kisii University">
-          <Image src={ajiraLogo} alt="Ajira Digital Logo" width={112} height={36} className="h-9 w-auto" priority />
-          <span className="hidden sm:block w-px h-7 bg-border" />
-          <div className="hidden sm:flex items-center gap-2">
-            <Image src={ksuLogo} alt="Kisii University Seal" width={32} height={32} className="h-8 w-auto" priority />
-            <div className="leading-tight">
-              <div className="text-[11px] font-semibold text-ink tracking-tight leading-none">Kisii University</div>
-              <div className="text-[9px] uppercase tracking-[0.15em] text-muted-foreground leading-none mt-0.5 font-mono">
-                Chapter
-              </div>
-            </div>
-          </div>
+        {/* Brand — Ajira Club KSU horizontal logo */}
+        <Link href="/" className="flex items-center gap-2 shrink-0 group" aria-label="Ajira Club Kisii University">
+          <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={220} height={44} className="h-10 w-auto" priority />
         </Link>
 
         {/* Desktop nav */}

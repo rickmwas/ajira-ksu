@@ -1,0 +1,15 @@
+<svg viewBox="0 0 200 72" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KEPSA - Kenya Private Sector Alliance">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;700&amp;display=swap');
+      .kepsa-main { font-family: 'Montserrat', 'Arial Black', 'Impact', sans-serif; font-weight: 800; font-size: 36px; fill: #003399; letter-spacing: 1px; }
+      .kepsa-sub { font-family: 'Montserrat', 'Arial', sans-serif; font-weight: 700; font-size: 7.5px; fill: #003399; letter-spacing: 1.5px; }
+    </style>
+  </defs>
+  <!-- Decorative bar -->
+  <rect x="8" y="14" width="4" height="44" rx="2" fill="#E8B000"/>
+  <!-- KEPSA wordmark -->
+  <text class="kepsa-main" x="22" y="48">KEPSA</text>
+  <!-- Tagline -->
+  <text class="kepsa-sub" x="22" y="60">KENYA PRIVATE SECTOR ALLIANCE</text>
+</svg>

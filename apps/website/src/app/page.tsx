@@ -24,10 +24,18 @@ import { Reveal } from "@ajira/shared/components/site/Reveal";
 import { useRegister } from "@ajira/shared/components/site/RegisterContext";
 
 // Local static assets
-import ajiraLogo from "@ajira/shared/assets/ajira-logo.svg";
+import ajiraClubLogo from "@ajira/shared/assets/ajira-club-logo-horizontal.svg";
 import ksuLogo from "@ajira/shared/assets/ksu-logo.png";
 import heroImgNew from "@ajira/shared/assets/heroimg.png";
 import parallaxImg from "@ajira/shared/assets/parallax.jpg";
+
+// Partner logos — real full-colour assets
+import logoAjiraDigital from "@ajira/shared/assets/logo-ajira-digital.svg";
+import logoMinistryICT from "@ajira/shared/assets/logo-ministry-ict.svg";
+import logoKEPSA from "@ajira/shared/assets/logo-kepsa.svg";
+import logoEmobilis from "@ajira/shared/assets/logo-emobilis.svg";
+import logoMastercardFdn from "@ajira/shared/assets/logo-mastercard-foundation.svg";
+import logoTerraSept from "@ajira/shared/assets/logo-terrasept.svg";
 
 const stats = [
   { value: "1,200+", label: "Students Trained", desc: "Peer-led cohort graduations" },
@@ -163,9 +171,9 @@ export default function Home() {
                 </span>
                 <div className="flex flex-wrap items-center gap-6 opacity-85">
                   <div className="flex items-center gap-2 grayscale hover:grayscale-0 transition-all">
-                    <Image src={ajiraLogo} alt="Ajira Digital" width={80} height={24} className="h-6 w-auto" />
+                    <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={120} height={24} className="h-7 w-auto" />
                   </div>
-                  
+
                   {/* Styled Mock Republic of Kenya badge */}
                   <div className="flex items-center gap-1.5 grayscale hover:grayscale-0 transition-all font-mono text-[9px] text-[#22C55E] font-bold border-l border-border pl-3">
                     <div className="flex flex-col">

@@ -8,7 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { toast } from "sonner";
 
-import ajiraLogo from "@ajira/shared/assets/ajira-logo.svg";
+import ajiraClubLogoReversed from "@ajira/shared/assets/ajira-club-logo-reversed.svg";
 
 function LoginForm() {
   const { login } = usePortal();
@@ -46,13 +46,8 @@ function LoginForm() {
         <div className="absolute bottom-10 right-10 w-60 h-60 bg-brand-gold/5 rounded-full filter blur-3xl pointer-events-none" />
         
         {/* Logo at the top */}
-        <div className="relative z-10 flex items-center gap-3">
-          <Image src={ajiraLogo} alt="Ajira Digital Club" width={112} height={36} className="h-8 w-auto brightness-0 invert" />
-          <span className="w-px h-6 bg-white/20" />
-          <div className="leading-tight">
-            <span className="text-[9px] font-bold tracking-widest uppercase text-brand-gold font-mono block">Kisii University</span>
-            <span className="text-[7px] uppercase tracking-wider text-white/50 block font-mono">Chapter Portal</span>
-          </div>
+        <div className="relative z-10">
+          <Image src={ajiraClubLogoReversed} alt="Ajira Club Kisii University" width={220} height={44} className="h-10 w-auto" />
         </div>
 
         {/* Welcome Text in center */}

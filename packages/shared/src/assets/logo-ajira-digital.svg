@@ -1,0 +1,11 @@
+<svg viewBox="0 0 260 72" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ajira Digital">
+  <!-- Location pin icon -->
+  <g>
+    <path d="M28 4C18.06 4 10 12.06 10 22C10 35.25 28 52 28 52C28 52 46 35.25 46 22C46 12.06 37.94 4 28 4Z" fill="#D62828"/>
+    <circle cx="28" cy="22" r="7" fill="white"/>
+  </g>
+  <!-- "ajira" wordmark -->
+  <text x="56" y="28" font-family="'Space Grotesk', 'Inter', 'Segoe UI', sans-serif" font-weight="700" font-size="26" letter-spacing="-0.5" fill="#111111">ajira</text>
+  <!-- "DIGITAL" sub-label -->
+  <text x="57" y="46" font-family="'Space Grotesk', 'Inter', 'Segoe UI', sans-serif" font-weight="600" font-size="12" letter-spacing="5" fill="#D62828">DIGITAL</text>
+</svg>

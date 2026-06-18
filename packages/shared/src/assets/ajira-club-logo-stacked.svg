@@ -1,0 +1,74 @@
+<svg viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ajira Club Kisii University Stacked Logo">
+  <defs>
+    <!-- Google Fonts import for consistent brand typography across devices -->
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700;800&amp;display=swap');
+      .logo-text-title {
+        font-family: 'Sora', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-weight: 800;
+        font-size: 28px;
+        fill: #0056A6;
+        text-anchor: middle;
+      }
+      .logo-text-club {
+        fill: #0F172A;
+      }
+      .logo-text-subtitle {
+        font-family: 'Sora', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        fill: #F4B400;
+        letter-spacing: 0.32em;
+        text-anchor: middle;
+      }
+    </style>
+
+    <!-- Mask to create clean transparent gaps around nodes and connection lines -->
+    <mask id="ajira-logo-mask-stacked">
+      <rect x="0" y="0" width="100" height="100" fill="white" />
+      <circle cx="20" cy="50" r="11" fill="black" />
+      <circle cx="50" cy="20" r="11" fill="black" />
+      <circle cx="80" cy="50" r="11" fill="black" />
+      <circle cx="50" cy="80" r="11" fill="black" />
+      <circle cx="50" cy="50" r="8.5" fill="black" />
+    </mask>
+  </defs>
+
+  <!-- Centered Logo Mark -->
+  <g transform="translate(110, 15)">
+    <!-- Connection lines with transparent gaps -->
+    <g mask="url(#ajira-logo-mask-stacked)">
+      <line x1="20" y1="50" x2="50" y2="20" stroke="#0056A6" stroke-width="4.5" stroke-linecap="round" />
+      <line x1="50" y1="20" x2="80" y2="50" stroke="#F4B400" stroke-width="4.5" stroke-linecap="round" />
+      <line x1="80" y1="50" x2="50" y2="80" stroke="#D62828" stroke-width="4.5" stroke-linecap="round" />
+      <line x1="50" y1="80" x2="20" y2="50" stroke="#16A34A" stroke-width="4.5" stroke-linecap="round" />
+      <line x1="80" y1="50" x2="50" y2="50" stroke="#F4B400" stroke-width="4.5" stroke-linecap="round" />
+    </g>
+
+    <!-- Outer nodes -->
+    <circle cx="20" cy="50" r="7.5" fill="#0056A6" />
+    <circle cx="50" cy="20" r="7.5" fill="#0056A6" />
+    <circle cx="80" cy="50" r="7.5" fill="#F4B400" />
+    <circle cx="50" cy="80" r="7.5" fill="#D62828" />
+
+    <!-- Center node -->
+    <circle cx="50" cy="50" r="5" fill="#F4B400" />
+
+    <!-- Node inner white circles (rings) -->
+    <circle cx="20" cy="50" r="2.5" fill="white" />
+    <circle cx="50" cy="20" r="2.5" fill="white" />
+    <circle cx="80" cy="50" r="2.5" fill="white" />
+    <circle cx="50" cy="80" r="2.5" fill="white" />
+  </g>
+
+  <!-- Centered Typography Lockup -->
+  <!-- "AJIRA CLUB" Title -->
+  <text class="logo-text-title" x="160" y="152">AJIRA <tspan class="logo-text-club">CLUB</tspan></text>
+  
+  <!-- Short Gold Separator Line -->
+  <line x1="140" y1="168" x2="180" y2="168" stroke="#F4B400" stroke-width="2.5" stroke-linecap="round" />
+  
+  <!-- "KISII UNIVERSITY" Subtitle -->
+  <!-- Shifted slightly right to offset the letter-spacing of the final character -->
+  <text class="logo-text-subtitle" x="162" y="190">KISII UNIVERSITY</text>
+</svg>

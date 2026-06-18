@@ -1,0 +1,32 @@
+<svg viewBox="0 0 280 72" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Republic of Kenya, Ministry of ICT">
+  <defs>
+    <style>
+      .mict-title { font-family: 'Times New Roman', Georgia, serif; font-weight: 700; font-size: 9px; fill: #1a1a1a; letter-spacing: 0.5px; }
+      .mict-sub { font-family: 'Times New Roman', Georgia, serif; font-weight: 600; font-size: 7px; fill: #444444; letter-spacing: 0.3px; }
+    </style>
+  </defs>
+  <!-- Stylised Kenya shield (simplified coat of arms) -->
+  <g transform="translate(4, 6)">
+    <!-- Shield body - Kenyan flag colors -->
+    <path d="M30 2 L54 14 L54 42 C54 56 30 64 30 64 C30 64 6 56 6 42 L6 14 Z" fill="#006600"/>
+    <path d="M30 2 L42 8 L42 42 C42 52 30 60 30 60 C18 60 18 52 18 42 L18 8 Z" fill="#cc0000"/>
+    <path d="M22 2 L38 2 L38 12 L22 12 Z" fill="#000000"/>
+    <path d="M22 54 L38 54 L38 64 L22 64 Z" fill="#000000"/>
+    <!-- White stripes for flag pattern -->
+    <rect x="18" y="12" width="24" height="3" fill="white"/>
+    <rect x="18" y="51" width="24" height="3" fill="white"/>
+    <!-- Maasai shield detail (simplified) -->
+    <ellipse cx="30" cy="33" rx="7" ry="11" fill="white" opacity="0.9"/>
+    <ellipse cx="30" cy="33" rx="4" ry="7" fill="#cc0000" opacity="0.8"/>
+    <!-- Spears -->
+    <line x1="14" y1="4" x2="14" y2="62" stroke="#8B6914" stroke-width="2"/>
+    <line x1="46" y1="4" x2="46" y2="62" stroke="#8B6914" stroke-width="2"/>
+    <polygon points="14,4 11,12 17,12" fill="#8B6914"/>
+    <polygon points="46,4 43,12 49,12" fill="#8B6914"/>
+  </g>
+  <!-- Text lockup -->
+  <text class="mict-title" x="68" y="22" text-anchor="start">REPUBLIC OF KENYA</text>
+  <line x1="68" y1="26" x2="200" y2="26" stroke="#8B6914" stroke-width="0.75"/>
+  <text class="mict-title" x="68" y="38" text-anchor="start">MINISTRY OF ICT,</text>
+  <text class="mict-sub" x="68" y="49" text-anchor="start">INNOVATION &amp; YOUTH AFFAIRS</text>
+</svg>
