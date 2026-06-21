@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from "lucide-react";
 import Image from "next/image";
-import ajiraClubLogoReversed from "@ajira/shared/assets/ajira-club-logo-reversed.svg";
+import ajiraClubLogoReversed from "@ajira/shared/assets/ajiraLOGO.png";
 
 export function Footer() {
   return (
@@ -13,9 +13,9 @@ export function Footer() {
             <Image
               src={ajiraClubLogoReversed}
               alt="Ajira Club Kisii University"
-              width={220}
-              height={44}
-              className="h-10 w-auto"
+              width={280}
+              height={56}
+              className="h-14 w-auto object-contain brightness-0 invert"
             />
           </div>
 

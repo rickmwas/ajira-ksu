@@ -35,7 +35,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Main workspace container */}
       <div className={`transition-all duration-300 min-h-screen flex flex-col ${collapsed ? "md:pl-[72px]" : "md:pl-[240px]"}`}>
         {/* Mobile Header Bar */}
-        <header className="md:hidden flex h-[60px] items-center justify-between px-4 border-b border-border bg-white sticky top-0 z-20 shrink-0">
+        <header className="md:hidden flex h-[80px] items-center justify-between px-4 border-b border-border bg-white sticky top-0 z-20 shrink-0">
           <span className="font-display font-black text-xs text-brand-gold uppercase tracking-wider">
             Advisory Board
           </span>

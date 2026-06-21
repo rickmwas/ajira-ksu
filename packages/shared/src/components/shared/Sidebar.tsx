@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
-import ajiraClubLogo from "@ajira/shared/assets/ajira-club-logo-horizontal.svg";
+import ajiraClubLogo from "@ajira/shared/assets/ajiraLOGO.png";
 import ajiraClubMark from "@ajira/shared/assets/ajira-club-logo-mark.svg";
 
 interface SidebarProps {
@@ -68,10 +68,10 @@ export function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
     >
       {/* Header Logotype block */}
       <div>
-        <div className="flex h-[60px] items-center justify-between px-4 border-b border-border">
+        <div className="flex h-[80px] items-center justify-between px-4 border-b border-border">
           {!collapsed && (
             <Link href="/" className="flex items-center gap-1.5 group shrink-0">
-              <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={160} height={32} className="h-8 w-auto" />
+              <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={220} height={44} className="h-11 w-auto object-contain" />
             </Link>
           )}
           {collapsed && (

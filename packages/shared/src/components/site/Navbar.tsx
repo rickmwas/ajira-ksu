@@ -7,7 +7,7 @@ import { Menu, X, LayoutDashboard, LogOut, RefreshCw } from "lucide-react";
 import { useRegister } from "./RegisterContext";
 import { usePortal } from "../../hooks/usePortalState";
 import Image from "next/image";
-import ajiraClubLogo from "@ajira/shared/assets/ajira-club-logo-horizontal.svg";
+import ajiraClubLogo from "@ajira/shared/assets/ajiraLOGO.png";
 
 export function Navbar() {
   const { setOpen } = useRegister();
@@ -69,10 +69,10 @@ export function Navbar() {
         scrolled ? "bg-white border-b border-border shadow-sm" : "bg-white/95 border-b border-transparent"
       }`}
     >
-      <div className="container-x flex h-[60px] items-center justify-between gap-6">
+      <div className="container-x flex h-[80px] items-center justify-between gap-6">
         {/* Brand — Ajira Club KSU horizontal logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0 group" aria-label="Ajira Club Kisii University">
-          <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={220} height={44} className="h-10 w-auto" priority />
+          <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={280} height={56} className="h-14 w-auto object-contain" priority />
         </Link>
 
         {/* Desktop nav */}

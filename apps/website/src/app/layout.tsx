@@ -44,7 +44,7 @@ export default function RootLayout({
           <RegisterProvider>
             <div className="flex flex-col min-h-screen bg-white">
               <Navbar />
-              <main className="flex-1 pt-[60px]">{children}</main>
+              <main className="flex-1 pt-[80px]">{children}</main>
               <Footer />
               <RegisterModal />
             </div>

@@ -24,7 +24,7 @@ import { Reveal } from "@ajira/shared/components/site/Reveal";
 import { useRegister } from "@ajira/shared/components/site/RegisterContext";
 
 // Local static assets
-import ajiraClubLogo from "@ajira/shared/assets/ajira-club-logo-horizontal.svg";
+import ajiraClubLogo from "@ajira/shared/assets/ajiraLOGO.png";
 import ksuLogo from "@ajira/shared/assets/ksu-logo.png";
 import heroImgNew from "@ajira/shared/assets/heroimg.png";
 import parallaxImg from "@ajira/shared/assets/parallax.jpg";
@@ -128,36 +128,42 @@ export default function Home() {
   return (
     <>
       {/* ── HERO SECTION ──────────────────────────────────────── */}
-      <section className="relative bg-white pt-24 pb-16 overflow-hidden min-h-[85vh] flex items-center">
-        {/* Background Decorative Circles */}
-        <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-brand-blue/5 rounded-full filter blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-brand-gold/5 rounded-full filter blur-3xl pointer-events-none" />
+      <section className="relative bg-white bg-noise pt-32 pb-20 overflow-hidden min-h-[90vh] flex items-center border-b border-slate-100">
+        {/* Subtle Horizontal & Vertical Grid Lines */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_80%,transparent_100%)] pointer-events-none" />
+
+        {/* Modern Blue-ish Glows */}
+        <div className="absolute top-0 right-0 w-[45%] h-[60%] bg-[radial-gradient(circle_at_60%_30%,rgba(0,86,166,0.08),transparent_70%)] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[40%] h-[50%] bg-[radial-gradient(circle_at_20%_80%,rgba(0,86,166,0.05),transparent_60%)] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle_at_center,rgba(244,180,0,0.02),transparent_60%)] pointer-events-none" />
 
         <div className="container-x relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Column: Text & Buttons & Logos */}
             <div className="lg:col-span-6 flex flex-col justify-center">
               <Reveal>
-                <span className="text-brand-gold font-mono text-xs font-bold uppercase tracking-widest block mb-3">
+                <span className="inline-flex items-center gap-1.5 text-brand-blue font-mono text-[10px] font-bold uppercase tracking-[0.2em] mb-4 bg-brand-blue/5 border border-brand-blue/10 px-3 py-1 rounded-full w-fit">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-blue animate-pulse" />
                   Ajira Club Kisii University
                 </span>
-                <h1 className="font-display text-[2.5rem] leading-[1.08] sm:text-5xl lg:text-[3.5rem] font-bold text-ink tracking-tight">
-                  Empowering KSU Students. Building Digital Futures.
+                <h1 className="font-display text-[2.5rem] leading-[1.08] sm:text-5xl lg:text-[3.75rem] font-extrabold text-ink tracking-tight">
+                  Empowering Students.<br />
+                  Building <span className="bg-gradient-to-r from-brand-blue to-blue-500 bg-clip-text text-transparent">Digital Futures.</span>
                 </h1>
-                <p className="mt-5 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl">
-                  We equip students with in-demand digital skills, mentorship, and opportunities to thrive in the global digital economy.
+                <p className="mt-6 text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl">
+                  We equip Kisii University students with in-demand digital competencies, mentorship networks, and verified gig-economy opportunities to launch thriving global freelance careers.
                 </p>
 
-                <div className="mt-8 flex flex-wrap gap-4 items-center">
+                <div className="mt-9 flex flex-wrap gap-4 items-center">
                   <button
                     onClick={() => setOpen(true)}
-                    className="inline-flex items-center justify-center gap-2 rounded-sm bg-brand-blue hover:bg-brand-blue-dark px-6 py-3.5 text-xs font-bold text-white transition-colors uppercase tracking-wider shadow-md hover:shadow-lg"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-blue hover:bg-brand-blue-dark px-7 py-4 text-xs font-bold text-white transition-all transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-blue/10 uppercase tracking-wider"
                   >
                     Join Ajira Club KSU
                   </button>
                   <Link
                     href="/about"
-                    className="inline-flex items-center justify-center gap-2 rounded-sm border border-border bg-transparent hover:bg-surface px-6 py-3.5 text-xs font-bold text-ink transition-colors uppercase tracking-wider"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/60 backdrop-blur-sm hover:bg-slate-50 px-7 py-4 text-xs font-bold text-slate-700 transition-all transform hover:-translate-y-0.5 uppercase tracking-wider shadow-sm hover:shadow-md"
                   >
                     Learn More <ArrowRight size={14} className="text-brand-blue" />
                   </Link>
@@ -165,17 +171,17 @@ export default function Home() {
               </Reveal>
 
               {/* Powered By logo strip */}
-              <div className="mt-16 pt-8 border-t border-border/80">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-muted-foreground/60 block mb-4">
-                  Powered by
+              <div className="mt-16 pt-8 border-t border-slate-100">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400 block mb-4">
+                  Affiliated Partners
                 </span>
                 <div className="flex flex-wrap items-center gap-6 opacity-85">
                   <div className="flex items-center gap-2 grayscale hover:grayscale-0 transition-all">
-                    <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={120} height={24} className="h-7 w-auto" />
+                    <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={170} height={34} className="h-10 w-auto object-contain" />
                   </div>
 
                   {/* Styled Mock Republic of Kenya badge */}
-                  <div className="flex items-center gap-1.5 grayscale hover:grayscale-0 transition-all font-mono text-[9px] text-[#22C55E] font-bold border-l border-border pl-3">
+                  <div className="flex items-center gap-1.5 grayscale hover:grayscale-0 transition-all font-mono text-[9px] text-[#22C55E] font-bold border-l border-slate-200 pl-3">
                     <div className="flex flex-col">
                       <span className="text-ink text-[8px] leading-none uppercase">Republic of Kenya</span>
                       <span className="text-muted-foreground text-[7px] leading-none font-semibold mt-0.5">Ministry of ICT</span>
@@ -183,16 +189,16 @@ export default function Home() {
                   </div>
 
                   {/* Styled Mock KEPSA badge */}
-                  <div className="grayscale hover:grayscale-0 transition-all font-sans text-xs font-black text-[#003366] border-l border-border pl-3 tracking-tight">
+                  <div className="grayscale hover:grayscale-0 transition-all font-sans text-xs font-black text-[#003366] border-l border-slate-200 pl-3 tracking-tight">
                     KEPSA
                   </div>
 
                   {/* Styled Mock eMobilis badge */}
-                  <div className="grayscale hover:grayscale-0 transition-all font-sans text-xs font-bold text-[#E01E26] border-l border-border pl-3">
+                  <div className="grayscale hover:grayscale-0 transition-all font-sans text-xs font-bold text-[#E01E26] border-l border-slate-200 pl-3">
                     e<span className="text-[#0056A6]">Mobilis</span>
                   </div>
 
-                  <div className="flex items-center gap-2 border-l border-border pl-3 grayscale hover:grayscale-0 transition-all">
+                  <div className="flex items-center gap-2 border-l border-slate-200 pl-3 grayscale hover:grayscale-0 transition-all">
                     <Image src={ksuLogo} alt="Kisii University" width={24} height={24} className="h-6 w-auto" />
                     <span className="text-[8px] font-mono font-bold uppercase tracking-wider text-ink">KSU</span>
                   </div>
@@ -203,12 +209,18 @@ export default function Home() {
             {/* Right Column: Hero Image Card */}
             <div className="lg:col-span-6 flex justify-center items-center">
               <Reveal delay={100} className="w-full max-w-xl">
-                <Image
-                  src={heroImgNew}
-                  alt="Ajira Digital Club Kisii University Hero Banner"
-                  priority
-                  className="w-full h-auto max-h-[520px] object-contain drop-shadow-md"
-                />
+                <div className="relative p-2.5 rounded-3xl bg-white/40 backdrop-blur-md border border-slate-200/40 shadow-2xl shadow-slate-200/50">
+                  {/* Decorative corner glows inside the card wrapper */}
+                  <div className="absolute -top-6 -right-6 w-32 h-32 bg-brand-blue/10 rounded-full filter blur-xl pointer-events-none animate-pulse" />
+                  <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-brand-gold/10 rounded-full filter blur-xl pointer-events-none animate-pulse" />
+                  
+                  <Image
+                    src={heroImgNew}
+                    alt="Ajira Digital Club Kisii University Hero Banner"
+                    priority
+                    className="w-full h-auto max-h-[500px] object-contain rounded-2xl relative z-10 hover:scale-[1.01] transition-transform duration-500"
+                  />
+                </div>
               </Reveal>
             </div>
           </div>

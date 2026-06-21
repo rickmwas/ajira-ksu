@@ -75,7 +75,7 @@ export default function Gallery() {
       </section>
 
       {/* ── INTERACTIVE FILTER TABS ───────────────────────── */}
-      <section className="border-b border-border bg-surface sticky top-[60px] z-20">
+      <section className="border-b border-border bg-surface sticky top-[80px] z-20">
         <div className="container-x py-4 sm:py-5 flex justify-center sm:justify-start">
           <div className="flex flex-wrap gap-1.5 font-mono">
             {tabs.map((tab) => (
