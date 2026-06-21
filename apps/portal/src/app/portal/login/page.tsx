@@ -12,7 +12,7 @@ import ajiraClubLogoReversed from "@ajira/shared/assets/ajiraLOGO.png";
 import loginBg from "@ajira/shared/assets/login-bg.png";
 
 function LoginForm() {
-  const { login } = usePortal();
+  const { login, loginWithGoogle } = usePortal();
   const router = useRouter();
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
@@ -157,6 +157,13 @@ function LoginForm() {
 
           {/* Google SSO Button */}
           <button
+            onClick={async () => {
+              try {
+                await loginWithGoogle();
+              } catch (err: any) {
+                toast.error(err.message || "Google Sign-In failed.");
+              }
+            }}
             type="button"
             className="w-full inline-flex items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 px-5 py-3.5 text-xs font-bold text-slate-700 transition-all hover:-translate-y-0.5 shadow-sm hover:shadow-md cursor-pointer"
           >

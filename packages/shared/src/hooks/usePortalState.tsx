@@ -26,6 +26,7 @@ interface PortalContextType {
   loading: boolean;
   register: (name: string, email: string, password: string) => Promise<any>;
   login: (email: string, password: string) => Promise<any>;
+  loginWithGoogle: () => Promise<any>;
   logout: () => Promise<void>;
   completeOnboarding: (details: {
     phone: string;
@@ -157,6 +158,20 @@ export function PortalProvider({ children }: { children: ReactNode }) {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
+    });
+
+    if (error) {
+      throw new Error(error.message);
+    }
+    return data;
+  };
+
+  const loginWithGoogle = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
     });
 
     if (error) {
@@ -350,6 +365,7 @@ export function PortalProvider({ children }: { children: ReactNode }) {
         loading,
         register,
         login,
+        loginWithGoogle,
         logout,
         completeOnboarding,
         updateProfile,

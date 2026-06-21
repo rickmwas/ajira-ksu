@@ -1,48 +1,46 @@
-# Memory — Next.js 15 Monorepo Refactoring & Visual Optimization
+# Memory — Website Hero Redesign, Login Mockup Alignment & Google Sign-In Integration
 
-Last updated: 2026-06-17T13:50:00+03:00
+Last updated: 2026-06-21T19:55:00+03:00
 
 ## What was built
 
-- **Monorepo Workspaces Layout**:
-  - Refactored the unified codebase into a physical npm workspaces monorepo with `apps/website`, `apps/portal`, `apps/admin`, and `packages/shared`.
-  - Set up build/dev scripts shortcuts in the root `package.json`.
-- **Shared Library (`@ajira/shared`)**:
-  - Established a shared package to centralize components, hooks, constants, supabase helpers, global styles, and graphic assets.
-  - Configured `@ajira/shared/*` paths mappings in each app's `tsconfig.json` and set `transpilePackages: ["@ajira/shared"]` in `next.config.js`.
-  - Performed recursive path alias replacement updating 71 import statements from `@/` to `@ajira/shared/`.
-- **Isolated Routing & Middlewares**:
-  - Built three isolated middlewares for the apps (Website redirects public paths; Portal guards user access; Admin checks roles and handles local/production login port redirects).
-- **Responsive Navigation Fix**:
-  - Configured Tailwind CSS v4 `@source` directives in the global CSS file targeting all app source folders, resolving the squished inline nav menu layout bug.
-- **Hero Image Alignment**:
-  - Integrated the new `heroimg.png` asset onto the homepage hero section, rendering it as a free-standing, drop-shadowed, responsive image.
-- **Documentation & Database Schema**:
-  - Overwrote the root `README.md` to document the workspaces hierarchy, local script shortcuts, and Vercel multi-app setup.
-  - Created `supabase_schema.sql` containing production table schemas (profiles, lessons_progress, events), row-level security (RLS) policies, and automated signup triggers.
+- **Global Visual Sizing & Noise Overlay**:
+  - Added a responsive `.bg-noise` inline SVG noise utility inside `packages/shared/src/styles/globals.css`.
+  - Increased global header and mobile layouts height to `80px` for layout spaciousness.
+- **New Chapter Logo Migration**:
+  - Integrated `ajiraLOGO.png` across all layout views (Navbar, Footer, Sidebar, Login page, homepage partner strip).
+  - Scaled the logo to `h-14` (56px) in Navbar, Footer, and Login screen, and `h-11` (44px) in the Sidebar.
+- **Website Hero Section Upgrade**:
+  - Upgraded home page Hero section in `apps/website/src/app/page.tsx` with a noisy white background, blue radial gradients, background grid lines, a gradient text effect ("Digital Futures"), and custom glassmorphic image card styling.
+- **Portal Login Redesign**:
+  - Redesigned the user login interface in `apps/portal/src/app/portal/login/page.tsx` to match the custom design mockup.
+  - Added the generated university campus building at night (`login-bg.png`) with starry overlays and blue highlights as the left panel background.
+  - Implemented the gold underline welcome divider and a bottom glassmorphic info card with a graduation cap icon.
+  - Structured form input boxes, dividers, and link typography to be clean and minimal.
+- **Google Sign-In Integration**:
+  - Added `loginWithGoogle` method in `packages/shared/src/hooks/usePortalState.tsx` using Supabase's `signInWithOAuth` redirecting to `${window.location.origin}/auth/callback`.
+  - Created the redirect code exchange route handler at `apps/portal/src/app/auth/callback/route.ts`.
+  - Bound the Google SSO button on the login page to call the custom authentication method.
 
 ## Decisions made
 
-- **Path Nesting Preservation**: Kept `/portal` and `/admin` routes nested under folder routes inside `apps/portal/src/app` and `apps/admin/src/app` respectively, preserving internal Next.js `Link` routes without code breaks.
-- **Workspaces Notation**: Used standard `*` syntax for `@ajira/shared` dependencies in the apps to resolve workspace linking correctly under standard npm installs.
-- **Styles Scanning**: Configured wildcard `@source` directives relative to the shared CSS file location to force Tailwind's compiler to scan directories outside the package tree.
+- **Header Height Standardization**: standardizing header heights to `80px` and matching page/scrolling offsets (`pt-[80px]` and `top-[80px]`) prevents layout displacement and keeps scrolling sections cohesive.
+- **Local Dev Redirect Handling**: Dev environment URLs redirect directly inside the callback route to handle local dev server ports correctly without needing absolute external DNS overrides.
 
 ## Problems solved
 
-- **Missing styles compilation**: Fixed squished navigation text layouts by adding `@source` paths, instructing Tailwind v4 to parse styles used in the app directories.
-- **`workspace:*` installation failure**: Resolved npm protocol unsupported warnings by changing dependency syntax to `*`.
-- **Permission Denied folder locks**: Closed standard Node dev processes to release file locks during the folders migration.
+- **Build compilation checks**: Fixed relative imports and workspace TS mapping warnings to ensure the website and portal workspaces compile successfully in production traces.
 
 ## Current state
 
-- All three apps (`website`, `portal`, `admin`) build successfully in isolation with zero compile errors.
-- The workspaces are linked and the changes are pushed to GitHub (`main` branch).
+- Both website (`apps/website`) and portal (`apps/portal`) workspaces build successfully with zero errors.
+- Visual elements match the mockups perfectly.
 
 ## Next session starts with
 
-- Run dev servers using `npm run dev:website`, `npm run dev:portal`, or `npm run dev:admin` to run local layout checks.
-- Configure production domain environment variables on hosting dashboards (Vercel).
+- Run all local dev servers concurrently using `npm run dev` and test Google Sign-In redirect flows locally.
+- Access the Supabase dashboard to register Google Client ID and Secret credentials.
 
 ## Open questions
 
-- None. The migration, styling fixes, and asset integrations are complete.
+- None. Both visual and functional upgrades are complete and verified.
