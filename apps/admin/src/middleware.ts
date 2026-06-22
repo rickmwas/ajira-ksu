@@ -32,6 +32,16 @@ export async function middleware(request: NextRequest) {
     userRole = (user.user_metadata?.role as string) || "Member";
   }
 
+  // Handle admin dev bypass and home redirection
+  if (process.env.NODE_ENV === "development") {
+    if (pathname === "/" || pathname === "/admin") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/admin/analytics";
+      return NextResponse.redirect(url);
+    }
+    return NextResponse.next();
+  }
+
   // 3. Routing Checks
   if (pathname === "/" || pathname === "/admin") {
     const url = request.nextUrl.clone();

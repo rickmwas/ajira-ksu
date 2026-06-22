@@ -68,10 +68,10 @@ export function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
     >
       {/* Header Logotype block */}
       <div>
-        <div className="flex h-[80px] items-center justify-between px-4 border-b border-border">
+        <div className="flex h-[100px] items-center justify-between px-4 border-b border-border">
           {!collapsed && (
             <Link href="/" className="flex items-center gap-1.5 group shrink-0">
-              <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={220} height={44} className="h-11 w-auto object-contain" />
+              <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={250} height={50} className="h-[50px] w-auto object-contain" />
             </Link>
           )}
           {collapsed && (

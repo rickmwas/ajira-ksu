@@ -6,10 +6,10 @@ Last updated: 2026-06-21T19:55:00+03:00
 
 - **Global Visual Sizing & Noise Overlay**:
   - Added a responsive `.bg-noise` inline SVG noise utility inside `packages/shared/src/styles/globals.css`.
-  - Increased global header and mobile layouts height to `80px` for layout spaciousness.
+  - Increased global header and mobile layouts height to `100px` for layout spaciousness.
 - **New Chapter Logo Migration**:
   - Integrated `ajiraLOGO.png` across all layout views (Navbar, Footer, Sidebar, Login page, homepage partner strip).
-  - Scaled the logo to `h-14` (56px) in Navbar, Footer, and Login screen, and `h-11` (44px) in the Sidebar.
+  - Scaled the logo to `h-20` (80px) in Navbar, Footer, and Login screen, and `h-[50px]` (50px) in the Sidebar.
 - **Website Hero Section Upgrade**:
   - Upgraded home page Hero section in `apps/website/src/app/page.tsx` with a noisy white background, blue radial gradients, background grid lines, a gradient text effect ("Digital Futures"), and custom glassmorphic image card styling.
 - **Portal Login Redesign**:
@@ -24,7 +24,7 @@ Last updated: 2026-06-21T19:55:00+03:00
 
 ## Decisions made
 
-- **Header Height Standardization**: standardizing header heights to `80px` and matching page/scrolling offsets (`pt-[80px]` and `top-[80px]`) prevents layout displacement and keeps scrolling sections cohesive.
+- **Header Height Standardization**: standardizing header heights to `100px` and matching page/scrolling offsets (`pt-[100px]` and `top-[100px]`) prevents layout displacement and keeps scrolling sections cohesive.
 - **Local Dev Redirect Handling**: Dev environment URLs redirect directly inside the callback route to handle local dev server ports correctly without needing absolute external DNS overrides.
 
 ## Problems solved

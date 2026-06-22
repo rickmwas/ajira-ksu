@@ -13,9 +13,9 @@ export function Footer() {
             <Image
               src={ajiraClubLogoReversed}
               alt="Ajira Club Kisii University"
-              width={280}
-              height={56}
-              className="h-14 w-auto object-contain brightness-0 invert"
+              width={400}
+              height={80}
+              className="h-20 w-auto object-contain brightness-0 invert"
             />
           </div>
 

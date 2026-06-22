@@ -56,7 +56,7 @@ function LoginForm() {
 
         {/* Logo at the top */}
         <div className="relative z-10">
-          <Image src={ajiraClubLogoReversed} alt="Ajira Club Kisii University" width={280} height={56} className="h-14 w-auto object-contain brightness-0 invert" />
+          <Image src={ajiraClubLogoReversed} alt="Ajira Club Kisii University" width={400} height={80} className="h-20 w-auto object-contain brightness-0 invert" />
         </div>
 
         {/* Welcome Text in center */}

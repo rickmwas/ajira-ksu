@@ -18,7 +18,12 @@ import {
   Clock,
   ChevronRight,
   MessageSquareQuote,
-  Award
+  Award,
+  BookOpen,
+  Rocket,
+  LayoutGrid,
+  Star,
+  GraduationCap
 } from "lucide-react";
 import { Reveal } from "@ajira/shared/components/site/Reveal";
 import { useRegister } from "@ajira/shared/components/site/RegisterContext";
@@ -29,6 +34,13 @@ import ksuLogo from "@ajira/shared/assets/ksu-logo.png";
 import heroImgNew from "@ajira/shared/assets/heroimg.png";
 import parallaxImg from "@ajira/shared/assets/parallax.jpg";
 
+// Local avatars and backgrounds for hero staircase
+import avatar1 from "@ajira/shared/assets/g1.jpg";
+import avatar2 from "@ajira/shared/assets/g2.jpg";
+import avatar3 from "@ajira/shared/assets/g3.jpg";
+import avatar4 from "@ajira/shared/assets/g4.jpg";
+import kisiiGateBg from "@ajira/shared/assets/kisiiuniversity_ac_ke.png";
+
 // Partner logos — real full-colour assets
 import logoAjiraDigital from "@ajira/shared/assets/logo-ajira-digital.svg";
 import logoMinistryICT from "@ajira/shared/assets/logo-ministry-ict.svg";
@@ -38,10 +50,10 @@ import logoMastercardFdn from "@ajira/shared/assets/logo-mastercard-foundation.s
 import logoTerraSept from "@ajira/shared/assets/logo-terrasept.svg";
 
 const stats = [
-  { value: "1,200+", label: "Students Trained", desc: "Peer-led cohort graduations" },
-  { value: "480+", label: "Active Members", desc: "Weekly campus workshop peers" },
-  { value: "60+", label: "Training Labs", desc: "Hands-on bidding sprints" },
-  { value: "KSh 2M+", label: "Student Income", desc: "Earned via online work portals" },
+  { value: "500+", label: "Active Members", icon: Users, color: "text-blue-600 bg-blue-50" },
+  { value: "20+", label: "Programs & Workshops", icon: GraduationCap, color: "text-green-600 bg-green-50" },
+  { value: "50+", label: "Global Opportunities", icon: Globe, color: "text-purple-600 bg-purple-50" },
+  { value: "95%", label: "Success Rate", icon: Star, color: "text-amber-500 bg-amber-50" },
 ];
 
 const whatWeDoCards = [
@@ -128,100 +140,244 @@ export default function Home() {
   return (
     <>
       {/* ── HERO SECTION ──────────────────────────────────────── */}
-      <section className="relative bg-white bg-noise pt-32 pb-20 overflow-hidden min-h-[90vh] flex items-center border-b border-slate-100">
+      <section className="relative bg-[#FAF9F6] bg-noise pt-24 pb-8 overflow-hidden min-h-[92vh] flex items-center border-b border-slate-100">
         {/* Subtle Horizontal & Vertical Grid Lines */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_80%,transparent_100%)] pointer-events-none" />
 
-        {/* Modern Blue-ish Glows */}
-        <div className="absolute top-0 right-0 w-[45%] h-[60%] bg-[radial-gradient(circle_at_60%_30%,rgba(0,86,166,0.08),transparent_70%)] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[40%] h-[50%] bg-[radial-gradient(circle_at_20%_80%,rgba(0,86,166,0.05),transparent_60%)] pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle_at_center,rgba(244,180,0,0.02),transparent_60%)] pointer-events-none" />
+        {/* Modern Blue-ish & Violet Glows */}
+        <div className="absolute top-0 right-0 w-[45%] h-[60%] bg-[radial-gradient(circle_at_70%_20%,rgba(0,86,166,0.08),transparent_70%)] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[40%] h-[50%] bg-[radial-gradient(circle_at_20%_80%,rgba(0,86,166,0.04),transparent_60%)] pointer-events-none" />
 
         <div className="container-x relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Column: Text & Buttons & Logos */}
-            <div className="lg:col-span-6 flex flex-col justify-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Column: Text, Buttons, Avatars */}
+            <div className="lg:col-span-5 flex flex-col justify-center">
               <Reveal>
-                <span className="inline-flex items-center gap-1.5 text-brand-blue font-mono text-[10px] font-bold uppercase tracking-[0.2em] mb-4 bg-brand-blue/5 border border-brand-blue/10 px-3 py-1 rounded-full w-fit">
+                <span className="inline-flex items-center gap-1.5 text-brand-blue font-sans text-xs font-semibold mb-5 bg-brand-blue/5 border border-brand-blue/10 px-3.5 py-1.5 rounded-full w-fit">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-blue animate-pulse" />
-                  Ajira Club Kisii University
+                  Empowering KSU Students
                 </span>
-                <h1 className="font-display text-[2.5rem] leading-[1.08] sm:text-5xl lg:text-[3.75rem] font-extrabold text-ink tracking-tight">
+                <h1 className="font-display text-[2.5rem] leading-[1.1] sm:text-5xl lg:text-[3.5rem] font-extrabold text-ink tracking-tight">
                   Empowering Students.<br />
-                  Building <span className="bg-gradient-to-r from-brand-blue to-blue-500 bg-clip-text text-transparent">Digital Futures.</span>
+                  Building <span className="bg-gradient-to-r from-brand-blue to-blue-600 bg-clip-text text-transparent">Digital Futures.</span>
                 </h1>
-                <p className="mt-6 text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl">
-                  We equip Kisii University students with in-demand digital competencies, mentorship networks, and verified gig-economy opportunities to launch thriving global freelance careers.
+                <p className="mt-5 text-sm text-slate-600 leading-relaxed max-w-xl">
+                  Ajira Club Kisii University equips students with in-demand digital skills, mentorship, and opportunities to thrive in the global digital economy.
                 </p>
 
-                <div className="mt-9 flex flex-wrap gap-4 items-center">
+                <div className="mt-7 flex flex-wrap gap-4 items-center">
                   <button
                     onClick={() => setOpen(true)}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-blue hover:bg-brand-blue-dark px-7 py-4 text-xs font-bold text-white transition-all transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-blue/10 uppercase tracking-wider"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-blue hover:bg-brand-blue-dark px-6 py-3.5 text-xs font-bold text-white transition-all transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-blue/10 uppercase tracking-wider"
                   >
-                    Join Ajira Club KSU
+                    Join Ajira Club KSU <ArrowRight size={14} />
                   </button>
                   <Link
-                    href="/about"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white/60 backdrop-blur-sm hover:bg-slate-50 px-7 py-4 text-xs font-bold text-slate-700 transition-all transform hover:-translate-y-0.5 uppercase tracking-wider shadow-sm hover:shadow-md"
+                    href="/programs"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 px-6 py-3.5 text-xs font-bold text-slate-700 transition-all transform hover:-translate-y-0.5 uppercase tracking-wider shadow-sm hover:shadow-md"
                   >
-                    Learn More <ArrowRight size={14} className="text-brand-blue" />
+                    Explore Programs
                   </Link>
                 </div>
-              </Reveal>
 
-              {/* Powered By logo strip */}
-              <div className="mt-16 pt-8 border-t border-slate-100">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400 block mb-4">
-                  Affiliated Partners
-                </span>
-                <div className="flex flex-wrap items-center gap-6 opacity-85">
-                  <div className="flex items-center gap-2 grayscale hover:grayscale-0 transition-all">
-                    <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={170} height={34} className="h-10 w-auto object-contain" />
+                {/* Overlapping Avatar pile */}
+                <div className="mt-8 flex items-center gap-3">
+                  <div className="flex -space-x-2.5 overflow-hidden">
+                    <Image className="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src={avatar1} alt="Member 1" width={32} height={32} />
+                    <Image className="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src={avatar2} alt="Member 2" width={32} height={32} />
+                    <Image className="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src={avatar3} alt="Member 3" width={32} height={32} />
+                    <Image className="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover" src={avatar4} alt="Member 4" width={32} height={32} />
                   </div>
-
-                  {/* Styled Mock Republic of Kenya badge */}
-                  <div className="flex items-center gap-1.5 grayscale hover:grayscale-0 transition-all font-mono text-[9px] text-[#22C55E] font-bold border-l border-slate-200 pl-3">
-                    <div className="flex flex-col">
-                      <span className="text-ink text-[8px] leading-none uppercase">Republic of Kenya</span>
-                      <span className="text-muted-foreground text-[7px] leading-none font-semibold mt-0.5">Ministry of ICT</span>
-                    </div>
-                  </div>
-
-                  {/* Styled Mock KEPSA badge */}
-                  <div className="grayscale hover:grayscale-0 transition-all font-sans text-xs font-black text-[#003366] border-l border-slate-200 pl-3 tracking-tight">
-                    KEPSA
-                  </div>
-
-                  {/* Styled Mock eMobilis badge */}
-                  <div className="grayscale hover:grayscale-0 transition-all font-sans text-xs font-bold text-[#E01E26] border-l border-slate-200 pl-3">
-                    e<span className="text-[#0056A6]">Mobilis</span>
-                  </div>
-
-                  <div className="flex items-center gap-2 border-l border-slate-200 pl-3 grayscale hover:grayscale-0 transition-all">
-                    <Image src={ksuLogo} alt="Kisii University" width={24} height={24} className="h-6 w-auto" />
-                    <span className="text-[8px] font-mono font-bold uppercase tracking-wider text-ink">KSU</span>
+                  <div className="flex flex-col text-left">
+                    <span className="text-xs font-extrabold text-ink leading-tight">500+</span>
+                    <span className="text-[10px] text-slate-400 font-bold tracking-wide uppercase">Active Members</span>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
 
-            {/* Right Column: Hero Image Card */}
-            <div className="lg:col-span-6 flex justify-center items-center">
-              <Reveal delay={100} className="w-full max-w-xl">
-                <div className="relative p-2.5 rounded-3xl bg-white/40 backdrop-blur-md border border-slate-200/40 shadow-2xl shadow-slate-200/50">
-                  {/* Decorative corner glows inside the card wrapper */}
-                  <div className="absolute -top-6 -right-6 w-32 h-32 bg-brand-blue/10 rounded-full filter blur-xl pointer-events-none animate-pulse" />
-                  <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-brand-gold/10 rounded-full filter blur-xl pointer-events-none animate-pulse" />
+            {/* Right Column: High-fidelity Staircase Cards and Collage */}
+            <div className="lg:col-span-7 flex justify-center items-center relative min-h-[530px] w-full">
+              {/* Stepped Cards staircase (Visible only on lg screens) */}
+              <div className="relative w-full h-[530px] max-w-[580px] hidden lg:block">
+                
+                {/* Purple/Blue glowing background behind the cards */}
+                <div className="absolute right-[10%] bottom-[15%] w-[350px] h-[350px] bg-[radial-gradient(circle_at_center,rgba(0,86,166,0.12),transparent_70%)] blur-2xl pointer-events-none z-0 animate-pulse" />
+                <div className="absolute right-[2%] top-[10%] w-[300px] h-[300px] bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.08),transparent_70%)] blur-2xl pointer-events-none z-0" />
+
+                {/* SVG Connecting Paths with Dotted Curves and Arrowheads */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 580 530" fill="none">
+                  <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <path d="M 0 1.5 L 7 5 L 0 8.5 z" fill="#0056A6" opacity="0.6" />
+                    </marker>
+                  </defs>
+
+                  {/* 01 Learn -> 02 Build */}
+                  <path d="M 110 440 C 130 400, 160 395, 180 390" stroke="#0056A6" strokeWidth="1.5" strokeDasharray="4 4" markerEnd="url(#arrow)" opacity="0.4" />
                   
-                  <Image
-                    src={heroImgNew}
-                    alt="Ajira Digital Club Kisii University Hero Banner"
-                    priority
-                    className="w-full h-auto max-h-[500px] object-contain rounded-2xl relative z-10 hover:scale-[1.01] transition-transform duration-500"
-                  />
+                  {/* 02 Build -> 03 Connect */}
+                  <path d="M 285 330 C 310 310, 315 280, 335 270" stroke="#0056A6" strokeWidth="1.5" strokeDasharray="4 4" markerEnd="url(#arrow)" opacity="0.4" />
+
+                  {/* 03 Connect -> 04 Earn */}
+                  <path d="M 390 220 C 410 200, 420 170, 440 155" stroke="#0056A6" strokeWidth="1.5" strokeDasharray="4 4" markerEnd="url(#arrow)" opacity="0.4" />
+
+                  {/* 04 Earn -> 05 Grow */}
+                  <path d="M 455 110 C 470 85, 490 80, 510 75" stroke="#0056A6" strokeWidth="1.5" strokeDasharray="4 4" markerEnd="url(#arrow)" opacity="0.4" />
+                </svg>
+
+                {/* Card 01: Learn */}
+                <div className="absolute bottom-[4%] left-[2%] z-20 w-[185px] bg-white/80 backdrop-blur-md border border-slate-200/50 p-3.5 rounded-2xl shadow-lg hover:translate-y-[-2px] transition-all duration-300">
+                  <div className="flex justify-between items-center mb-1.5">
+                    <span className="text-[10px] font-black text-brand-blue font-mono">01</span>
+                    <BookOpen size={14} className="text-brand-blue" />
+                  </div>
+                  <h4 className="font-display text-[12px] font-bold text-ink mb-0.5">Learn</h4>
+                  <p className="text-[9.5px] text-slate-500 font-medium leading-relaxed">Access practical training and industry-relevant digital skills.</p>
                 </div>
-              </Reveal>
+
+                {/* Card 02: Build */}
+                <div className="absolute bottom-[23%] left-[21%] z-20 w-[185px] bg-white/80 backdrop-blur-md border border-slate-200/50 p-3.5 rounded-2xl shadow-lg hover:translate-y-[-2px] transition-all duration-300">
+                  <div className="flex justify-between items-center mb-1.5">
+                    <span className="text-[10px] font-black text-brand-blue font-mono">02</span>
+                    <LayoutGrid size={14} className="text-brand-blue" />
+                  </div>
+                  <h4 className="font-display text-[12px] font-bold text-ink mb-0.5">Build</h4>
+                  <p className="text-[9.5px] text-slate-500 font-medium leading-relaxed">Work on real projects and build a strong portfolio that stands out.</p>
+                </div>
+
+                {/* Card 03: Connect */}
+                <div className="absolute bottom-[43%] left-[36%] z-30 w-[210px] bg-white/80 backdrop-blur-md border border-slate-200/50 p-3 rounded-2xl shadow-lg hover:translate-y-[-2px] transition-all duration-300 flex items-start gap-2.5">
+                  <div className="p-1.5 rounded-lg bg-purple-100 text-purple-600 shrink-0 mt-0.5">
+                    <Users size={14} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-display text-[11px] font-bold text-ink mb-0.5">Connect</h4>
+                    <p className="text-[9px] text-slate-500 font-medium leading-normal">Join a community of innovators, mentors and like-minded students.</p>
+                  </div>
+                </div>
+
+                {/* Card 04: Earn */}
+                <div className="absolute top-[22%] right-[13%] z-30 w-[210px] bg-white/80 backdrop-blur-md border border-slate-200/50 p-3 rounded-2xl shadow-lg hover:translate-y-[-2px] transition-all duration-300 flex items-start gap-2.5">
+                  <div className="p-1.5 rounded-lg bg-amber-100 text-amber-600 shrink-0 mt-0.5">
+                    <Briefcase size={14} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-display text-[11px] font-bold text-ink mb-0.5">Earn</h4>
+                    <p className="text-[9px] text-slate-500 font-medium leading-normal">Discover gigs, freelance opportunities and monetize your skills.</p>
+                  </div>
+                </div>
+
+                {/* Card 05: Grow */}
+                <div className="absolute top-[2%] right-[0%] z-20 w-[185px] bg-white/80 backdrop-blur-md border border-slate-200/50 p-3.5 rounded-2xl shadow-lg hover:translate-y-[-2px] transition-all duration-300">
+                  <div className="flex justify-between items-center mb-1.5">
+                    <span className="text-[10px] font-black text-brand-blue font-mono">05</span>
+                    <Rocket size={14} className="text-brand-blue" />
+                  </div>
+                  <h4 className="font-display text-[12px] font-bold text-ink mb-0.5">Grow</h4>
+                  <p className="text-[9.5px] text-slate-500 font-medium leading-relaxed">Advance your career and impact the world with technology.</p>
+                </div>
+
+                {/* Large composite Student Card */}
+                <div className="absolute bottom-[4%] right-[0%] w-[340px] h-[250px] rounded-3xl border border-slate-200/40 shadow-xl overflow-hidden bg-white z-10">
+                  {/* Gate screenshot background */}
+                  <div className="absolute inset-0 z-0">
+                    <Image
+                      src={kisiiGateBg}
+                      alt="Kisii University Campus Background"
+                      fill
+                      sizes="340px"
+                      className="object-cover object-[center_60%] blur-[1px] opacity-35"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/45 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent" />
+                  </div>
+
+                  {/* Students foreground overlay */}
+                  <div className="absolute inset-0 z-10 flex items-end justify-center">
+                    <Image
+                      src={heroImgNew}
+                      alt="Ajira Club Members"
+                      className="w-full h-auto object-contain max-h-[92%] hover:scale-[1.02] transition-transform duration-500"
+                      priority
+                    />
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Mobile Fallback: Standard image with white bg */}
+              <div className="block lg:hidden w-full max-w-md">
+                <Reveal delay={100} className="w-full">
+                  <div className="relative p-2 rounded-3xl bg-white/40 backdrop-blur-md border border-slate-200/40 shadow-2xl">
+                    <div className="absolute -top-6 -right-6 w-32 h-32 bg-brand-blue/10 rounded-full filter blur-xl pointer-events-none" />
+                    <Image
+                      src={heroImgNew}
+                      alt="Ajira Digital Club Kisii University"
+                      priority
+                      className="w-full h-auto max-h-[350px] object-contain rounded-2xl relative z-10"
+                    />
+                  </div>
+                </Reveal>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Floating Stats Bar Card */}
+          <div className="mt-10 bg-white border border-slate-100 rounded-[2rem] shadow-xl p-5 md:p-6 relative z-20">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 items-center">
+              {stats.map((s, idx) => {
+                const Icon = s.icon;
+                return (
+                  <div key={s.label} className={`flex items-center gap-4 ${idx > 0 ? "lg:border-l lg:border-slate-100 lg:pl-8" : ""} ${idx % 2 !== 0 ? "pl-2 sm:pl-4 lg:pl-8" : ""}`}>
+                    <div className={`w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 ${s.color}`}>
+                      <Icon size={18} className="stroke-[2.5]" />
+                    </div>
+                    <div>
+                      <div className="font-display text-xl sm:text-2xl font-extrabold text-ink leading-none">
+                        {s.value}
+                      </div>
+                      <div className="text-[10px] sm:text-xs text-slate-400 font-semibold mt-1 tracking-wide">{s.label}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Trusted Partners */}
+          <div className="mt-8 text-center relative z-20">
+            <span className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-slate-400 block mb-5">
+              Trusted Partners
+            </span>
+            <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+              {/* Partner 1: Ministry of ICT */}
+              <div className="flex items-center gap-3">
+                <Image src={logoMinistryICT} alt="Republic of Kenya Ministry of ICT" width={40} height={40} className="h-9 w-auto object-contain" />
+                <div className="flex flex-col text-left text-[9px] font-sans text-slate-600 font-bold uppercase tracking-wide leading-tight">
+                  <span className="text-[10px] font-extrabold text-slate-800">Republic of Kenya</span>
+                  <span className="text-[8px] font-medium text-slate-400 normal-case font-semibold">Ministry of ICT &</span>
+                  <span className="text-[8px] font-medium text-slate-400 normal-case font-semibold">The Digital Economy</span>
+                </div>
+              </div>
+
+              {/* Partner 2: KEPSA */}
+              <div className="flex items-center">
+                <Image src={logoKEPSA} alt="KEPSA" width={90} height={28} className="h-6 w-auto object-contain" />
+              </div>
+
+              {/* Partner 3: eMobilis */}
+              <div className="flex items-center">
+                <Image src={logoEmobilis} alt="eMobilis" width={90} height={28} className="h-6 w-auto object-contain" />
+              </div>
+
+              {/* Partner 4: Kisii University */}
+              <div className="flex items-center gap-2">
+                <Image src={ksuLogo} alt="Kisii University" width={28} height={28} className="h-8 w-auto object-contain" />
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-800 font-sans">Kisii University</span>
+              </div>
             </div>
           </div>
         </div>
@@ -379,24 +535,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── STATS SECTION ───────────────────────────────────── */}
-      <section className="bg-surface py-12 border-b border-border">
-        <div className="container-x">
-          <div className="grid grid-cols-2 md:grid-cols-4 border-l border-border">
-            {stats.map((s, idx) => (
-              <Reveal key={s.label} delay={idx * 30}>
-                <div className="border-b border-r border-border py-8 px-6 sm:py-10 sm:px-8 bg-white hover:bg-surface/30 transition-colors">
-                  <div className="font-display text-2xl sm:text-3.5xl font-black tracking-tight text-ink leading-none font-mono">
-                    {s.value}
-                  </div>
-                  <div className="text-xs font-bold text-foreground mt-2">{s.label}</div>
-                  <div className="text-[10px] text-muted-foreground mt-1 font-mono">{s.desc}</div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* ── ALUMNI IMPACT TESTIMONIALS ────────────────────── */}
       <section className="container-x py-16 sm:py-24">

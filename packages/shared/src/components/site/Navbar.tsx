@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
-import { Menu, X, LayoutDashboard, LogOut, RefreshCw } from "lucide-react";
+import { Menu, X, LayoutDashboard, LogOut, RefreshCw, ArrowRight } from "lucide-react";
 import { useRegister } from "./RegisterContext";
 import { usePortal } from "../../hooks/usePortalState";
 import Image from "next/image";
@@ -69,10 +69,10 @@ export function Navbar() {
         scrolled ? "bg-white border-b border-border shadow-sm" : "bg-white/95 border-b border-transparent"
       }`}
     >
-      <div className="container-x flex h-[80px] items-center justify-between gap-6">
+      <div className="container-x flex h-[100px] items-center justify-between gap-6">
         {/* Brand — Ajira Club KSU horizontal logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0 group" aria-label="Ajira Club Kisii University">
-          <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={280} height={56} className="h-14 w-auto object-contain" priority />
+          <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={400} height={80} className="h-20 w-auto object-contain" priority />
         </Link>
 
         {/* Desktop nav */}
@@ -141,9 +141,9 @@ export function Navbar() {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setOpen(true)}
-                className="hidden md:inline-flex items-center rounded-sm bg-brand-blue hover:bg-brand-blue-dark px-5 py-2 text-[13px] font-bold text-white transition-colors"
+                className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-brand-blue hover:bg-brand-blue-dark px-6 py-2.5 text-[13px] font-bold text-white transition-all transform hover:-translate-y-0.5 hover:shadow-md hover:shadow-brand-blue/15"
               >
-                Join the Club
+                Join the Club <ArrowRight size={13} className="stroke-[2.5]" />
               </button>
             </div>
           )}

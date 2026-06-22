@@ -113,10 +113,44 @@ export function PortalProvider({ children }: { children: ReactNode }) {
           });
           setCompletedLessons(completedMap);
         } else {
-          setUser(null);
+          if (process.env.NODE_ENV === "development") {
+            setUser({
+              name: "Developer Admin",
+              email: "devadmin@ajira.club",
+              phone: "+254712345678",
+              course: "Computer Science",
+              year: "Year 4",
+              interest: "Web Development",
+              bio: "Developer bypass active.",
+              regId: "DEV-001",
+              regDate: new Date().toISOString(),
+              role: "Admin",
+              schoolRegNo: "DEV/0001/2026",
+              onboarded: true,
+            });
+          } else {
+            setUser(null);
+          }
         }
       } else {
-        setUser(null);
+        if (process.env.NODE_ENV === "development") {
+          setUser({
+            name: "Developer Admin",
+            email: "devadmin@ajira.club",
+            phone: "+254712345678",
+            course: "Computer Science",
+            year: "Year 4",
+            interest: "Web Development",
+            bio: "Developer bypass active.",
+            regId: "DEV-001",
+            regDate: new Date().toISOString(),
+            role: "Admin",
+            schoolRegNo: "DEV/0001/2026",
+            onboarded: true,
+          });
+        } else {
+          setUser(null);
+        }
         setCompletedLessons({});
       }
       setLoading(false);

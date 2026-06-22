@@ -22,6 +22,16 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // Handle portal dev bypass and home redirection
+  if (process.env.NODE_ENV === "development") {
+    if (pathname === "/" || pathname === "/portal") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/portal/dashboard";
+      return NextResponse.redirect(url);
+    }
+    return NextResponse.next();
+  }
+
   // Handle portal home redirection
   if (pathname === "/" || pathname === "/portal") {
     const url = request.nextUrl.clone();
