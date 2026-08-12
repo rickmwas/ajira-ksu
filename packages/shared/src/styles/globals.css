@@ -50,15 +50,15 @@
 }
 
 :root {
-  --radius: 0.75rem; /* 12px default radius */
+  --radius: 0.5rem; /* 8px default radius for restrained geometry */
 
   /* Ajira Digital Chapter Branding */
   --brand-blue: #0056A6;
-  --brand-blue-dark: #004585;
+  --brand-blue-dark: #004280;
   --brand-gold: #F4B400;
   --brand-black: #0F172A;
   --ink: #0F172A;
-  --surface: #F8FAFC;
+  --surface: #FAFAFA;
   --surface-2: #F1F5F9;
 
   --background: #FFFFFF;
@@ -69,7 +69,7 @@
   --primary-foreground: #FFFFFF;
   --secondary: #F1F5F9;
   --secondary-foreground: #0F172A;
-  --muted: #F1F5F9;
+  --muted: #F8FAFC;
   --muted-foreground: #64748B;
   --accent: var(--brand-gold);
   --accent-foreground: #0F172A;
@@ -79,7 +79,7 @@
   --input: #E2E8F0;
   --ring: var(--brand-blue);
 
-  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.02);
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
   --shadow-overlay: 0 12px 30px rgba(15, 23, 42, 0.08);
 }
 

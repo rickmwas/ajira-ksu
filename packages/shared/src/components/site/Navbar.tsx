@@ -69,10 +69,10 @@ export function Navbar() {
         scrolled ? "bg-white border-b border-border shadow-sm" : "bg-white/95 border-b border-transparent"
       }`}
     >
-      <div className="container-x flex h-[100px] items-center justify-between gap-6">
+      <div className="container-x flex h-20 items-center justify-between gap-6">
         {/* Brand — Ajira Club KSU horizontal logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0 group" aria-label="Ajira Club Kisii University">
-          <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={400} height={80} className="h-20 w-auto object-contain" priority />
+          <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={320} height={64} className="h-14 sm:h-16 w-auto object-contain" priority />
         </Link>
 
         {/* Desktop nav */}
@@ -83,8 +83,8 @@ export function Navbar() {
               <Link
                 key={l.href}
                 href={l.href}
-                className={`relative px-3.5 py-2 text-[13px] font-semibold transition-colors rounded-sm hover:bg-surface ${
-                  isActive ? "text-brand-blue bg-surface-2" : "text-foreground/75 hover:text-brand-blue"
+                className={`relative px-3 py-2 text-[13px] font-semibold transition-colors rounded-sm hover:bg-surface ${
+                  isActive ? "text-brand-blue font-bold border-b-2 border-brand-blue" : "text-foreground/80 hover:text-brand-blue"
                 }`}
               >
                 {l.label}
@@ -141,9 +141,9 @@ export function Navbar() {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setOpen(true)}
-                className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-brand-blue hover:bg-brand-blue-dark px-6 py-2.5 text-[13px] font-bold text-white transition-all transform hover:-translate-y-0.5 hover:shadow-md hover:shadow-brand-blue/15"
+                className="hidden md:inline-flex items-center gap-2 bg-brand-black hover:bg-brand-black/90 px-5 py-2.5 text-xs font-bold text-white transition-all uppercase tracking-wider rounded-sm group"
               >
-                Join the Club <ArrowRight size={13} className="stroke-[2.5]" />
+                Join Ajira <ArrowRight size={13} className="text-brand-gold group-hover:translate-x-0.5 transition-transform" />
               </button>
             </div>
           )}

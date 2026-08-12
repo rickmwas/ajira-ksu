@@ -7,7 +7,7 @@
   - [x] Configure Tailwind CSS v4 variables
 
 - [x] **Phase 2: Public Website Rebuild**
-  - [x] Home page (`/`)
+  - [x] Home page (`/`) — Editorial Redesign (Asymmetric photo frame, institutional stats, 10-step content flow)
   - [x] About page (`/about`)
   - [x] Programs page (`/programs`)
   - [x] Events listing page (`/events`)
