@@ -8,6 +8,7 @@ import { useRegister } from "./RegisterContext";
 import { usePortal } from "../../hooks/usePortalState";
 import Image from "next/image";
 import ajiraClubLogo from "@ajira/shared/assets/ajiraLOGO.png";
+import { TopPartnerBar } from "./TopPartnerBar";
 
 export function Navbar() {
   const { setOpen } = useRegister();
@@ -56,6 +57,7 @@ export function Navbar() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/programs", label: "Programs" },
+    { href: "/leadership", label: "Leadership" },
     { href: "/events", label: "Events" },
     { href: "/blog", label: "Blog" },
     { href: "/gallery", label: "Gallery" },
@@ -69,7 +71,8 @@ export function Navbar() {
         scrolled ? "bg-white border-b border-border shadow-sm" : "bg-white/95 border-b border-transparent"
       }`}
     >
-      <div className="container-x flex h-20 items-center justify-between gap-6">
+      <TopPartnerBar />
+      <div className="container-x flex h-16 sm:h-18 items-center justify-between gap-6">
         {/* Brand — Ajira Club KSU horizontal logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0 group" aria-label="Ajira Club Kisii University">
           <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={320} height={64} className="h-14 sm:h-16 w-auto object-contain" priority />

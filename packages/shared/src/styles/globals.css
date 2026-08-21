@@ -36,9 +36,12 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
+  --color-ksu-maroon: var(--ksu-maroon);
+  --color-ajira-navy: var(--ajira-navy);
   --color-brand-blue: var(--brand-blue);
   --color-brand-blue-dark: var(--brand-blue-dark);
   --color-brand-gold: var(--brand-gold);
+  --color-cyan-glow: var(--cyan-glow);
   --color-brand-black: var(--brand-black);
   --color-ink: var(--ink);
   --color-surface: var(--surface);
@@ -52,10 +55,13 @@
 :root {
   --radius: 0.5rem; /* 8px default radius for restrained geometry */
 
-  /* Ajira Digital Chapter Branding */
+  /* Ajira Digital Chapter & Kisii University Branding */
+  --ksu-maroon: #7A0000;
+  --ajira-navy: #0B192C;
+  --cyan-glow: #00D2FF;
   --brand-blue: #0056A6;
   --brand-blue-dark: #004280;
-  --brand-gold: #F4B400;
+  --brand-gold: #FFB800;
   --brand-black: #0F172A;
   --ink: #0F172A;
   --surface: #FAFAFA;
@@ -109,18 +115,36 @@
 }
 
 /* Solid brand color utilities */
+@utility bg-ksu-maroon { background-color: var(--ksu-maroon); }
+@utility bg-ajira-navy { background-color: var(--ajira-navy); }
 @utility bg-brand-blue { background-color: var(--brand-blue); }
 @utility bg-brand-blue-dark { background-color: var(--brand-blue-dark); }
 @utility bg-brand-gold { background-color: var(--brand-gold); }
 @utility bg-brand-black { background-color: var(--brand-black); }
+@utility text-ksu-maroon { color: var(--ksu-maroon); }
+@utility text-ajira-navy { color: var(--ajira-navy); }
 @utility text-brand-blue { color: var(--brand-blue); }
 @utility text-brand-gold { color: var(--brand-gold); }
+@utility text-cyan-glow { color: var(--cyan-glow); }
 @utility text-brand-black { color: var(--brand-black); }
+@utility border-ksu-maroon { border-color: var(--ksu-maroon); }
 @utility border-brand-blue { border-color: var(--brand-blue); }
 @utility border-brand-gold { border-color: var(--brand-gold); }
 
 @utility shadow-card { box-shadow: var(--shadow-card); }
 @utility shadow-overlay { box-shadow: var(--shadow-overlay); }
+@utility glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+@utility glass-card-dark {
+  background: rgba(11, 25, 44, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
 
 /* Lift interactions */
 @utility lift {
