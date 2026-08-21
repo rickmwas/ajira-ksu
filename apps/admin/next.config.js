@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename);
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ["@ajira/shared"],
+  serverExternalPackages: ["@supabase/ssr", "@supabase/supabase-js"],
   outputFileTracingRoot: path.resolve(__dirname, "../../"),
   eslint: {
     ignoreDuringBuilds: true,
