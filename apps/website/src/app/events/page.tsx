@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, CalendarDays, MapPin, Clock, Users, Star, Award } from "lucide-react";
+import { ArrowRight, CalendarDays, MapPin, Clock, Users, Star, Award, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { Reveal } from "@ajira/shared/components/site/Reveal";
 import { useRegister } from "@ajira/shared/components/site/RegisterContext";
@@ -79,72 +79,85 @@ const past = [
   },
 ];
 
+import heroEventBg from "@ajira/shared/assets/hero_university_event.jpg";
+
 export default function Events() {
   const { setOpen } = useRegister();
 
   return (
     <>
       {/* ── PAGE HEADER ──────────────────────────────────── */}
-      <section className="bg-brand-black text-white pt-28 pb-16 sm:pt-32 sm:pb-20">
-        <div className="container-x">
+      <section className="relative bg-[#0B192C] text-white pt-24 pb-16 sm:pt-32 sm:pb-20 overflow-hidden">
+        {/* Quality background image overlay */}
+        <div className="absolute inset-0 opacity-25 pointer-events-none mix-blend-luminosity">
+          <Image
+            src={heroEventBg}
+            alt="University Auditorium Event Overlay"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover object-center"
+          />
+        </div>
+
+        <div className="container-x relative z-10">
           <Reveal>
-            <span className="overline text-brand-gold block mb-4 sm:mb-5 font-mono">University Schedule</span>
-            <h1 className="font-display text-[2rem] leading-[1.07] sm:text-5xl lg:text-6xl font-bold max-w-2xl">
-              Fostering peer digital skills.
+            <span className="overline text-amber-400 block mb-3 font-display">Campus Schedule</span>
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold max-w-2xl tracking-tight">
+              Workshops & Practical Labs.
             </h1>
-            <p className="mt-5 max-w-lg text-white/60 leading-relaxed text-[0.9375rem] sm:text-base">
-              Participate in weekly transcription labs, virtual assistant bootcamps, and government ICT certification
-              workshops.
+            <p className="mt-5 max-w-lg text-slate-300 leading-relaxed text-base sm:text-lg">
+              Participate in weekly transcription labs, virtual assistant bootcamps, and government ICT certification workshops.
             </p>
           </Reveal>
         </div>
       </section>
 
       {/* ── FEATURED FLAGSHIP EVENT ───────────────────────── */}
-      <section className="container-x py-14 sm:py-20">
+      <section className="container-x py-16 sm:py-24">
         <Reveal>
-          <span className="overline block mb-5 sm:mb-6 font-mono">Flagship Event</span>
+          <span className="overline block mb-4 font-display">Flagship Event</span>
         </Reveal>
-        <Reveal delay={80}>
-          <div className="border border-border overflow-hidden grid grid-cols-1 md:grid-cols-5 bg-white shadow-card">
+        <Reveal delay={40}>
+          <div className="border border-slate-200 rounded-xl overflow-hidden grid grid-cols-1 md:grid-cols-12 bg-white shadow-card">
             {/* Image */}
-            <div className="md:col-span-3 relative bg-brand-black min-h-[300px]">
+            <div className="md:col-span-7 relative bg-slate-900 min-h-[300px]">
               <Image
                 src={featImg}
                 alt="Ajira Digitization Sprint"
                 fill
                 sizes="(max-width: 768px) 100vw, 60vw"
-                className="w-full h-full object-cover opacity-80"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 text-white max-w-md">
                 <div className="flex items-center gap-2 mb-2">
-                  <Star size={14} className="text-brand-gold fill-brand-gold" />
-                  <span className="text-[10px] font-bold tracking-widest uppercase font-mono text-white/90">
-                    Main Campus Event
+                  <Star size={15} className="text-amber-400 fill-amber-400" />
+                  <span className="text-xs font-bold tracking-wider uppercase text-amber-300">
+                    Main Campus Flagship
                   </span>
                 </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold">KSU Ajira Certification Drive 2026</h3>
+                <h3 className="font-display text-2xl font-bold text-white">KSU Ajira Certification Drive 2026</h3>
               </div>
             </div>
+
             {/* Content */}
-            <div className="md:col-span-2 p-6 sm:p-8 md:p-10 flex flex-col bg-surface justify-between">
+            <div className="md:col-span-5 p-8 flex flex-col bg-slate-50 justify-between">
               <div>
-                <span className="inline-flex w-fit items-center rounded-sm bg-brand-blue/10 text-brand-blue px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.15em] mb-4 sm:mb-5 font-mono border border-brand-blue/15">
+                <span className="inline-flex w-fit items-center rounded-md bg-blue-50 text-brand-blue px-3 py-1 text-xs font-bold uppercase tracking-wider mb-4 border border-blue-100">
                   Registration Open
                 </span>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-sm text-slate-600 leading-relaxed">
                   Join the county's largest digital work registration event. Under the guidance of Ministry of ICT
-                  trainers, set up your national Ajira portal profiles, complete your training checks, and get official
-                  online work credentials.
+                  trainers, set up your national Ajira portal profiles and get official online work credentials.
                 </p>
-                <div className="mt-6 space-y-3 text-xs border-t border-border pt-5">
-                  <div className="flex items-center gap-2.5 text-muted-foreground">
-                    <CalendarDays size={13} className="text-brand-green shrink-0" />
+                <div className="mt-6 space-y-3 text-xs border-t border-slate-200 pt-5 text-slate-600 font-medium">
+                  <div className="flex items-center gap-2.5">
+                    <CalendarDays size={15} className="text-brand-blue shrink-0" />
                     October 17–19, 2026
                   </div>
-                  <div className="flex items-center gap-2.5 text-muted-foreground font-semibold text-foreground/80">
-                    <MapPin size={13} className="text-brand-blue shrink-0" />
+                  <div className="flex items-center gap-2.5 text-slate-900 font-bold">
+                    <MapPin size={15} className="text-brand-blue shrink-0" />
                     Senate Hall & ICT Lab 1
                   </div>
                 </div>
@@ -153,9 +166,10 @@ export default function Events() {
               <div className="mt-8">
                 <button
                   onClick={() => setOpen(true)}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-sm bg-brand-blue hover:bg-brand-blue-dark px-5 py-3.5 text-xs font-bold text-white transition-colors uppercase tracking-wider"
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-brand-blue hover:bg-brand-blue-dark px-6 py-3.5 text-xs font-bold text-white transition-all shadow-sm"
                 >
-                  Register Free Account <ArrowRight size={14} />
+                  <span>Register Free Account</span>
+                  <ArrowRight size={14} />
                 </button>
               </div>
             </div>
@@ -164,49 +178,48 @@ export default function Events() {
       </section>
 
       {/* ── UPCOMING EVENTS DIRECTORY ────────────────────── */}
-      <section className="container-x pb-14 sm:pb-20">
+      <section className="container-x pb-16 sm:pb-24">
         <Reveal>
-          <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold mb-6 sm:mb-8 text-ink">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold mb-8 text-slate-900">
             Upcoming Sessions
           </h2>
         </Reveal>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {upcoming.map((e, i) => (
-            <Reveal key={e.id} delay={i * 60}>
-              <div className="bg-white border border-border p-5 sm:p-6 flex flex-col h-full hover:border-brand-blue/25 transition-colors shadow-card justify-between">
+            <Reveal key={e.id} delay={i * 40}>
+              <div className="bg-white border border-slate-200 p-6 rounded-lg flex flex-col h-full hover:border-slate-300 transition-all shadow-card justify-between">
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-3">
-                    <span className="inline-flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-brand-green bg-brand-green/10 px-2 py-0.5 rounded-sm border border-brand-green/15 font-mono">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-blue bg-blue-50 px-2.5 py-1 rounded-md">
                       {e.category}
                     </span>
-                    <span className="flex items-center gap-1 text-[10px] text-muted-foreground font-mono shrink-0">
-                      <Clock size={11} /> {e.duration}
+                    <span className="flex items-center gap-1 text-xs text-slate-500 font-medium shrink-0">
+                      <Clock size={13} /> {e.duration}
                     </span>
                   </div>
-                  <div className="text-[10px] text-muted-foreground mb-2 font-mono">{e.date}</div>
-                  <h3 className="font-display text-base font-bold mb-2.5 leading-snug text-ink">{e.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed mb-4">{e.desc}</p>
+                  <div className="text-xs font-semibold text-slate-400 mb-2">{e.date}</div>
+                  <h3 className="font-display text-lg font-bold mb-2.5 text-slate-900 leading-snug">{e.title}</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">{e.desc}</p>
                 </div>
 
-                <div className="pt-4 border-t border-border mt-4">
+                <div className="pt-4 border-t border-slate-100 mt-4">
                   {e.speaker && (
-                    <div className="text-[10px] text-muted-foreground/85 mb-3 flex items-center gap-1.5">
-                      <Users size={11} className="text-brand-blue shrink-0" />
-                      <span>
-                        Led by: <span className="font-semibold text-foreground/80">{e.speaker}</span>
-                      </span>
+                    <div className="text-xs text-slate-500 mb-3 flex items-center gap-1.5">
+                      <Users size={13} className="text-brand-blue shrink-0" />
+                      <span>Led by: <strong className="text-slate-800">{e.speaker}</strong></span>
                     </div>
                   )}
-                  <div className="flex items-center justify-between gap-3 text-[10px]">
-                    <div className="flex items-center gap-1.5 text-muted-foreground min-w-0">
-                      <MapPin size={11} className="text-brand-blue shrink-0" />
+                  <div className="flex items-center justify-between gap-3 text-xs">
+                    <div className="flex items-center gap-1.5 text-slate-500 min-w-0 font-medium">
+                      <MapPin size={13} className="text-brand-blue shrink-0" />
                       <span className="truncate">{e.loc}</span>
                     </div>
                     <button
                       onClick={() => setOpen(true)}
-                      className="shrink-0 inline-flex items-center gap-1 font-bold text-brand-blue hover:gap-1.5 transition-all text-xs font-mono uppercase"
+                      className="shrink-0 inline-flex items-center gap-1 font-bold text-brand-blue hover:text-brand-blue-dark transition-colors"
                     >
-                      REGISTER <ArrowRight size={11} />
+                      Register <ChevronRight size={13} />
                     </button>
                   </div>
                 </div>
@@ -216,34 +229,34 @@ export default function Events() {
         </div>
       </section>
 
-      {/* ── PAST SESSIONS HISTORICAL LOG ─────────────────── */}
-      <section className="bg-surface border-t border-border">
-        <div className="container-x py-14 sm:py-20">
+      {/* ── PAST SESSIONS ARCHIVE ─────────────────── */}
+      <section className="bg-slate-50 border-t border-slate-200 py-16 sm:py-24">
+        <div className="container-x">
           <Reveal>
-            <span className="overline text-muted-foreground/80 block mb-2 font-mono">Archive</span>
-            <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-bold mb-6 sm:mb-8 text-ink">
-              Past Milestones
+            <span className="overline block mb-2 font-display">Archive</span>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold mb-8 text-slate-900">
+              Completed Milestones
             </h2>
           </Reveal>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {past.map((e, i) => (
-              <Reveal key={e.title} delay={i * 60}>
-                <div className="bg-white border border-border p-5 sm:p-6 flex flex-col h-full justify-between">
+              <Reveal key={e.title} delay={i * 40}>
+                <div className="bg-white border border-slate-200 p-6 rounded-lg flex flex-col h-full justify-between">
                   <div>
-                    <div className="text-[9px] font-mono uppercase tracking-[0.15em] text-muted-foreground/60 bg-muted px-2 py-0.5 rounded-sm w-fit mb-3">
-                      Completed
-                    </div>
-                    <div className="text-[10px] text-muted-foreground mb-1.5 font-mono">{e.date}</div>
-                    <h3 className="font-display text-base font-bold mb-2 leading-snug text-ink">{e.title}</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed mb-4">{e.desc}</p>
+                    <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md w-fit inline-block mb-3">
+                      Completed · {e.date}
+                    </span>
+                    <h3 className="font-display text-base font-bold mb-2 text-slate-900 leading-snug">{e.title}</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">{e.desc}</p>
                   </div>
 
-                  <div className="mt-4 pt-4 border-t border-border flex items-center justify-between text-[10px] text-muted-foreground">
-                    <div className="flex items-center gap-1 truncate min-w-0">
-                      <MapPin size={11} className="shrink-0" /> <span className="truncate">{e.loc}</span>
+                  <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+                    <div className="flex items-center gap-1.5 truncate">
+                      <MapPin size={13} className="shrink-0 text-slate-400" /> <span className="truncate">{e.loc}</span>
                     </div>
-                    <div className="flex items-center gap-1 font-semibold text-brand-green bg-brand-green/5 px-2 py-0.5 rounded-sm shrink-0 border border-brand-green/10 font-mono text-[9px]">
-                      <Award size={10} /> {e.stat.toUpperCase()}
+                    <div className="font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md text-xs shrink-0">
+                      {e.stat}
                     </div>
                   </div>
                 </div>
@@ -255,3 +268,4 @@ export default function Events() {
     </>
   );
 }
+

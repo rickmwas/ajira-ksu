@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { Check, Clock, BookOpen, Sparkles, ArrowRight } from "lucide-react";
 import { Reveal } from "@ajira/shared/components/site/Reveal";
 import { useRegister } from "@ajira/shared/components/site/RegisterContext";
 import { COURSES_DATA } from "@ajira/shared/constants/courses";
+import heroNetworkBg from "@ajira/shared/assets/hero_digital_network.jpg";
 
 export default function Programs() {
   const { setOpen } = useRegister();
@@ -11,68 +13,79 @@ export default function Programs() {
   return (
     <>
       {/* ── PAGE HEADER ───────────────────────────────────── */}
-      <section className="bg-brand-black text-white pt-28 pb-16 sm:pt-32 sm:pb-20">
-        <div className="container-x">
+      <section className="relative bg-[#0B192C] text-white pt-24 pb-16 sm:pt-32 sm:pb-20 overflow-hidden">
+        {/* Quality background image overlay */}
+        <div className="absolute inset-0 opacity-25 pointer-events-none mix-blend-luminosity">
+          <Image
+            src={heroNetworkBg}
+            alt="Digital Network Overlay"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover object-center"
+          />
+        </div>
+
+        <div className="container-x relative z-10">
           <Reveal>
-            <span className="overline text-brand-gold block mb-4 sm:mb-5 font-mono">Curriculum Syllabus</span>
-            <h1 className="font-display text-[2rem] leading-[1.07] sm:text-5xl lg:text-6xl font-bold max-w-2xl">
-              Professional training tracks.
+            <span className="overline text-amber-400 block mb-3 font-display">Curriculum & Syllabus</span>
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold max-w-2xl tracking-tight">
+              Practical training tracks.
             </h1>
-            <p className="mt-5 max-w-xl text-white/60 leading-relaxed text-[0.9375rem] sm:text-base">
-              Learn specialized competencies sourced by industry experts. Every track consists of peer-led coding/typing
-              labs, exercises, and official certification.
+            <p className="mt-5 max-w-xl text-slate-300 leading-relaxed text-base sm:text-lg">
+              Specialized digital competencies designed for market demand. Taught in weekly practical lab cohorts in ICT Lab 2 with official certification upon completion.
             </p>
           </Reveal>
         </div>
       </section>
 
       {/* ── PROGRAMS DETAIL LIST ───────────────────────────── */}
-      <section className="container-x py-14 sm:py-20">
-        <div className="space-y-12 sm:space-y-16">
+      <section className="container-x py-16 sm:py-24">
+        <div className="space-y-12">
           {COURSES_DATA.map((course, idx) => (
-            <Reveal key={course.id} delay={idx * 50}>
-              <div className="border border-border bg-white rounded-sm overflow-hidden shadow-card grid grid-cols-1 lg:grid-cols-12">
+            <Reveal key={course.id} delay={idx * 40}>
+              <div className="border border-slate-200 bg-white rounded-xl overflow-hidden shadow-card grid grid-cols-1 lg:grid-cols-12">
                 {/* Visual Label Column */}
-                <div className="lg:col-span-4 bg-surface p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-border">
+                <div className="lg:col-span-4 bg-slate-50 p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-200">
                   <div>
-                    <span className="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-brand-blue bg-brand-blue/10 border border-brand-blue/15 px-2.5 py-1 rounded-sm font-mono mb-4">
+                    <span className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-brand-blue bg-blue-50 px-3 py-1 rounded-md mb-4">
                       {course.badge} Track
                     </span>
-                    <h3 className="font-display text-lg sm:text-xl font-bold text-ink leading-snug mb-3">
+                    <h3 className="font-display text-xl font-bold text-slate-900 leading-snug mb-3">
                       {course.title}
                     </h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{course.description}</p>
+                    <p className="text-sm text-slate-600 leading-relaxed">{course.description}</p>
                   </div>
 
-                  <div className="mt-8 pt-6 border-t border-border/80 flex items-center justify-between text-xs text-muted-foreground font-mono">
+                  <div className="mt-8 pt-6 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-slate-600">
                     <span className="inline-flex items-center gap-1.5">
-                      <BookOpen size={13} className="text-brand-blue" /> {course.lessons.length} Modules
+                      <BookOpen size={15} className="text-brand-blue" /> {course.lessons.length} Modules
                     </span>
                     <span className="inline-flex items-center gap-1.5">
-                      <Clock size={13} className="text-brand-gold" /> Self-paced
+                      <Clock size={15} className="text-amber-600" /> Self-paced & Lab
                     </span>
                   </div>
                 </div>
 
                 {/* Modules Curriculum Column */}
-                <div className="lg:col-span-8 p-6 sm:p-8 flex flex-col justify-between">
+                <div className="lg:col-span-8 p-8 flex flex-col justify-between">
                   <div>
-                    <h4 className="text-[10px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/60 mb-5 font-mono">
-                      Track Modules & Competency Guidelines
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-6 font-display">
+                      Track Modules & Learning Outcomes
                     </h4>
 
-                    <div className="grid gap-5 sm:grid-cols-2">
+                    <div className="grid gap-6 sm:grid-cols-2">
                       {course.lessons.map((lesson, index) => (
-                        <div key={lesson.id} className="flex gap-3 items-start">
-                          <span className="mt-1 flex h-4 w-4 shrink-0 place-items-center rounded-full bg-brand-blue/10 text-brand-blue text-[9px] font-bold font-mono">
+                        <div key={lesson.id} className="flex gap-3.5 items-start">
+                          <span className="mt-0.5 flex h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-blue/10 text-brand-blue text-xs font-bold">
                             {index + 1}
                           </span>
                           <div>
-                            <h5 className="font-display font-semibold text-xs text-ink leading-tight">
+                            <h5 className="font-display font-bold text-sm text-slate-900 leading-snug">
                               {lesson.title}
                             </h5>
-                            <p className="text-[11px] text-muted-foreground mt-1 leading-snug">{lesson.summary}</p>
-                            <span className="text-[9px] text-muted-foreground/50 font-mono mt-1 block">
+                            <p className="text-xs text-slate-600 mt-1 leading-relaxed">{lesson.summary}</p>
+                            <span className="text-[11px] text-slate-400 mt-1 block font-medium">
                               Duration: {lesson.duration}
                             </span>
                           </div>
@@ -81,15 +94,16 @@ export default function Programs() {
                     </div>
                   </div>
 
-                  <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <span className="text-[10px] text-muted-foreground leading-relaxed max-w-sm">
-                      * Complete 100% of the lessons in this track to unlock the vetted Certificate of Completion.
+                  <div className="mt-10 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <span className="text-xs text-slate-500 max-w-md">
+                      * Complete 100% of the lessons in this track to unlock the verified Certificate of Completion.
                     </span>
                     <button
                       onClick={() => setOpen(true)}
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-sm bg-brand-blue hover:bg-brand-blue-dark px-6 py-3 text-xs font-bold text-white uppercase tracking-wider transition-colors shrink-0"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-md bg-brand-blue hover:bg-brand-blue-dark px-6 py-3 text-xs font-bold text-white transition-all shrink-0 shadow-sm"
                     >
-                      Enroll in Track <ArrowRight size={13} />
+                      <span>Enroll in Track</span>
+                      <ArrowRight size={14} />
                     </button>
                   </div>
                 </div>
@@ -101,3 +115,4 @@ export default function Programs() {
     </>
   );
 }
+

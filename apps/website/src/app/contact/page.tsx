@@ -24,63 +24,61 @@ export default function Contact() {
   return (
     <>
       {/* ── PAGE HEADER ───────────────────────────────────── */}
-      <section className="bg-brand-black text-white pt-28 pb-16 sm:pt-32 sm:pb-20">
+      <section className="bg-[#0B192C] text-white pt-24 pb-16 sm:pt-32 sm:pb-20">
         <div className="container-x">
           <Reveal>
-            <span className="overline text-brand-gold block mb-4 sm:mb-5 font-mono">Feedback Channels</span>
-            <h1 className="font-display text-[2rem] leading-[1.07] sm:text-5xl lg:text-6xl font-bold max-w-2xl">
+            <span className="overline text-amber-400 block mb-3 font-display">Contact & Location</span>
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold max-w-2xl tracking-tight">
               Get in touch with us.
             </h1>
-            <p className="mt-5 max-w-xl text-white/60 leading-relaxed text-[0.9375rem] sm:text-base">
-              Have questions about our peer learning cohorts, lab schedules, or certificate verifications? Send us a
-              message or visit our campus offices.
+            <p className="mt-5 max-w-xl text-slate-300 leading-relaxed text-base sm:text-lg">
+              Have questions about our training cohorts, lab schedules, or certificate verifications? Send us a message or visit our campus office.
             </p>
           </Reveal>
         </div>
       </section>
 
       {/* ── CONTACT GRID ──────────────────────────────────── */}
-      <section className="container-x py-14 sm:py-20 font-sans">
+      <section className="container-x py-16 sm:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Contact Details Column */}
-          <div className="lg:col-span-5 space-y-6 sm:space-y-8">
+          <div className="lg:col-span-5 space-y-6">
             <Reveal>
-              <h3 className="font-display text-lg sm:text-xl font-bold text-ink leading-tight">
-                Our Office Location
+              <h3 className="font-display text-2xl font-bold text-slate-900 leading-tight">
+                Our Campus Office
               </h3>
-              <p className="text-xs text-muted-foreground mt-2 leading-relaxed">
-                We are based at the main campus of Kisii University. Feel free to drop by during our training cohorts
-                or peer-led typing sprints.
+              <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                We are based at the main campus of Kisii University. Feel free to drop by during our weekly practical sessions in ICT Lab 2.
               </p>
             </Reveal>
 
             <Reveal delay={40}>
-              <div className="space-y-5 text-sm">
-                <div className="flex gap-4 p-4 border border-border bg-surface rounded-sm">
-                  <MapPin size={18} className="text-brand-blue shrink-0 mt-0.5" />
+              <div className="space-y-4 text-sm">
+                <div className="flex gap-4 p-5 border border-slate-200 bg-slate-50 rounded-xl">
+                  <MapPin size={20} className="text-brand-blue shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold text-ink text-xs uppercase tracking-wider font-mono">Location</h4>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider font-display">Location</h4>
+                    <p className="text-xs sm:text-sm text-slate-600 mt-1">
                       Kisii University, Main Campus
                       <br />
-                      ICT Lab 1 & 2 Access
+                      ICT Lab 2 Access
                     </p>
                   </div>
                 </div>
 
-                <div className="flex gap-4 p-4 border border-border bg-surface rounded-sm">
-                  <Mail size={18} className="text-brand-blue shrink-0 mt-0.5" />
+                <div className="flex gap-4 p-5 border border-slate-200 bg-slate-50 rounded-xl">
+                  <Mail size={20} className="text-brand-blue shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold text-ink text-xs uppercase tracking-wider font-mono">Email Address</h4>
-                    <p className="text-xs text-muted-foreground mt-1 break-all">ajira@kisiiuniversity.ac.ke</p>
+                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider font-display">Email Address</h4>
+                    <p className="text-xs sm:text-sm text-slate-600 mt-1 break-all">ajira@kisiiuniversity.ac.ke</p>
                   </div>
                 </div>
 
-                <div className="flex gap-4 p-4 border border-border bg-surface rounded-sm">
-                  <Phone size={18} className="text-brand-blue shrink-0 mt-0.5" />
+                <div className="flex gap-4 p-5 border border-slate-200 bg-slate-50 rounded-xl">
+                  <Phone size={20} className="text-brand-blue shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold text-ink text-xs uppercase tracking-wider font-mono">Phone Helpline</h4>
-                    <p className="text-xs text-muted-foreground mt-1">0741 145 911 (Mon - Fri, 8AM - 5PM)</p>
+                    <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider font-display">Phone Helpline</h4>
+                    <p className="text-xs sm:text-sm text-slate-600 mt-1">+254 741 145 911 (Mon - Fri, 8AM - 5PM)</p>
                   </div>
                 </div>
               </div>
@@ -88,49 +86,48 @@ export default function Contact() {
           </div>
 
           {/* Form Column */}
-          <div className="lg:col-span-7 bg-white border border-border p-6 sm:p-8 shadow-card rounded-sm">
+          <div className="lg:col-span-7 bg-white border border-slate-200 p-8 shadow-card rounded-xl">
             <Reveal delay={60}>
               {submitted ? (
                 <div className="py-12 text-center">
-                  <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-brand-green/10 text-brand-green mb-4">
+                  <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-emerald-100 text-emerald-600 mb-4">
                     <CheckCircle2 size={24} />
                   </div>
-                  <h4 className="font-display text-lg font-bold text-ink">Thank You for Reaching Out!</h4>
-                  <p className="mt-2 text-xs text-muted-foreground max-w-xs mx-auto leading-relaxed">
-                    Your query has been successfully transmitted to the club executive team. We will review your notes
-                    and get back to you shortly.
+                  <h4 className="font-display text-xl font-bold text-slate-900">Thank You for Reaching Out!</h4>
+                  <p className="mt-2 text-xs sm:text-sm text-slate-600 max-w-xs mx-auto leading-relaxed">
+                    Your inquiry has been transmitted to the executive council. We will get back to you shortly.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="mt-6 inline-flex rounded-sm bg-brand-blue hover:bg-brand-blue-dark px-6 py-2.5 text-xs font-bold text-white uppercase tracking-wider transition-colors"
+                    className="mt-6 inline-flex rounded-md bg-brand-blue hover:bg-brand-blue-dark px-6 py-2.5 text-xs font-bold text-white transition-all shadow-sm"
                   >
                     Send Another Message
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="grid gap-4.5">
-                  <h3 className="font-display text-base font-bold text-ink border-b border-border pb-3 mb-2">
+                <form onSubmit={handleSubmit} className="grid gap-5">
+                  <h3 className="font-display text-lg font-bold text-slate-900 border-b border-slate-100 pb-3">
                     Send a Message
                   </h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <label className="block">
-                      <span className="block mb-1.5 text-xs font-semibold text-foreground/75">Full Name</span>
+                      <span className="block mb-1.5 text-xs font-bold text-slate-700">Full Name</span>
                       <input required type="text" className={inputCls} placeholder="e.g. Onyango Michael" />
                     </label>
                     <label className="block">
-                      <span className="block mb-1.5 text-xs font-semibold text-foreground/75">Email Address</span>
+                      <span className="block mb-1.5 text-xs font-bold text-slate-700">Email Address</span>
                       <input required type="email" className={inputCls} placeholder="name@domain.com" />
                     </label>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <label className="block">
-                      <span className="block mb-1.5 text-xs font-semibold text-foreground/75">Registration Number</span>
+                      <span className="block mb-1.5 text-xs font-bold text-slate-700">Registration Number</span>
                       <input type="text" className={inputCls} placeholder="e.g. MPS/123/2023 (Optional)" />
                     </label>
                     <label className="block">
-                      <span className="block mb-1.5 text-xs font-semibold text-foreground/75">Subject Target</span>
+                      <span className="block mb-1.5 text-xs font-bold text-slate-700">Subject Category</span>
                       <select required className={inputCls} defaultValue="">
                         <option value="" disabled>
                           Select Subject
@@ -145,7 +142,7 @@ export default function Contact() {
                   </div>
 
                   <label className="block">
-                    <span className="block mb-1.5 text-xs font-semibold text-foreground/75">Message Content</span>
+                    <span className="block mb-1.5 text-xs font-bold text-slate-700">Message Content</span>
                     <textarea
                       required
                       rows={4}
@@ -157,13 +154,13 @@ export default function Contact() {
                   <button
                     disabled={loading}
                     type="submit"
-                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-sm bg-brand-blue hover:bg-brand-blue-dark disabled:bg-muted disabled:cursor-not-allowed px-6 py-3.5 text-xs font-bold text-white uppercase tracking-wider transition-colors mt-2"
+                    className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-brand-blue hover:bg-brand-blue-dark disabled:bg-slate-200 disabled:cursor-not-allowed px-7 py-3.5 text-xs font-bold text-white transition-all shadow-sm mt-2"
                   >
                     {loading ? (
                       "Transmitting..."
                     ) : (
                       <>
-                        Send Message <Send size={13} />
+                        <span>Send Message</span> <Send size={14} />
                       </>
                     )}
                   </button>
@@ -178,4 +175,5 @@ export default function Contact() {
 }
 
 const inputCls =
-  "w-full rounded-sm border border-input bg-surface px-3 py-2.5 text-xs outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/15 transition placeholder:text-muted-foreground/45";
+  "w-full rounded-md border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-xs text-slate-900 outline-none focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/15 transition placeholder:text-slate-400 font-sans";
+

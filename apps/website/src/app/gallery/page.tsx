@@ -1,19 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { X, ZoomIn, ChevronLeft, ChevronRight, Eye, Calendar, MapPin } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Eye, Calendar, MapPin } from "lucide-react";
 import { Reveal } from "@ajira/shared/components/site/Reveal";
+
+// Import local photos
+import g1 from "@ajira/shared/assets/g1.jpg";
+import g2 from "@ajira/shared/assets/g2.jpg";
+import g3 from "@ajira/shared/assets/g3.jpg";
+import g4 from "@ajira/shared/assets/g4.jpg";
+import g5 from "@ajira/shared/assets/g5.jpg";
+import g6 from "@ajira/shared/assets/g6.jpg";
 import Image from "next/image";
 
-const g1 = "https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&w=800&q=80";
-const g2 = "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80";
-const g3 = "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80";
-const g4 = "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80";
-const g5 = "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80";
-const g6 = "https://images.unsplash.com/photo-15222071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80";
-
 interface GalleryImage {
-  src: string;
+  src: any;
   caption: string;
   category: "Labs & Training" | "Hackathons" | "Milestones";
   date: string;
@@ -22,12 +23,12 @@ interface GalleryImage {
 }
 
 const images: GalleryImage[] = [
-  { src: g1, caption: "Web engineering cohort session", category: "Labs & Training", date: "Feb 09, 2026", loc: "ICT Lab 2" },
-  { src: g2, caption: "Collaborative project design sprint", category: "Hackathons", date: "Apr 18, 2026", loc: "Main Hall", tall: true },
-  { src: g3, caption: "Network security defense training", category: "Labs & Training", date: "Sep 21, 2026", loc: "ICT Lab 1" },
-  { src: g4, caption: "Upwork proposal and pitch clinic", category: "Labs & Training", date: "Aug 03, 2026", loc: "ICT Lab 2", tall: true },
-  { src: g5, caption: "Cohort 04 graduation ceremony", category: "Milestones", date: "Nov 24, 2025", loc: "Senate Hall" },
-  { src: g6, caption: "Technology leadership keynote", category: "Hackathons", date: "Oct 17, 2026", loc: "Main Hall" },
+  { src: g1, caption: "Swahili audio transcription lab session", category: "Labs & Training", date: "Feb 09, 2026", loc: "ICT Lab 2" },
+  { src: g2, caption: "Collaborative web development design sprint", category: "Hackathons", date: "Apr 18, 2026", loc: "Main Hall", tall: true },
+  { src: g3, caption: "Upwork profile bidding & contract review", category: "Labs & Training", date: "Sep 21, 2026", loc: "ICT Lab 1" },
+  { src: g4, caption: "AI data annotation and tagging workshop", category: "Labs & Training", date: "Aug 03, 2026", loc: "ICT Lab 2", tall: true },
+  { src: g5, caption: "Ministry certification cohort graduation", category: "Milestones", date: "Nov 24, 2025", loc: "Senate Hall" },
+  { src: g6, caption: "Student developer hackathon showcase", category: "Hackathons", date: "Oct 17, 2026", loc: "Main Hall" },
 ];
 
 export default function Gallery() {
@@ -60,35 +61,35 @@ export default function Gallery() {
   return (
     <>
       {/* ── PAGE HEADER ──────────────────────────────────── */}
-      <section className="bg-brand-black text-white pt-28 pb-16 sm:pt-32 sm:pb-20">
+      <section className="bg-[#0B192C] text-white pt-24 pb-16 sm:pt-32 sm:pb-20">
         <div className="container-x">
           <Reveal>
-            <span className="overline text-brand-gold block mb-4 sm:mb-5 font-mono">Chapter Log</span>
-            <h1 className="font-display text-[2rem] leading-[1.07] sm:text-5xl lg:text-6xl font-bold max-w-2xl">
-              Moments that define our code.
+            <span className="overline text-amber-400 block mb-3 font-display">Campus Log</span>
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold max-w-2xl tracking-tight">
+              Campus photo gallery.
             </h1>
-            <p className="mt-5 max-w-lg text-white/60 leading-relaxed text-[0.9375rem] sm:text-base">
-              A visual record of our peer-led labs, code hackathons, and cohort milestones at Kisii University.
+            <p className="mt-5 max-w-lg text-slate-300 leading-relaxed text-base sm:text-lg">
+              A visual record of our practical labs, hackathons, and student milestone events at Kisii University.
             </p>
           </Reveal>
         </div>
       </section>
 
       {/* ── INTERACTIVE FILTER TABS ───────────────────────── */}
-      <section className="border-b border-border bg-surface sticky top-[100px] z-20">
-        <div className="container-x py-4 sm:py-5 flex justify-center sm:justify-start">
-          <div className="flex flex-wrap gap-1.5 font-mono">
+      <section className="border-b border-slate-200 bg-slate-50 sticky top-[100px] z-20">
+        <div className="container-x py-4 flex justify-center sm:justify-start">
+          <div className="flex flex-wrap gap-2">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-4 py-1.5 text-xs font-semibold rounded-sm transition-all ${
+                className={`px-4 py-2 text-xs font-bold rounded-md transition-all ${
                   activeTab === tab
-                    ? "bg-brand-blue text-white"
-                    : "bg-white border border-border text-foreground/75 hover:bg-surface-2"
+                    ? "bg-brand-blue text-white shadow-sm"
+                    : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-100"
                 }`}
               >
-                {tab.toUpperCase()}
+                {tab}
               </button>
             ))}
           </div>
@@ -96,43 +97,33 @@ export default function Gallery() {
       </section>
 
       {/* ── PHOTO GRID ───────────────────────────────────── */}
-      <section className="container-x py-12 sm:py-16">
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">
+      <section className="container-x py-16 sm:py-24">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
           {filteredImages.map((img) => (
             <Reveal key={img.originalIndex} delay={img.originalIndex * 30}>
               <button
                 onClick={() => setLightbox(img.originalIndex)}
-                className="mb-4 block w-full overflow-hidden border border-border group relative bg-surface shadow-card rounded-sm"
+                className="mb-6 block w-full overflow-hidden border border-slate-200 rounded-lg group relative bg-white shadow-card text-left"
                 aria-label={`View photo: ${img.caption}`}
               >
-                <img
-                  src={img.src}
-                  alt={img.caption}
-                  className={`w-full ${
-                    img.tall ? "aspect-[4/5]" : "aspect-[4/3]"
-                  } object-cover transition-transform duration-500 group-hover:scale-[1.03]`}
-                />
+                <div className={`relative w-full ${img.tall ? "aspect-[4/5]" : "aspect-[4/3]"} overflow-hidden bg-slate-100`}>
+                  <Image
+                    src={img.src}
+                    alt={img.caption}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
 
-                {/* Visual hover metadata overlay */}
-                <div className="absolute inset-0 bg-brand-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-between p-5 text-left text-white">
-                  <div className="flex justify-between items-center text-[9px] font-mono tracking-widest uppercase">
-                    <span className="text-brand-gold font-bold">[{img.category}]</span>
-                    <span className="text-white/60 inline-flex items-center gap-1">
-                      <Eye size={10} /> ZOOM
-                    </span>
+                <div className="p-4 bg-white border-t border-slate-100">
+                  <div className="flex items-center justify-between text-xs text-slate-500 font-medium mb-1">
+                    <span className="text-brand-blue font-bold">{img.category}</span>
+                    <span>{img.date}</span>
                   </div>
-
-                  <div>
-                    <h3 className="font-display text-sm font-bold leading-snug">{img.caption}</h3>
-                    <div className="flex items-center gap-4 mt-3 border-t border-white/10 pt-2 text-[9px] font-mono text-white/50">
-                      <span className="inline-flex items-center gap-1">
-                        <Calendar size={9} /> {img.date}
-                      </span>
-                      <span className="inline-flex items-center gap-1">
-                        <MapPin size={9} /> {img.loc}
-                      </span>
-                    </div>
-                  </div>
+                  <h3 className="font-display text-sm font-bold text-slate-900 group-hover:text-brand-blue transition-colors">
+                    {img.caption}
+                  </h3>
                 </div>
               </button>
             </Reveal>
@@ -143,21 +134,21 @@ export default function Gallery() {
       {/* ── LIGHTBOX SYSTEM ────────────────────────────────── */}
       {lightbox !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-brand-black/98 animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 animate-fade-in p-4"
           onClick={() => setLightbox(null)}
         >
           {/* Close */}
           <button
-            className="absolute top-4 right-4 grid h-10 w-10 place-items-center border border-white/20 text-white hover:bg-white/10 transition-colors z-10"
+            className="absolute top-6 right-6 grid h-10 w-10 place-items-center rounded-full border border-slate-700 bg-slate-900 text-white hover:bg-slate-800 transition-colors z-10"
             onClick={() => setLightbox(null)}
             aria-label="Close"
           >
-            <X size={18} />
+            <X size={20} />
           </button>
 
           {/* Prev */}
           <button
-            className="absolute left-3 sm:left-5 grid h-10 w-10 place-items-center border border-white/20 text-white hover:bg-white/10 transition-colors z-10"
+            className="absolute left-4 grid h-10 w-10 place-items-center rounded-full border border-slate-700 bg-slate-900 text-white hover:bg-slate-800 transition-colors z-10"
             onClick={(e) => {
               e.stopPropagation();
               prev();
@@ -168,34 +159,34 @@ export default function Gallery() {
           </button>
 
           {/* Image Frame */}
-          <div className="px-16 animate-scale-in" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={images[lightbox].src}
-              alt={images[lightbox].caption}
-              className="max-h-[75vh] max-w-[85vw] object-contain border border-white/10 shadow-overlay"
-            />
-            <div className="mt-5 border-t border-white/10 pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-white">
+          <div className="max-w-4xl w-full mx-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg bg-slate-900 border border-slate-800">
+              <Image
+                src={images[lightbox].src}
+                alt={images[lightbox].caption}
+                fill
+                sizes="(max-width: 1200px) 100vw, 1000px"
+                className="object-contain"
+              />
+            </div>
+            <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-white">
               <div>
-                <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-brand-gold bg-brand-gold/10 px-2 py-0.5 rounded-sm">
+                <span className="text-xs font-bold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded-md">
                   {images[lightbox].category}
                 </span>
-                <h4 className="text-sm font-semibold mt-2">{images[lightbox].caption}</h4>
+                <h4 className="text-base font-bold text-white mt-2">{images[lightbox].caption}</h4>
               </div>
 
-              <div className="flex gap-4 text-[10px] font-mono text-white/50">
-                <span className="inline-flex items-center gap-1">
-                  <Calendar size={10} /> {images[lightbox].date}
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  <MapPin size={10} className="text-brand-gold" /> {images[lightbox].loc}
-                </span>
+              <div className="flex items-center gap-4 text-xs text-slate-400">
+                <span className="flex items-center gap-1.5 font-medium"><Calendar size={13} /> {images[lightbox].date}</span>
+                <span className="flex items-center gap-1.5 font-medium"><MapPin size={13} className="text-brand-blue" /> {images[lightbox].loc}</span>
               </div>
             </div>
           </div>
 
           {/* Next */}
           <button
-            className="absolute right-3 sm:right-5 grid h-10 w-10 place-items-center border border-white/20 text-white hover:bg-white/10 transition-colors z-10"
+            className="absolute right-4 grid h-10 w-10 place-items-center rounded-full border border-slate-700 bg-slate-900 text-white hover:bg-slate-800 transition-colors z-10"
             onClick={(e) => {
               e.stopPropagation();
               next();
@@ -204,25 +195,9 @@ export default function Gallery() {
           >
             <ChevronRight size={20} />
           </button>
-
-          {/* Dot navigation */}
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
-            {filteredImages.map((img) => (
-              <button
-                key={img.originalIndex}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightbox(img.originalIndex);
-                }}
-                className={`h-1.5 rounded-full transition-all ${
-                  img.originalIndex === lightbox ? "w-5 bg-brand-blue" : "w-1.5 bg-white/30 hover:bg-white/60"
-                }`}
-                aria-label={`Image ${img.originalIndex + 1}`}
-              />
-            ))}
-          </div>
         </div>
       )}
     </>
   );
 }
+

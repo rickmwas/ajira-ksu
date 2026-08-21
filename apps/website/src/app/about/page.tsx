@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Target, Eye, Quote } from "lucide-react";
+import Image from "next/image";
+import { Target, Eye, Quote, Award, BookOpen, Users } from "lucide-react";
 import { Reveal } from "@ajira/shared/components/site/Reveal";
+import heroNetworkBg from "@ajira/shared/assets/hero_digital_network.jpg";
 
 export const metadata: Metadata = {
   title: "About — Ajira Digital Club, Kisii University",
@@ -57,34 +59,46 @@ export default function About() {
   return (
     <>
       {/* ── PAGE HEADER ───────────────────────────────────── */}
-      <section className="bg-brand-black text-white pt-28 pb-16 sm:pt-32 sm:pb-20">
-        <div className="container-x">
+      <section className="relative bg-[#0B192C] text-white pt-24 pb-16 sm:pt-32 sm:pb-20 overflow-hidden">
+        {/* Subtle high-tech background image overlay */}
+        <div className="absolute inset-0 opacity-25 pointer-events-none mix-blend-luminosity">
+          <Image
+            src={heroNetworkBg}
+            alt="Digital Network Overlay"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover object-center"
+          />
+        </div>
+
+        <div className="container-x relative z-10">
           <Reveal>
-            <span className="overline text-brand-gold block mb-4 sm:mb-5 font-mono">Our History</span>
-            <h1 className="font-display text-[2rem] leading-[1.07] sm:text-5xl lg:text-6xl font-bold max-w-2xl">
-              Fostering online work readiness.
+            <span className="overline text-amber-400 block mb-3 font-display">Chapter History</span>
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold max-w-2xl tracking-tight">
+              Fostering online work readiness at Kisii University.
             </h1>
-            <p className="mt-5 max-w-xl text-white/60 leading-relaxed text-[0.9375rem] sm:text-base">
-              The Ajira Digital Club at Kisii University is a student-led mentorship community. We guide peers to set up
-              online profiles, pass transcription exams, and manage data tasks.
+            <p className="mt-5 max-w-xl text-slate-300 leading-relaxed text-base sm:text-lg">
+              The Ajira Digital Club at Kisii University is a student-led mentorship community guiding peers to acquire certified digital skills, build portfolios, and earn sustainable income.
             </p>
           </Reveal>
         </div>
       </section>
 
+
       {/* ── QUICK CAMPUS FACTS ──────────────────────────────── */}
-      <section className="border-b border-border bg-surface">
-        <div className="container-x py-8 sm:py-10">
+      <section className="border-b border-slate-200 bg-slate-50">
+        <div className="container-x py-8">
           <Reveal>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-xs font-mono">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
               {[
-                { label: "Founded", value: "2020, KSU Chapter Initiative" },
+                { label: "Founded", value: "2020, KSU Chapter Charter" },
                 { label: "Sponsorship", value: "Ministry of Information & ICT, Kenya" },
-                { label: "Main Labs", value: "ICT Lab 1 & 2, Kisii University" },
+                { label: "Main Campus Hub", value: "ICT Lab 2, Kisii University" },
               ].map((f) => (
-                <div key={f.label} className="border-l border-brand-blue/40 pl-4">
-                  <div className="font-semibold text-muted-foreground mb-1 uppercase tracking-wider">{f.label}</div>
-                  <div className="text-foreground font-bold">{f.value}</div>
+                <div key={f.label} className="border-l-2 border-brand-blue pl-4">
+                  <div className="font-bold text-slate-400 text-xs uppercase tracking-wider mb-1">{f.label}</div>
+                  <div className="text-slate-900 font-bold font-display">{f.value}</div>
                 </div>
               ))}
             </div>
@@ -93,39 +107,36 @@ export default function About() {
       </section>
 
       {/* ── PERSPECTIVES: PATRON'S ADDRESS ─────────────────── */}
-      <section className="container-x py-16 sm:py-24 grid grid-cols-1 lg:grid-cols-5 gap-10 items-center">
-        <div className="lg:col-span-2 space-y-4">
+      <section className="container-x py-16 sm:py-24 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="lg:col-span-5 space-y-4">
           <Reveal>
-            <span className="overline block mb-2 font-mono">Leadership Message</span>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold text-ink leading-tight">
+            <span className="overline block mb-2 font-display">Leadership Message</span>
+            <h2 className="font-display text-2xl sm:text-4xl font-bold text-slate-900 leading-tight">
               A Message From Our Patron.
             </h2>
-            <p className="text-xs text-muted-foreground leading-relaxed">
+            <p className="text-sm text-slate-600 leading-relaxed">
               Academic credentials get you in the door, but the gig economy relies on practical execution. We help
               students earn decent livelihoods through certified online skills training.
             </p>
           </Reveal>
         </div>
 
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-7">
           <Reveal delay={40}>
-            <div className="bg-brand-black text-white p-6 sm:p-8 rounded-sm relative border border-white/5 shadow-card">
-              <span className="absolute top-4 left-4 text-white/5">
-                <Quote size={60} className="stroke-[1]" />
-              </span>
-              <p className="text-xs sm:text-sm italic text-white/90 leading-relaxed relative z-10">
+            <div className="bg-[#0B192C] text-white p-8 sm:p-10 rounded-xl relative border border-slate-800 shadow-xl">
+              <p className="text-base sm:text-lg italic text-slate-200 leading-relaxed font-normal">
                 "Kenya's digital economy holds immense potential. By coordinating structured peer labs for
-                transcription, data entry, and virtual assistance, Kisii University students gain the direct practical
-                ability to earn online income."
+                transcription, data entry, and virtual assistance, Kisii University students gain direct practical
+                ability to compete for online work."
               </p>
-              <div className="mt-6 border-t border-white/10 pt-4 flex items-center gap-3 relative z-10">
-                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-blue text-white text-xs font-bold font-display">
+              <div className="mt-8 border-t border-slate-800 pt-5 flex items-center gap-4">
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-blue text-white text-xs font-bold font-display">
                   TA
                 </div>
                 <div>
-                  <div className="font-display font-bold text-xs">Dr. Teresa Abuya</div>
-                  <div className="text-[9px] uppercase tracking-wider text-brand-gold font-mono mt-0.5">
-                    Club Patron & Senior Lecturer, ICT Dept
+                  <div className="font-display font-bold text-sm text-white">Dr. Teresa Abuya</div>
+                  <div className="text-xs text-amber-400 font-medium">
+                    Club Patron & Senior Lecturer, ICT Department
                   </div>
                 </div>
               </div>
@@ -135,29 +146,28 @@ export default function About() {
       </section>
 
       {/* ── MILESTONE TIMELINE ────────────────────────────── */}
-      <section className="bg-surface border-t border-b border-border py-16 sm:py-24">
+      <section className="bg-slate-50 border-t border-b border-slate-200 py-16 sm:py-24">
         <div className="container-x">
           <Reveal>
             <div className="text-center max-w-md mx-auto mb-16">
-              <span className="overline block mb-3 font-mono">Milestones</span>
-              <h2 className="font-display text-2xl sm:text-3xl font-bold text-ink">Our Growth Legacy</h2>
-              <p className="text-xs text-muted-foreground mt-2">
+              <span className="overline block mb-2 font-display">Milestones</span>
+              <h2 className="font-display text-2xl sm:text-4xl font-bold text-slate-900">Our Growth Legacy</h2>
+              <p className="text-sm text-slate-600 mt-2">
                 A timeline of how our club expanded online work competencies on campus.
               </p>
             </div>
           </Reveal>
 
-          <div className="relative max-w-3xl mx-auto border-l border-border pl-6 sm:pl-8 space-y-10">
+          <div className="relative max-w-3xl mx-auto border-l-2 border-slate-200 pl-6 sm:pl-8 space-y-10">
             {milestones.map((m, idx) => (
-              <Reveal key={m.year} delay={idx * 50}>
+              <Reveal key={m.year} delay={idx * 40}>
                 <div className="relative">
-                  {/* Timeline dot */}
-                  <span className="absolute -left-[31px] sm:-left-[39px] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-brand-blue" />
+                  <span className="absolute -left-[31px] sm:-left-[39px] top-1.5 h-4 w-4 rounded-full border-2 border-white bg-brand-blue shadow-sm" />
 
-                  <div className="bg-white border border-border p-5 rounded-sm shadow-card hover:border-brand-blue/15 transition-colors">
-                    <span className="font-mono text-xs font-bold text-brand-blue">{m.year}</span>
-                    <h3 className="font-display font-bold text-sm text-ink mt-0.5">{m.title}</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed mt-1.5">{m.desc}</p>
+                  <div className="bg-white border border-slate-200 p-6 rounded-lg shadow-card hover:border-slate-300 transition-colors">
+                    <span className="text-xs font-bold text-brand-blue bg-blue-50 px-2.5 py-1 rounded-md">{m.year}</span>
+                    <h3 className="font-display font-bold text-base text-slate-900 mt-3">{m.title}</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2">{m.desc}</p>
                   </div>
                 </div>
               </Reveal>
@@ -169,32 +179,33 @@ export default function About() {
       {/* ── MISSION & VISION ──────────────────────────────── */}
       <section className="container-x py-16 sm:py-24">
         <Reveal>
-          <span className="overline block mb-5 font-mono">Core Values</span>
+          <div className="max-w-xl mb-12">
+            <span className="overline block mb-2 font-display">Core Pillars</span>
+            <h2 className="font-display text-2xl sm:text-4xl font-bold text-slate-900">Mission & Vision</h2>
+          </div>
         </Reveal>
-        <div className="grid gap-px bg-border border border-border grid-cols-1 md:grid-cols-2">
+        
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
           {[
             {
               I: Target,
               t: "Our Mission",
-              d: "To foster digital work inclusion by equipping Kisii University students with certified online competencies, enabling them to find gig contracts and drive microtasks successfully.",
+              d: "To foster digital work inclusion by equipping Kisii University students with certified online competencies, enabling them to secure gig contracts and complete tasks successfully.",
             },
             {
               I: Eye,
               t: "Our Vision",
-              d: "To operate as a leading campus freelancing hub, providing vetted data entry, audio translation, content writing, and web layout support to local and global industries.",
+              d: "To operate as a leading campus freelancing hub, providing vetted data entry, audio translation, content writing, and web design support to local and global clients.",
             },
           ].map((b) => (
             <Reveal key={b.t} className="h-full">
-              <div className="bg-white p-8 sm:p-10 h-full hover:bg-surface transition-colors flex flex-col justify-between">
+              <div className="bg-slate-50 border border-slate-200 p-8 sm:p-10 rounded-xl h-full flex flex-col justify-between hover:border-slate-300 transition-colors">
                 <div>
-                  <div className="grid h-10 w-10 place-items-center bg-brand-blue text-white mb-6 rounded-sm">
-                    <b.I size={16} />
+                  <div className="w-10 h-10 rounded-md bg-brand-blue text-white flex items-center justify-center mb-6 shadow-sm">
+                    <b.I size={20} />
                   </div>
-                  <h3 className="font-display text-lg sm:text-xl font-bold mb-3 text-ink">{b.t}</h3>
-                  <p className="text-muted-foreground leading-relaxed text-xs">{b.d}</p>
-                </div>
-                <div className="mt-6 border-t border-border pt-4 text-[9px] font-mono text-muted-foreground uppercase">
-                  AJIRA DIGITAL CLUB COHORT CORE
+                  <h3 className="font-display text-xl font-bold mb-3 text-slate-900">{b.t}</h3>
+                  <p className="text-slate-600 leading-relaxed text-sm">{b.d}</p>
                 </div>
               </div>
             </Reveal>
@@ -203,38 +214,35 @@ export default function About() {
       </section>
 
       {/* ── EXECUTIVE COUNCIL DIRECTORY ────────────────────── */}
-      <section className="bg-surface border-t border-border">
-        <div className="container-x py-16 sm:py-24">
+      <section className="bg-slate-50 border-t border-slate-200 py-16 sm:py-24">
+        <div className="container-x">
           <Reveal>
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-12">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
               <div>
-                <span className="overline block mb-3 font-mono">Executive Council</span>
-                <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-ink">
-                  Advisory & Student Board.
+                <span className="overline block mb-2 font-display">Executive Council</span>
+                <h2 className="font-display text-2xl sm:text-4xl font-bold text-slate-900">
+                  Student Leadership Council.
                 </h2>
               </div>
-              <p className="text-[10px] font-mono text-muted-foreground sm:max-w-[180px] sm:text-right uppercase tracking-wider">
-                Elected chapter leaders accountable to the student cohort.
-              </p>
             </div>
           </Reveal>
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((m, i) => (
               <Reveal key={m.name} delay={i * 30}>
-                <div className="bg-white border border-border p-4.5 flex items-center gap-3.5 hover:border-brand-blue/25 hover:shadow-sm transition-all rounded-sm relative group">
-                  <div className="grid h-10 w-10 shrink-0 place-items-center bg-brand-black text-white text-xs font-bold font-display">
+                <div className="bg-white border border-slate-200 p-5 flex items-center gap-4 hover:border-slate-300 hover:shadow-md transition-all rounded-lg">
+                  <div className="grid h-11 w-11 shrink-0 place-items-center bg-[#0B192C] text-white text-xs font-bold font-display rounded-md">
                     {initials(m.name)}
                   </div>
                   <div className="min-w-0">
-                    <div className="font-display font-bold text-xs leading-snug group-hover:text-brand-blue transition-colors">
+                    <div className="font-display font-bold text-sm text-slate-900 truncate">
                       {m.name}
                     </div>
-                    <div className="text-[9px] text-muted-foreground mt-0.5 font-mono uppercase tracking-wider truncate">
+                    <div className="text-xs text-brand-blue font-semibold mt-0.5 truncate">
                       {m.role}
                     </div>
-                    <div className="text-[8px] text-brand-green/80 mt-0.5 font-semibold font-mono tracking-wider truncate">
-                      {m.focus.toUpperCase()}
+                    <div className="text-[11px] text-slate-500 mt-0.5 truncate">
+                      {m.focus}
                     </div>
                   </div>
                 </div>
@@ -246,3 +254,4 @@ export default function About() {
     </>
   );
 }
+

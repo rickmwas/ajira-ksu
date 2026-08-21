@@ -84,21 +84,14 @@ export default function Leadership() {
   return (
     <>
       {/* ── PAGE HEADER ───────────────────────────────────── */}
-      <section className="bg-[#0B192C] text-white pt-24 pb-16 sm:pt-28 sm:pb-20 border-b border-white/10 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
-
-        <div className="container-x relative z-10">
+      <section className="bg-[#0B192C] text-white pt-24 pb-16 sm:pt-32 sm:pb-20">
+        <div className="container-x">
           <Reveal>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 backdrop-blur-md mb-5">
-              <span className="w-2 h-2 rounded-full bg-[#FFB800]" />
-              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#FFB800]">
-                EXECUTIVE COUNCIL · KISII UNIVERSITY
-              </span>
-            </div>
-            <h1 className="font-display text-[2.25rem] leading-[1.08] sm:text-5xl lg:text-6xl font-extrabold max-w-3xl">
+            <span className="overline text-amber-400 block mb-3 font-display">Executive Council</span>
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold max-w-3xl tracking-tight">
               Meet our chapter leaders.
             </h1>
-            <p className="mt-5 max-w-2xl text-slate-300 leading-relaxed text-sm sm:text-base font-normal">
+            <p className="mt-5 max-w-2xl text-slate-300 leading-relaxed text-base sm:text-lg">
               Elected student executives, certified trainers, and ICT department patrons dedicated to driving digital skills acquisition and online work opportunities at Kisii University.
             </p>
           </Reveal>
@@ -106,21 +99,21 @@ export default function Leadership() {
       </section>
 
       {/* ── CLUB PATRON SECTION ───────────────────────────── */}
-      <section className="bg-[#FAFAFA] border-b border-border py-14 sm:py-20">
+      <section className="bg-slate-50 border-b border-slate-200 py-16 sm:py-20">
         <div className="container-x">
           <Reveal>
-            <div className="bg-white border border-slate-200 p-8 rounded-sm shadow-card max-w-4xl border-l-4 border-l-[#7A0000] flex flex-col md:flex-row items-start md:items-center gap-6">
-              <div className="grid h-16 w-16 shrink-0 place-items-center rounded-sm bg-[#0B192C] text-[#FFB800] text-xl font-bold font-display shadow-md">
+            <div className="bg-white border border-slate-200 p-8 rounded-xl shadow-card max-w-4xl border-l-4 border-l-[#7A0000] flex flex-col md:flex-row items-start md:items-center gap-6">
+              <div className="grid h-16 w-16 shrink-0 place-items-center rounded-lg bg-[#0B192C] text-amber-400 text-xl font-bold font-display shadow-md">
                 {initials(patron.name)}
               </div>
 
               <div>
-                <span className="inline-block text-[10px] font-mono font-bold uppercase tracking-wider text-[#7A0000] bg-[#7A0000]/10 px-2.5 py-0.5 rounded-sm mb-1.5">
+                <span className="inline-block text-xs font-bold uppercase tracking-wider text-ksu-maroon bg-rose-50 px-3 py-1 rounded-md mb-2">
                   {patron.role}
                 </span>
-                <h2 className="font-display text-2xl font-bold text-ink mb-1">{patron.name}</h2>
-                <div className="text-xs text-slate-500 font-mono font-semibold mb-3 flex items-center gap-1.5">
-                  <Building2 size={13} className="text-[#0056A6]" /> {patron.department}
+                <h2 className="font-display text-2xl font-bold text-slate-900 mb-1">{patron.name}</h2>
+                <div className="text-xs text-slate-500 font-medium mb-3 flex items-center gap-1.5">
+                  <Building2 size={14} className="text-brand-blue" /> {patron.department}
                 </div>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl">
                   {patron.bio}
@@ -132,16 +125,14 @@ export default function Leadership() {
       </section>
 
       {/* ── EXECUTIVE COUNCIL GRID ────────────────────────── */}
-      <section className="container-x py-16 sm:py-24 font-sans">
+      <section className="container-x py-16 sm:py-24">
         <Reveal>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
             <div>
-              <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#0056A6] block mb-2">
-                PEER LEADERSHIP
-              </span>
-              <h2 className="font-display text-3xl font-extrabold text-ink">Elected Executive Council</h2>
+              <span className="overline block mb-2 font-display">Peer Leadership</span>
+              <h2 className="font-display text-2xl sm:text-4xl font-bold text-slate-900">Elected Executive Council</h2>
             </div>
-            <p className="text-xs font-mono text-slate-500 sm:max-w-[240px] sm:text-right uppercase tracking-wider">
+            <p className="text-xs text-slate-500 font-medium">
               Student leaders accountable to the Kisii University cohort.
             </p>
           </div>
@@ -150,48 +141,48 @@ export default function Leadership() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {executiveCouncil.map((m, i) => (
             <Reveal key={m.name} delay={i * 40}>
-              <div className="bg-white border border-slate-200 p-6 flex flex-col justify-between hover:border-[#0056A6]/40 hover:shadow-lg transition-all rounded-sm h-full group">
+              <div className="bg-white border border-slate-200 p-7 flex flex-col justify-between hover:border-slate-300 hover:shadow-lg transition-all rounded-xl h-full group">
                 <div>
                   <div className="flex items-start justify-between gap-3 mb-4">
-                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-sm bg-[#0B192C] text-[#FFB800] text-sm font-bold font-display shadow-sm">
+                    <div className="grid h-12 w-12 shrink-0 place-items-center rounded-md bg-[#0B192C] text-amber-400 text-sm font-bold font-display shadow-sm">
                       {initials(m.name)}
                     </div>
-                    <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-[#0056A6] bg-[#0056A6]/10 px-2 py-0.5 rounded-sm">
+                    <span className="text-xs font-bold text-brand-blue bg-blue-50 px-2.5 py-1 rounded-md">
                       {m.focus}
                     </span>
                   </div>
 
-                  <h3 className="font-display font-bold text-base leading-snug group-hover:text-[#0056A6] transition-colors mb-1">
+                  <h3 className="font-display font-bold text-lg leading-snug group-hover:text-brand-blue transition-colors mb-1 text-slate-900">
                     {m.name}
                   </h3>
 
-                  <div className="text-[10px] text-[#7A0000] font-mono uppercase tracking-wider font-bold mb-2">
+                  <div className="text-xs text-ksu-maroon font-bold mb-2">
                     {m.role}
                   </div>
 
-                  <div className="text-xs text-slate-500 font-mono mb-4 flex items-center gap-1">
-                    <GraduationCap size={13} className="text-slate-400" /> {m.department}
+                  <div className="text-xs text-slate-500 mb-4 flex items-center gap-1.5 font-medium">
+                    <GraduationCap size={14} className="text-slate-400" /> {m.department}
                   </div>
 
-                  <p className="text-xs text-slate-600 leading-relaxed font-normal mb-6">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mb-6">
                     {m.bio}
                   </p>
                 </div>
 
                 <div className="pt-4 border-t border-slate-100 flex items-center gap-3 text-slate-400">
                   {m.linkedin && (
-                    <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-[#0056A6] transition-colors" aria-label="LinkedIn Profile">
-                      <Linkedin size={15} />
+                    <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue transition-colors" aria-label="LinkedIn Profile">
+                      <Linkedin size={16} />
                     </a>
                   )}
                   {m.twitter && (
-                    <a href={m.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-[#0056A6] transition-colors" aria-label="Twitter/X Profile">
-                      <Twitter size={15} />
+                    <a href={m.twitter} target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue transition-colors" aria-label="Twitter/X Profile">
+                      <Twitter size={16} />
                     </a>
                   )}
                   {m.github && (
-                    <a href={m.github} target="_blank" rel="noopener noreferrer" className="hover:text-[#0056A6] transition-colors" aria-label="GitHub Profile">
-                      <Github size={15} />
+                    <a href={m.github} target="_blank" rel="noopener noreferrer" className="hover:text-brand-blue transition-colors" aria-label="GitHub Profile">
+                      <Github size={16} />
                     </a>
                   )}
                 </div>
@@ -203,3 +194,4 @@ export default function Leadership() {
     </>
   );
 }
+

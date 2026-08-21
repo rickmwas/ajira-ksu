@@ -8,10 +8,10 @@ import ksuLogo from "../../assets/ksu-logo.png";
 
 export function TopPartnerBar() {
   return (
-    <div className="bg-[#0B192C] text-white border-b border-white/10 py-1.5 text-[11px] font-sans">
-      <div className="container-x flex flex-col sm:flex-row items-center justify-between gap-2.5">
-        {/* Left Side: National & Donor Co-Branding Badges */}
-        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-[10px] font-mono uppercase tracking-wider text-slate-300">
+    <div className="bg-[#0B192C] text-white border-b border-white/10 py-2 text-[11px] font-sans">
+      <div className="container-x flex flex-col sm:flex-row items-center justify-between gap-2">
+        {/* Left Side: National & Donor Co-Branding */}
+        <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-slate-300 font-medium">
           <div className="flex items-center gap-2">
             <Image
               src={logoMinistryICT}
@@ -20,8 +20,8 @@ export function TopPartnerBar() {
               height={20}
               className="h-4 w-auto object-contain brightness-0 invert opacity-90"
             />
-            <span className="font-bold text-white">REPUBLIC OF KENYA</span>
-            <span className="hidden md:inline text-slate-400">· MINISTRY OF ICT</span>
+            <span className="font-semibold text-white">Ministry of ICT</span>
+            <span className="hidden md:inline text-slate-400">· Ajira Digital Program</span>
           </div>
 
           <span className="hidden sm:inline text-slate-600">|</span>
@@ -34,7 +34,7 @@ export function TopPartnerBar() {
               height={18}
               className="h-4 w-auto object-contain opacity-90"
             />
-            <span className="font-semibold text-slate-200">MASTERCARD FOUNDATION</span>
+            <span className="text-slate-300">Mastercard Foundation</span>
           </div>
 
           <span className="hidden md:inline text-slate-600">|</span>
@@ -47,7 +47,7 @@ export function TopPartnerBar() {
               height={18}
               className="h-3.5 w-auto object-contain brightness-0 invert opacity-90"
             />
-            <span className="font-semibold text-slate-300">EMOBILIS</span>
+            <span className="text-slate-300">eMobilis</span>
           </div>
         </div>
 
@@ -60,8 +60,8 @@ export function TopPartnerBar() {
             height={18}
             className="h-4 w-auto object-contain"
           />
-          <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#FFB800]">
-            KISII UNIVERSITY CHAPTER
+          <span className="font-semibold text-amber-400 text-[11px]">
+            Kisii University Chapter
           </span>
         </div>
       </div>

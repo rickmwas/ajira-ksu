@@ -15,9 +15,7 @@ import {
   LogOut,
   ChevronLeft,
   ChevronRight,
-  Menu,
 } from "lucide-react";
-import { useState } from "react";
 import Image from "next/image";
 import ajiraClubLogo from "@ajira/shared/assets/ajiraLOGO.png";
 import ajiraClubMark from "@ajira/shared/assets/ajira-club-logo-mark.svg";
@@ -62,44 +60,44 @@ export function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
 
   return (
     <aside
-      className={`fixed top-0 bottom-0 left-0 z-30 flex flex-col justify-between border-r border-border bg-white transition-all duration-300 font-sans ${
+      className={`fixed top-0 bottom-0 left-0 z-30 flex flex-col justify-between border-r border-slate-200 bg-white transition-all duration-300 font-sans ${
         collapsed ? "w-[72px]" : "w-[240px]"
       }`}
     >
       {/* Header Logotype block */}
       <div>
-        <div className="flex h-[100px] items-center justify-between px-4 border-b border-border">
+        <div className="flex h-[90px] items-center justify-between px-4 border-b border-slate-200">
           {!collapsed && (
             <Link href="/" className="flex items-center gap-1.5 group shrink-0">
-              <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={250} height={50} className="h-[50px] w-auto object-contain" />
+              <Image src={ajiraClubLogo} alt="Ajira Club Kisii University" width={220} height={44} className="h-[44px] w-auto object-contain" />
             </Link>
           )}
           {collapsed && (
             <div className="mx-auto text-center shrink-0">
-              <Image src={ajiraClubMark} alt="Ajira Club Mark" width={36} height={36} className="h-9 w-auto" />
+              <Image src={ajiraClubMark} alt="Ajira Club Mark" width={32} height={32} className="h-8 w-auto" />
             </div>
           )}
           <button
             onClick={() => setCollapsed(!collapsed)}
-            className="hidden md:grid h-7 w-7 place-items-center rounded-sm border border-border bg-surface text-muted-foreground hover:bg-surface-2 transition-colors shrink-0"
+            className="hidden md:grid h-7 w-7 place-items-center rounded-md border border-slate-200 bg-slate-50 text-slate-500 hover:bg-slate-100 transition-colors shrink-0"
             aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
           >
-            {collapsed ? <ChevronRight size={13} /> : <ChevronLeft size={13} />}
+            {collapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
           </button>
         </div>
 
         {/* User Card snapshot */}
-        <div className={`p-4 border-b border-border bg-surface/50 ${collapsed ? "text-center" : ""}`}>
+        <div className={`p-4 border-b border-slate-200 bg-slate-50/70 ${collapsed ? "text-center" : ""}`}>
           <div className={`flex items-center ${collapsed ? "justify-center" : "gap-3"}`}>
-            <div className="grid h-9 w-9 shrink-0 place-items-center rounded-sm bg-brand-black text-white text-xs font-bold font-display">
+            <div className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#0B192C] text-amber-400 text-xs font-bold font-display shadow-sm">
               {getInitials(user.name)}
             </div>
             {!collapsed && (
               <div className="min-w-0">
-                <div className="font-display font-bold text-xs text-ink truncate leading-tight">{user.name}</div>
-                <div className="text-[9px] font-mono text-muted-foreground truncate mt-0.5">{user.regId}</div>
-                <span className="inline-block text-[8px] font-mono font-bold uppercase tracking-wider text-brand-blue mt-1">
-                  [{user.role || "Member"}]
+                <div className="font-display font-bold text-xs text-slate-900 truncate leading-tight">{user.name}</div>
+                <div className="text-[11px] text-slate-500 truncate mt-0.5 font-medium">{user.regId}</div>
+                <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-brand-blue bg-blue-50 px-2 py-0.5 rounded mt-1">
+                  {user.role || "Member"}
                 </span>
               </div>
             )}
@@ -117,10 +115,10 @@ export function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
                 key={item.href}
                 href={item.href}
                 title={collapsed ? item.label : undefined}
-                className={`flex items-center gap-3 rounded-sm px-3 py-2.5 text-xs transition-all ${
+                className={`flex items-center gap-3 rounded-md px-3 py-2.5 text-xs font-semibold transition-all ${
                   isActive
-                    ? "bg-brand-blue/5 border border-brand-blue/15 font-semibold text-brand-blue"
-                    : "border border-transparent hover:bg-surface text-foreground/75 hover:text-brand-blue"
+                    ? "bg-brand-blue text-white shadow-sm"
+                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                 }`}
               >
                 <Icon size={16} className="shrink-0" />
@@ -131,22 +129,22 @@ export function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
 
           {/* Admin routes section */}
           {isAdmin && (
-            <div className="pt-4 mt-4 border-t border-border">
+            <div className="pt-4 mt-4 border-t border-slate-200">
               {!collapsed && (
-                <div className="px-3 mb-2 text-[9px] font-mono font-bold uppercase tracking-wider text-muted-foreground/60">
+                <div className="px-3 mb-2 text-[10px] font-bold uppercase tracking-wider text-slate-400 font-display">
                   Leadership Panels
                 </div>
               )}
               <Link
                 href="/admin/users"
                 title={collapsed ? "Admin Panels" : undefined}
-                className={`flex items-center gap-3 rounded-sm px-3 py-2.5 text-xs transition-all ${
+                className={`flex items-center gap-3 rounded-md px-3 py-2.5 text-xs font-semibold transition-all ${
                   pathname.startsWith("/admin")
-                    ? "bg-brand-gold/10 border border-brand-gold/30 font-semibold text-brand-black"
-                    : "border border-transparent hover:bg-surface text-foreground/75 hover:text-brand-gold"
+                    ? "bg-amber-500 text-white shadow-sm"
+                    : "text-slate-600 hover:bg-amber-50 hover:text-amber-700"
                 }`}
               >
-                <ShieldAlert size={16} className="shrink-0 text-brand-gold" />
+                <ShieldAlert size={16} className="shrink-0" />
                 {!collapsed && <span>Advisory Board</span>}
               </Link>
             </div>
@@ -155,11 +153,11 @@ export function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
       </div>
 
       {/* Footer sign out */}
-      <div className="p-3 border-t border-border">
+      <div className="p-3 border-t border-slate-200">
         <button
           onClick={handleLogout}
           title={collapsed ? "Sign Out" : undefined}
-          className="flex w-full items-center gap-3 rounded-sm px-3 py-2.5 text-xs text-brand-blue hover:bg-brand-blue/5 font-semibold transition-colors"
+          className="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-xs text-rose-600 hover:bg-rose-50 font-bold transition-colors"
         >
           <LogOut size={16} className="shrink-0" />
           {!collapsed && <span>Sign Out</span>}
@@ -168,3 +166,4 @@ export function Sidebar({ collapsed, setCollapsed }: SidebarProps) {
     </aside>
   );
 }
+
